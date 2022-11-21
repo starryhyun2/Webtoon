@@ -15,5 +15,8 @@
 	
 	<mappers>
 		<mapper resource="config/mybatis/mapper/webtoon.xml" />
+		<mapper resource="config/mybatis/mapper/board.xml" />
 	</mappers>
+	
+	
 </configuration>
