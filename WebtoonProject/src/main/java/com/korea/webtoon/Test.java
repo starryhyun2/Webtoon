@@ -1,5 +1,5 @@
 package com.korea.webtoon;
 
-public class TestCommit {
+public class Test {
 
 }
