@@ -8,12 +8,5 @@
 		<setting name="defaultExecutorType" value="REUSE" />
 	</settings>
 	
-	<typeAliases>
-		<typeAlias type="vo.BoardVO" alias="board"/>
-	</typeAliases>
 	
-	
-	<mappers>
-		<mapper resource="config/mybatis/mapper/webtoon.xml" />
-	</mappers>
 </configuration>
