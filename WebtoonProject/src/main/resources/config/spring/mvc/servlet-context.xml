@@ -31,10 +31,9 @@
 	<context:annotation-config/>
 	
 	<!-- 컨트롤러의 수동생성 -->
-<!--  	<beans:bean class="com.korea.board.BoardController">
-		<beans:constructor-arg name="board_dao" ref="board_daoBean"/>
+	<beans:bean class="com.korea.webtoon.MyPageController">
+		<beans:property name="mypage_dao" ref="mypage_daoBean"/> 
 	</beans:bean>
-	  -->
 </beans:beans>
 
 

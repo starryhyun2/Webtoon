@@ -3,8 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<!-- <bean id="board_daoBean" class="dao.BoardDAO">
-		<constructor-arg name="sqlSession" ref="sqlSessionBean"/>
+	<bean id="mypage_daoBean" class="myPageDAO.MyPageDAO">
+		<property name="sqlSession" ref="sqlSessionBean"/>
 	</bean>
- -->
 </beans>
