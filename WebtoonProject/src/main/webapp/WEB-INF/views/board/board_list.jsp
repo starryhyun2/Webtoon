@@ -137,7 +137,9 @@
   <div class="container text-center tab_1">
   <div class="row">
     <div class="col">
+    <a href="show?idx=23">
       Column1
+     </a>    
     </div>
     <div class="col">
       Column2
@@ -209,7 +211,7 @@
       Column6
     </div>
   </div>
-</div> <!-- tab_1 -->
+</div> <!-- tab_3 -->
   </div>
   <!--  <div class="tab-pane fade" id="pills-4" role="tabpanel" aria-labelledby="pills-4-tab" tabindex="0"><h1>4</h1></div>-->
 </div>

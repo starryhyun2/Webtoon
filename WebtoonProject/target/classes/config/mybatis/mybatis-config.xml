@@ -10,6 +10,7 @@
 	
 	<typeAliases>
 		<typeAlias type="vo.BoardVO" alias="board"/>
+		<typeAlias type="vo.WebtoonVO" alias="webtoon"/>
 	</typeAliases>
 	
 	
