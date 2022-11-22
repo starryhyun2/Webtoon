@@ -37,12 +37,12 @@ public class MyPageController {
 	@RequestMapping("/mypage.do")				// 로그인 페이지에서 '로그인' 버튼을 누르면 마이페이지로 이동
 	public String loginTest(Model model, Webtoon_UserVO vo) {	// 로그인 페이지에서 입력한 값을 vo에 넣어 저장(나중에 이건 로그인하면 세션으로 가지고 있는걸 넘겨받는거로)
 			
-		String id = vo.getId();
-		Webtoon_UserVO user = user_dao.selectOne(id);
+		String id = vo.getId();									// 로그인시 입력받았던 id를 String객체로 저장
+		Webtoon_UserVO user = user_dao.selectOne(id);			// id를 user_dao.selectOne 메소드에 전달시킨후 값을 반환 받음
 		
-		model.addAttribute("vo", user);
+		model.addAttribute("vo", user);							// 반환 받은값을 "vo"에 바인딩
 		
-		return "/WEB-INF/views/myPage.jsp";
+		return "/WEB-INF/views/myPage.jsp";						//마이페이지로 이동
 	}
 	
 }
