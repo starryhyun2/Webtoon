@@ -8,12 +8,17 @@
 	</bean>
  -->
  
- <bean id="board_daoBean" class="dao.BoardDAO">
+ 	<bean id="board_daoBean" class="dao.BoardDAO">
 		<property name="sqlSession" ref="sqlSessionBean"/>
 	</bean>
 	
+<<<<<<< HEAD
 	 <bean id="webtoon_daoBean" class="dao.WebtoonDAO">
 		<constructor-arg name="sqlSession" ref="sqlSessionBean"/>
+=======
+	<bean id="mainToon_daoBean" class="dao.mainToonDAO">
+		<property name="sqlSession" ref="sqlSessionBean"></property>
+>>>>>>> YOON5281
 	</bean>
  
 </beans>

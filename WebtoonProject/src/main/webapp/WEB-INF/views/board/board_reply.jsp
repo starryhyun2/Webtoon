@@ -25,15 +25,15 @@
 				return;
 			}
 			if( content == ''){
-				alert("내용은 한글자 이상 넣어주세요.")
+				alert("내용은 한글자 이상 넣어주세요.");
 				return;
 			}
 			if( pwd == ''){
-				alert("비밀번호는 필수입니다.")
+				alert("비밀번호는 필수입니다.");
 				return;
 			}
 			
-			f.action = "reply.do";
+			f.action = "reply.do?page=${param.page}";
 			f.method = "post";
 			f.submit();
 			

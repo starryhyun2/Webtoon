@@ -15,7 +15,7 @@
 	
 		function reply(){
 			
-			location.href="reply_form.do?idx=${vo.idx}";
+			location.href="reply_form.do?idx=${vo.idx}&page=${param.page}";
 			
 		}
 		
@@ -95,6 +95,7 @@
 			<tr>
 				<td colspan="2">
 						<input type="button" value="목록보기" onclick="location.href='list.do'">
+						
 					<c:if test="${vo.depth eq 0}">
 						<input type="button" value="댓글" onclick="reply();">
 					</c:if>
