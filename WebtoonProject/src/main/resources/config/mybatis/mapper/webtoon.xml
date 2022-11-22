@@ -2,9 +2,25 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="b">
+<mapper namespace="m">
 
+<!-- webtoon mapper하나에 유저 쿼리랑 웹툰 등록,수정 검색 쿼리를 다 가지기에는 너무 많을거같은데 
+	mapper 3개(webtoon_user, webtoon, webtoonComments)로 만들어서 쿼리를 나누는건 어떤가요?  -->
+
+	<insert id="mypage_insert" parameterType="vo.Webtoon_UserVO">
+		insert into WEBTOON_USER values(
+			seq_user_idx.nextVal,
+			0,
+			#{name},
+			#{id},
+			#{pwd},
+			#{email}
+		)
+	</insert>
 	
+	<select id="mypage_selectOne" resultType="vo.Webtoon_UserVO" parameterType="String">
+		select * from WEBTOON_USER where id=#{id}
+	</select>
 </mapper>
 
 
