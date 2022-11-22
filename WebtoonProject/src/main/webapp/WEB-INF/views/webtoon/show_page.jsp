@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1 align="center">${ vo.title }</h1>
+<img src="${ vo.thumbnailName }${ vo.webtoon_idx }.jpg" alt="study_group"/>
 <table>
     <tr>
         <th>작가</th>

@@ -13,7 +13,6 @@ public class WebtoonDAO {
 	
 	public WebtoonVO selectOne(int idx){
 		WebtoonVO vo = sqlSession.selectOne("w.find", idx);
-		System.out.println("찾고 반환했습니다.");
 		
 		return vo;
 	}
