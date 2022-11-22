@@ -23,6 +23,9 @@
 <body>
 
 	<h1 style="width:300px; margin:0 auto;">코리아 웹툰</h1>
+	 <input id="admin_btn" type="button" value="관리자 페이지" onclick="location.href='admin_form.do'">
+	 
+	 
 	 <!-- 상단 네비게이션 -->
 	<nav class="navbar navbar-expand-lg" >
   <div class="container-fluid">
@@ -45,36 +48,11 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            베스트 도전
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            도전 만화
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">마이페이지</a>
-        </li>
+        </li>        
         
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="검색" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
@@ -113,7 +91,7 @@
           <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
         </div>
       </div>
-      <div class="swiper-pagination"></div>
+      <!--  <div class="swiper-pagination"></div> -->
     </div>
 
 
@@ -136,50 +114,44 @@
   <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab" tabindex="0">
   <div class="container text-center tab_1">
   <div class="row">
-    <div class="col">
-      Column1
-    </div>
-    <div class="col">
-      Column2
-    </div>
-    <div class="col">
-      Column3
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      Column4
-    </div>
-    <div class="col">
-      Column5
-    </div>
-    <div class="col">
-      Column6
-    </div>
+
+	<c:forEach var="mt" items="${mt_list}">
+		<div class="col-4 mt_box">
+		
+		<!-- 첨부된 이미지가 있는 경우에만 img태그를 보여주자! -->
+			<c:if test="${mt.filename ne 'no_file'}">
+				<img src="/webtoon/resources/upload/${mt.filename}" width="200" />
+			</c:if>
+		
+      		<div class="type_content"><pre>${ mt.content }</pre></div>	
+      		<div class="type_name">작성자 : ${ mt.name }</div>
+      		<div class="type_regdate">작성일 : ${ mt.regdate }</div>
+      		
+    	</div>
+	</c:forEach>
+	
   </div>
 </div> <!-- tab_1 -->
   </div>
   <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab" tabindex="0">
   <div class="container text-center tab_2">
   <div class="row">
-    <div class="col">
+	<div class="col-4">
       Column1
     </div>
-    <div class="col">
+    <div class="col-4">
       Column2
     </div>
-    <div class="col">
+    <div class="col-4">
       Column3
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
+    <div class="col-4">
       Column4
     </div>
-    <div class="col">
+    <div class="col-4">
       Column5
     </div>
-    <div class="col">
+    <div class="col-4">
       Column6
     </div>
   </div>
@@ -188,24 +160,22 @@
   <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab" tabindex="0">
   <div class="container text-center tab_3">
   <div class="row">
-    <div class="col">
+    <div class="col-4">
       Column1
     </div>
-    <div class="col">
+    <div class="col-4">
       Column2
     </div>
-    <div class="col">
+    <div class="col-4">
       Column3
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
+    <div class="col-4">
       Column4
     </div>
-    <div class="col">
+    <div class="col-4">
       Column5
     </div>
-    <div class="col">
+    <div class="col-4">
       Column6
     </div>
   </div>
@@ -240,13 +210,13 @@
 				</c:if>
 				
 				<c:if test="${vo.del_info eq 0}">
-					<a href="view.do?idx=${vo.idx}">${vo.subject}
+					<a href="view.do?idx=${vo.idx}&page=${param.page}">${vo.subject}
 					</a>
 				</c:if>
 				
 				<c:if test="${vo.del_info ne 0}">
 				
-					<font>${vo.subject}</font>
+					<font color="gray">${vo.subject}</font>
 					
 				</c:if>
 				
@@ -261,7 +231,7 @@
 		
 		<tr>
 			<td colspan="5" align="center" style="border:0px;">
-				&lt; 1 2 3 &gt;
+				${ pageMenu }
 			</td>
 		</tr>
 		

@@ -10,12 +10,14 @@
 	
 	<typeAliases>
 		<typeAlias type="vo.BoardVO" alias="board"/>
+		<typeAlias type="vo.mainToonVO" alias="mainToon"/>
 	</typeAliases>
 	
 	
 	<mappers>
-		<mapper resource="config/mybatis/mapper/webtoon.xml" />
+		<!--  <mapper resource="config/mybatis/mapper/webtoon.xml" /> -->
 		<mapper resource="config/mybatis/mapper/board.xml" />
+		<mapper resource="config/mybatis/mapper/mainToon.xml" />
 	</mappers>
 	
 	

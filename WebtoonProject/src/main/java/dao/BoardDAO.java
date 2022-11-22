@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,10 +17,17 @@ public class BoardDAO {
 	
 	//전체 게시물 조회
 	
-	public List<BoardVO> selectList(){
-		
-		List<BoardVO> list = sqlSession.selectList("b.board_list");	
+	public List<BoardVO> selectList(HashMap<String, Integer> map){
+		//map[key = start value = start, key = end value = end]
+		List<BoardVO> list = sqlSession.selectList("b.board_list", map);	
 		return list;
+		
+	}
+	//전체 게시물 수 조회
+	public int getRowTotal(){
+		
+		int res = sqlSession.selectOne("b.board_count");	
+		return res;
 		
 	}
 	
