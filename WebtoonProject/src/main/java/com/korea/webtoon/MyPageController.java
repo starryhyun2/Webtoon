@@ -50,7 +50,7 @@ public class MyPageController {
 	@RequestMapping(value= {"/", "/list.do"})								// 로그인 페이지에서 '로그인' 버튼을 누르면 마이페이지로 이동
 	public String loginTest(Model model) {						// 로그인 페이지에서 입력한 값을 vo에 넣어 저장(나중에 이건 로그인하면 세션으로 가지고 있는걸 넘겨받는거로)
 		
-		String id = "kws";
+		String id = "WooSeokKing";
 		
 		Webtoon_UserVO user = user_dao.selectOne(id);
 			
@@ -82,19 +82,6 @@ public class MyPageController {
 		}
 		
 		return result;
-	}
-	
-	@RequestMapping("/blog.do")
-	@ResponseBody
-	public String blog(Model model, Webtoon_UserVO vo) {
-		
-		Webtoon_UserVO id = user_dao.selectOne(vo.getId());
-		List<Webtoon_UserVO> list = user_dao.selectList(vo.getUser_idx());
-		
-		model.addAttribute("vo", id);
-		model.addAttribute("list", list);
-		
-		return "/WEB-INF/views/blog.jsp";
 	}
 	
 }

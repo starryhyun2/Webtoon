@@ -29,9 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where user_idx=#{user_idx}
 	</update>
 	
-	<select id="mypage_selectBlog" resultType="vo.Webtoon_UserVO" parameterType="String">
-		select * from WEBTOON_BLOG order by idx DESC
-	</select>
+
 </mapper>
 
 

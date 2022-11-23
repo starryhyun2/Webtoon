@@ -6,19 +6,9 @@
 <meta charset="UTF-8">
 <title>마이 페이지</title>
 
-
+<link rel="stylesheet" href="/webtoon/resources/css/webtoon.css">
 
 <script>
-
-	function blog(f){
-		
-		var id = f.id.value;
-		
-		f.action="blog.do";
-		f.method="post";
-		f.submit();
-	}
-
 
 	function modify(f){
 		
@@ -67,7 +57,6 @@
 					<input type="hidden" value="${ vo.getId() }" name="id">
 					<input type="hidden" value="${ vo.getPwd() }" name="pwd">
 					<input type="hidden" value="${ vo.getUser_idx() }" name ="idx">
-					<input type="button" value="내 블로그" onclick="blog(this.form)">
 					<input type="button" value="정보 수정" onclick="modify(this.form)">
 				</td>
 			</tr>

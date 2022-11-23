@@ -33,8 +33,5 @@ public class Webtoon_UserDAO {
 		return res;
 	}
 	
-	public List<Webtoon_UserVO> selectList(int idx) {
-		List<Webtoon_UserVO> res = sqlSession.selectOne("m.mypage_blog", idx);
-		return res;
-	}
 }
+
