@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+
+a {
+	text-decoration:none;
+	color:black;
+	}
+	table{
+		border-collapse:collapse;
+		
+	}
+	table th{
+		border:0.5px solid black;
+		text-align:center;
+	}
+	
+	table td{
+		border:0.5px solid black;
+	}
+	.idx{text-align:center; }
+	
+	#admin_btn{
+	background:none; 
+	border:0px; 
+	position:absolute; 
+	top:10px; 
+	right:20px;
+	}
+	
+	nav{
+	
+	background-color:skyblue;
+	}
+	
+	nav .nav-link{
+	
+	color:black !important;
+	}
+	
+	
+	 .swiper {
+        width: 80%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+   
+      }
+
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 300px;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+      }
+      
+      .container{
+      width:100%;
+      
+      }
+      
+      .container .col-4{
+      height:300px;
+
+      }
+      
+       .tab_1 .col-4{
+       border:1px solid blue;
+       }
+       .tab_2 .col-4{
+       border:1px solid red;
+       }
+       .tab_3 .col-4{
+       border:1px solid green;
+       }
+       
+       
+       
+       .type_content{
+	min-height:50px;
+	height:auto;
+	
+}
+
+.type_name{
+	background:skyblue;
+}
+
+.type_regdate{
+	background:pink;
+}
+       

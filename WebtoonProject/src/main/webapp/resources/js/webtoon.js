@@ -18,7 +18,7 @@
           el: ".swiper-pagination",
         },
          autoplay: {
-   			delay: 3000,
+   			delay: 2000,
  		},
       });
     
