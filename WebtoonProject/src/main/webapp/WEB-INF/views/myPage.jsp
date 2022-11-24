@@ -29,38 +29,44 @@
 </head>
 <body>
 
-	<form>
-		<!-- <input type="hidden" name="sessionId" value="${session}">-->
-		<table border="1" align="center">
-			<tr>
-				<td>이름 : </td>
-				<td>${ vo.getName() }</td>	
-			</tr>
-			
-			<tr>
-				<td>id : </td>
-				<td>${ vo.getId() }</td>	
-			</tr>
-			
-			<tr>
-				<td>비밀번호 : </td>
-				<td>${ vo.getPwd() }</td>	
-			</tr>
-			
-			<tr>
-				<td>email : </td>
-				<td>${ vo.getEmail() }</td>
-			</tr>
-			
-			<tr>
-				<td colspan="2">
-					<input type="hidden" value="${ vo.getId() }" name="id">
-					<input type="hidden" value="${ vo.getPwd() }" name="pwd">
-					<input type="hidden" value="${ vo.getUser_idx() }" name ="idx">
-					<input type="button" value="정보 수정" onclick="modify(this.form)">
-				</td>
-			</tr>
-		</table>
-	</form>
+	<div id="page_name">
+		<h1>::: 마이페이지 :::</h1>
+	</div>
+
+	<div class="box">
+		<form>
+			<!-- <input type="hidden" name="sessionId" value="${session}">-->
+			<table align="center">
+				<tr>
+					<td class="menu">이름</td>
+					<td class="menu2"><a class="modify">${ vo.getName() }</a></td>	
+				</tr>
+				
+				<tr>
+					<td class="menu">ID</td>
+					<td class="menu2"><a class="modify">${ vo.getId() }</a></td>	
+				</tr>
+				
+				<tr>
+					<td class="menu">비밀번호</td>
+					<td class="menu2"><a class="modify">${ vo.getPwd() }</a></td>	
+				</tr>
+				
+				<tr>
+					<td class="menu">Email</td>
+					<td class="menu2"><a class="modify">${ vo.getEmail() }</a></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center" class="button">
+						<input type="hidden" value="${ vo.getId() }" name="id">
+						<input type="hidden" value="${ vo.getPwd() }" name="pwd">
+						<input type="hidden" value="${ vo.getUser_idx() }" name ="idx">
+						<input type="button" value="정보 수정" onclick="modify(this.form)">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

@@ -5,15 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 정보수정</title>
+<title>개인정보 수정</title>
 
+<link rel="stylesheet" href="/webtoon/resources/css/webtoon.css">
 <script src="/webtoon/resources/js/httpRequest.js"></script>
 
 <script>
 
-	function pwdLength() {
+	function pwdLength() {	// pwd의 길이 유효성검사
 	
-		if (document.getElementById("pwd").value.length < 8) {
+		if (document.getElementById("pwd").value.length < 8) {	// pwd 길이가 8자리 미만이라면
 			document.getElementById("passwdMessage").innerHTML = "<span style='color:red;'>비밀번호를 8자 이상으로 입력 하세요.</span>";
 			return false;
 		}
@@ -36,11 +37,6 @@
 		
 		if(name == ''){
 			alert("이름은 필수입니다.");
-			return;
-		}
-		
-		if(id == ''){
-			alert("아이디는 필수입니다.");
 			return;
 		}
 		
@@ -86,38 +82,45 @@
 </head>
 <body>
 
-	<form>
-		<input type="hidden" name="user_idx" value="${vo.getUser_idx() }">
-		<table border="1" align="center">
-			<tr>
-				<td>이름 :</td>
-				<td><input name="name" value="${vo.getName() }" ></td>
-			</tr>
-			
-			<tr>
-				<td>id :</td>
-				<td><input name="id" value="${vo.getId() }" readonly></td>
-			</tr>
-			
-			<tr>
-				<td>비밀번호 :</td>
-				<td><input type = "password" name="pwd" id="pwd" onblur="pwdLength()"><div id="passwdMessage"></div></td>
+	<div id="page_name">
+		<h1>::: 개인정보 수정 :::</h1>
+	</div>
+
+	<div class="box">
+		<form>
+			<input type="hidden" name="user_idx" value="${vo.getUser_idx() }">		<!-- Controller로 전달하는 값을 idx로 할지 id로 할지 아직 못정해서 혹시몰라 넣어놨습니다. -->
+			<table align="center">
+				<tr>
+					<td class="menu">이름</td>
+					<td class="menu2"><input name="name" class="modify" value="${vo.getName() }" ></td>
+				</tr>
 				
-			</tr>
-			
-			<tr>
-				<td>email :</td>
-				<td><input name="email" value="${vo.getEmail() }"></td>
-			</tr>
-			
-			<tr>
-				<td colspan="2" align="center">
-					<input type="button" value="수정하기" onclick="send(this.form);">
-					<input type="button" value="취소" onclick="back(this.form);">
-				</td>
-			</tr>
-		</table>
-	</form>
+				<tr>
+					<td class="menu">ID</td>
+					<td class="menu2"><input name="id" class="modify" placeholder="${vo.getId() }" readonly></td>		<!-- id는 수정불가 -->
+				</tr>
+				
+				<tr>
+					<td class="menu">비밀번호</td>
+					<td class="menu2"><input type = "password" name="pwd" id="pwd" class="modify" 
+										value="${vo.getPwd() }" onblur="pwdLength()"><div id="passwdMessage"></div></td>
+					<!-- pwd 수정시 포커스가 사라질때 pwdLength() 호출 후, 조건에 맞는 passWdMessage 출력 -->
+				</tr>
+				
+				<tr>
+					<td class="menu">Email</td>
+					<td class="menu2"><input name="email" class="modify" value="${vo.getEmail() }"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center" class="button">
+						<input type="button" value="수정하기" onclick="send(this.form);">
+						<input type="button" value="취소" onclick="location.href='list.do'">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 
 </body>
 </html>
