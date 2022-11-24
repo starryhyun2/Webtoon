@@ -221,7 +221,7 @@
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
-			<th>작성자</th>
+			<th>작가</th>
 			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
@@ -282,4 +282,22 @@
 
    
 </body>
+
+<!-- 검색 form -->
+	<div id="search">
+		<form id="searchForm" action="getBoardList.do" methos="get">
+			<select name="type">
+				<option value="">선택</option>
+				<option value="T">제목</option>
+				<option value="C">내용</option>
+				<option value="W">작가</option>
+				<option value="TC">제목 + 장르</option>
+				<option value="TW">제목 + 작다</option>
+				<option value="TCW">제목 + 장르 + 작가</option>
+			</select>
+			<input type="text" name="keyword" />
+			<button id="searchBtn">검색</button>
+		</form>
+	</div>
 </html>
+
