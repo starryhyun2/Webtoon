@@ -114,30 +114,12 @@
   <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab" tabindex="0">
   <div class="container text-center tab_1">
   <div class="row">
-<<<<<<< HEAD
+
     <div class="col">
-    <a href="show?idx=23">
+     <a href="show?idx=23">
       Column1
-     </a>    
+      </a>
     </div>
-    <div class="col">
-      Column2
-    </div>
-    <div class="col">
-      Column3
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      Column4
-    </div>
-    <div class="col">
-      Column5
-    </div>
-    <div class="col">
-      Column6
-    </div>
-=======
 
 	<c:forEach var="mt" items="${mt_list}">
 		<div class="col-4 mt_box">
@@ -154,9 +136,10 @@
     	</div>
 	</c:forEach>
 	
->>>>>>> YOON5281
   </div>
 </div> <!-- tab_1 -->
+
+
   </div>
   <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab" tabindex="0">
   <div class="container text-center tab_2">

@@ -31,23 +31,16 @@
 	<context:annotation-config />
 
 	<!-- 컨트롤러의 수동생성 -->
-<<<<<<< HEAD
-	<beans:bean class="com.korea.webtoon.BoardController">
-		<beans:property name="board_dao" ref="board_daoBean" />
-	</beans:bean>
-
 	<beans:bean class="com.korea.webtoon.WebtoonController">
 		<beans:property name="webtoon_DAO" ref="webtoon_daoBean" />
 	</beans:bean>
-=======
+
   	<beans:bean class="com.korea.webtoon.BoardController">
 		<beans:property name="board_dao" ref="board_daoBean"/>
 		<beans:property name="mainToon_dao" ref="mainToon_daoBean"/>
 	</beans:bean>
 	
 
-	  
->>>>>>> YOON5281
 </beans:beans> 
 
 

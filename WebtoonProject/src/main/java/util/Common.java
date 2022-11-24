@@ -3,9 +3,8 @@ package util;
 public interface Common {
 	
 	public String PATH = "/WEB-INF/views/board/";
-<<<<<<< HEAD
 	public String SHOW_PATH ="/WEB-INF/views/webtoon/";
-=======
+
 	
 	//한 페이지에 보여질 게시물 수
 	public static int BLOCKLIST = 5;
@@ -17,6 +16,5 @@ public interface Common {
 	
 	static final String ADMIN_PATH = "/WEB-INF/views/admin/";
 	
->>>>>>> YOON5281
 
 }
