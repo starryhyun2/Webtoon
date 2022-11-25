@@ -115,7 +115,7 @@ public class BoardController {
 				System.out.println("경로 : " + savePath);
 
 				//에피소드까지의 경로를 위해서 webPath와 savePath 추가
-				String epiPath = "/resources/"+vo.getEpipath();
+				String epiPath = "/resources/";
 				String saveEpiPath = app.getRealPath(epiPath);
 				System.out.println(saveEpiPath);
 				
