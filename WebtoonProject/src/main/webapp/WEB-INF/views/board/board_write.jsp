@@ -9,14 +9,14 @@
 	<script>
 		function send_check(f){
 			
-			var subject = f.subject.value;
+			var title = f.title.value;
 			var name = f.name.value;
 			var content = f.content.value.trim();
 			var pwd = f.pwd.value.trim();
 			
 			
 			//유효성 체크
-			if( subject == ''){
+			if( title == ''){
 				alert("제목은 필수입니다.");
 				return;
 			}
@@ -47,7 +47,7 @@
 		<table border="1" align="center">
 			<tr>
 				<th>제목</th>
-				<td><input name="subject"></td>
+				<td><input name="title"></td>
 			</tr>
 			<tr>
 				<th>작성자</th>

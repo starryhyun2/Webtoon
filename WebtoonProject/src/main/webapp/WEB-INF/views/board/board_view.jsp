@@ -4,32 +4,47 @@
 <html>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 <!-- Ajax 사용을 위한 js를 로드 -->
-	<script src="/bbs/resources/js/httpRequest.js"></script>
+	<script src="/webtoon/resources/js/httpRequest.js"></script>
 
 	<script>
 	
-		function reply(){
+		function reply_send(cb){
 			
-			location.href="reply_form.do?idx=${vo.idx}&page=${param.page}";
+			const name = cb.name.value;
+			const content = cb.content.value.trim();
+			
+			//유효성 체크
+			
+			if(name == ''){
+				alert("이름은 필수입니다.");
+				return;
+			}
+			if( content == ''){
+				alert("내용은 한글자 이상 넣어주세요.");
+				return;
+			}
+		
+			
+			cb.action = "reply_insert.do";
+			//cb.method = "post";
+			cb.submit();
 			
 		}
+			
 		
 		function del(){
 			
 			//form태그 검색
 			var f = document.getElementById("ff");
-			var c_pwd = f.c_pwd.value;
-			
-			if(c_pwd != ${vo.pwd}){
-				alert("비밀번호 불일치");
-				return;
-			} 
-			
+	
+		
 			if( !confirm("삭제하시겠습니까?") ){
 				return;
 			}
@@ -44,7 +59,7 @@
 		
 		function resultFn(){
 			
-			if(xhr.readyState == 4 && xhr.staus == 200){
+			if(xhr.readyState == 4 && xhr.status == 200){
 				
 				//"no" or "yes"
 				var data = xhr.responseText;
@@ -67,12 +82,12 @@
 </head>
 <body>
 	<form id="ff">
-		<table border="1" align="center">
+		<table border="1" align="center" width="80%">
 			<caption><h2> ::: 상세보기 :::</h2></caption>
 			
 			<tr>
 				<td>제목</td>
-				<td>${vo.subject}</td>
+				<td>${vo.title}</td>
 			</tr>
 			<tr>
 				<td>작성자</td>
@@ -82,28 +97,66 @@
 				<td>작성일</td>
 				<td>${vo.regdate}</td>
 			</tr>
-			<tr>
+			<tr style="height:400px;">
 				<td>내용</td>
 				<td><pre>${vo.content}</pre></td>
 			</tr>
 			
 			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="c_pwd" /></td>
-			</tr>
-			
-			<tr>
 				<td colspan="2">
-						<input type="button" value="목록보기" onclick="location.href='list.do'">
-						
-					<c:if test="${vo.depth eq 0}">
-						<input type="button" value="댓글" onclick="reply();">
-					</c:if>
+						<input type="button" value="목록 보기" onclick="location.href='list.do'">			
 						<input type="button" value="삭제" onclick="del();">
 				</td>
 			</tr>
+			
 		</table>
 	
 	</form>
+	
+	<form  id = "cb">
+	<table border="1" align="center" width="80%">
+			<tr>
+				<td colspan="4">
+					<input type="text" name="name" placeholder="아이디" style="width:10%">
+					<input type="text" name="content" placeholder="댓글 쓰기" style="width:70%">
+					<input type="button" value="댓글" onclick="reply_send(this.form);">
+				</td>
+			</tr>
+		
+		<tr>
+			<th>번호</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>내용</th>
+		</tr>
+		
+		<c:forEach var="cb" items="${cb_list}">
+			<tr>
+				<td>${cb.idx}</td>
+				<td>${cb.name}</td>
+				<td align="center">${cb.regdate }</td>
+				
+				<!-- 댓글 들여쓰기 -->
+				<td>
+				
+				<c:if test="${cb.del_info eq 0}">
+					${cb.content}
+				</c:if>
+				
+				<c:if test="${cb.del_info ne 0}">
+				
+					<font>${cb.content}</font>
+					
+				</c:if>
+				
+									
+				</td>
+				
+			</tr>
+		</c:forEach>
+	
+	</table>
+	</form>
+	
 </body>
 </html>

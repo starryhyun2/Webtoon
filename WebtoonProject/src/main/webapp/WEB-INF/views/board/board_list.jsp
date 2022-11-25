@@ -7,11 +7,13 @@
 <!DOCTYPE html>
 <html>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
+    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 <head>
 <meta charset="UTF-8">
 <title>코리아 웹툰</title>
@@ -115,6 +117,7 @@
   <div class="container text-center tab_1">
   <div class="row">
 
+
 	<c:forEach var="mt" items="${mt_list}">
 	
 		<c:if test="${mt.genre eq 'genre_1'}">
@@ -141,6 +144,7 @@
   <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab" tabindex="0">
   <div class="container text-center tab_2">
   <div class="row">
+  
 <c:forEach var="mt" items="${mt_list}">
 	
 		<c:if test="${mt.genre eq 'genre_2'}">
@@ -193,8 +197,7 @@
   <!--  <div class="tab-pane fade" id="pills-4" role="tabpanel" aria-labelledby="pills-4-tab" tabindex="0"><h1>4</h1></div>-->
 </div>
 
-
-	<table border="1" align="center" width="700">
+	<table border="1" align="center" width="80%">
 		<!--<caption><h1>::: 게시판 :::</h1></caption>-->
 		
 		<tr>
@@ -206,26 +209,27 @@
 		</tr>
 		
 		<c:forEach var="vo" items="${list}">
+		
 			<tr>
 				<td class="idx">${vo.idx}</td>
 				
 				<!-- 댓글 들여쓰기 -->
-				<td>
-				<c:forEach begin="1" end="${ vo.depth }">&nbsp;</c:forEach>
-				
+				 <td>
+				<!--<c:forEach begin="1" end="${ vo.depth }">&nbsp;</c:forEach>-->
+				 
 				<!-- 댓글 기호  -->
-				<c:if test="${vo.depth ne 0}">
+				<!--<c:if test="${vo.depth ne 0}">
 					ㄴ
-				</c:if>
+				</c:if>-->
 				
 				<c:if test="${vo.del_info eq 0}">
-					<a href="view.do?idx=${vo.idx}&page=${param.page}">${vo.subject}
+					<a href="view.do?idx=${vo.idx }&page=${param.page}">${vo.title}
 					</a>
 				</c:if>
 				
 				<c:if test="${vo.del_info ne 0}">
 				
-					<font color="gray">${vo.subject}</font>
+					<font color="gray">${vo.title}</font>
 					
 				</c:if>
 				
@@ -246,7 +250,7 @@
 		
 		<tr>
 			<td colspan="5" align="right">
-				<input type="button" value="새글 쓰기" onclick="location.href='insert_form.do'" />
+				<input type="button" value="새 글 쓰기" onclick="location.href='insert_form.do'" />
 			</td>
 		</tr>
 		

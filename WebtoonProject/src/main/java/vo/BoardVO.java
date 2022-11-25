@@ -3,7 +3,7 @@ package vo;
 public class BoardVO {
 
 	private int idx, readhit, ref, step, depth, del_info;
-	private String name, subject, content, pwd, ip, regdate;
+	private String name, title, content, pwd, ip, regdate;
 	public int getIdx() {
 		return idx;
 	}
@@ -46,11 +46,11 @@ public class BoardVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSubject() {
-		return subject;
+	public String getTitle() {
+		return title;
 	}
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getContent() {
 		return content;

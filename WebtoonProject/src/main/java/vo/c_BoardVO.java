@@ -1,20 +1,16 @@
 package vo;
 
-public class BoardVO {
+public class c_BoardVO {
 
-	private int idx, readhit, ref, step, depth, del_info;
-	private String name, subject, content, pwd, ip, regdate;
+	private int idx, ref, step, depth, del_info, board_idx;
+	private String name, content, ip, regdate;
+	
+	
 	public int getIdx() {
 		return idx;
 	}
 	public void setIdx(int idx) {
 		this.idx = idx;
-	}
-	public int getReadhit() {
-		return readhit;
-	}
-	public void setReadhit(int readhit) {
-		this.readhit = readhit;
 	}
 	public int getRef() {
 		return ref;
@@ -40,29 +36,23 @@ public class BoardVO {
 	public void setDel_info(int del_info) {
 		this.del_info = del_info;
 	}
+	public int getBoard_idx() {
+		return board_idx;
+	}
+	public void setBoard_idx(int board_idx) {
+		this.board_idx = board_idx;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSubject() {
-		return subject;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
 	}
 	public String getIp() {
 		return ip;
@@ -76,6 +66,7 @@ public class BoardVO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
 	
 	
 }
