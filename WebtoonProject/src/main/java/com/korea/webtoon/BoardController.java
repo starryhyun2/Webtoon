@@ -99,9 +99,9 @@ public class BoardController {
 	@RequestMapping("mainToon_insert.do")
 	public String mainToon_insert(mainToonVO vo, HttpServletRequest request) {
 		
-		//ip 가져오기
-		String ip = request.getRemoteAddr();
-		vo.setIp(ip);
+//		ip 가져오기
+//		String ip = request.getRemoteAddr();
+//		vo.setIp(ip);
 		
 		// 클라이언트의 파일 업로드를 위한 절대경로를 생성
 		

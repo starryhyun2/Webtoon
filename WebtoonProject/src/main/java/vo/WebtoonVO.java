@@ -1,13 +1,25 @@
 package vo;
 
 public class WebtoonVO {
-	int webtoon_idx;		
-	String title,author ,thumbnailName, genre, fileName, info;
+	int webtoon_idx, score, author_idx;		
+	String title,author , genre, filename, info;
 	public int getWebtoon_idx() {
 		return webtoon_idx;
 	}
 	public void setWebtoon_idx(int webtoon_idx) {
 		this.webtoon_idx = webtoon_idx;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public int getAuthor_idx() {
+		return author_idx;
+	}
+	public void setAuthor_idx(int author_idx) {
+		this.author_idx = author_idx;
 	}
 	public String getTitle() {
 		return title;
@@ -21,23 +33,17 @@ public class WebtoonVO {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getThumbnailName() {
-		return thumbnailName;
-	}
-	public void setThumbnailName(String thumbnailName) {
-		this.thumbnailName = thumbnailName;
-	}
 	public String getGenre() {
 		return genre;
 	}
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getFileName() {
-		return fileName;
+	public String getFilename() {
+		return filename;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	public String getInfo() {
 		return info;
@@ -45,6 +51,7 @@ public class WebtoonVO {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+	
 	
 	
 }

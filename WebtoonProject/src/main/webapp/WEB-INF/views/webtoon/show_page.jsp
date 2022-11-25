@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 </head>
 <body>
 <h1 align="center">${ vo.title }</h1>
-<img src="${ vo.thumbnailName }${ vo.webtoon_idx }.jpg" alt="study_group"/>
+<img src="resources/upload/${ vo.filename }" alt="study_group"/>
 <table>
     <tr>
         <th>작가</th>
@@ -34,25 +36,24 @@
 			</tr>
 			</thead>
 			<tbody>
+			<c:forEach var="epi" items="${ epi }">
 			<tr>
 				<td>
-					<a href="/webtoon/detail?titleId=721948&amp;no=181&amp;weekday=sat" onclick="nclk_v2(event,'lst.img','721948','181')">
-						<img src="https://shared-comic.pstatic.net/thumb/webtoon/721948/181/thumbnail_202x120_28892508-4e0d-42a5-9b82-83ef2c5764c5.jpg" title="시즌2 62화" alt="시즌2 62화" width="71" height="41" onerror="this.src='https://ssl.pstatic.net/static/comic/images/migration/common/non71_41.gif'">
-						<span class="mask"></span>
-					</a>
+					<img src="resources/upload/${ vo.filename }"/>
 				</td>
-				<td class="title">
-				<a href="/webtoon/detail?titleId=721948&amp;no=181&amp;weekday=sat" onclick="nclk_v2(event,'lst.title','721948','181')">시즌2 62화</a>
-						</td>
 				<td>
-					<div class="rating_type">
-						<span class="star"><em style="width:99.62%">평점</em></span>
-						<strong>score</strong>
-					</div>
+				<a href="Epi?episode_idx=${ epi.episode_idx }">${ epi.episodeName }</a>
 				</td>
-				<td class="num">regdate</td>
+				
+				<td style="text-align:center;">
+				${ epi.score }
+				</td>
+				
+				<td>
+				${epi.regdate }
+				</td>
 			</tr>
-			
+			</c:forEach>
 			</tbody></table>
 </body>
 </html>

@@ -7,6 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from Webtoon
 		where webtoon_idx = #{idx}
 	</select>
+	
+	<select id="showepi" resultType="episode" parameterType="int">
+		select * from Episode
+		where ref=#{ idx }
+	</select>
+	
+	<select id="find_epi" resultType="episode">
+		select * from Episode
+		where episode_idx=#{ idx }
+	</select>
 
 </mapper>
 
