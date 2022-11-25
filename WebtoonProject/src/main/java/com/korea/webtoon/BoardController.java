@@ -73,8 +73,6 @@ public class BoardController {
 		//페이지별 목록 조회
 		List<BoardVO> list = board_dao.selectList(map);
 		
-		System.out.println("dd:"+list.get(0).getIdx());
-		
 		//전체 게시물의 갯수 구하기
 		int row_total = board_dao.getRowTotal();
 		
@@ -124,7 +122,6 @@ public class BoardController {
 				if (!photo.isEmpty()) {
 					// 업로드가 된 실제 파일의 이름
 					filename = photo.getOriginalFilename();
-					System.out.println(filename);
 
 					// 이미지를 저장할 경로를 지정
 					File saveFile = new File(savePath, filename);

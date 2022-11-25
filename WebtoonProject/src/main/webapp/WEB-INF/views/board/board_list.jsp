@@ -125,7 +125,9 @@
 				
 				<!-- 첨부된 이미지가 있는 경우에만 img태그를 보여주자! -->
 					<c:if test="${mt.filename ne 'no_file'}">
+					<a href="show?idx=${ mt.webtoon_idx }">
 						<img src="/webtoon/resources/upload/${mt.filename}" width="100%" class="box-con"/>
+					</a>
 					</c:if>
 				
 		      		<div class="type_content box-con"><p>${ mt.info }</p></div>	

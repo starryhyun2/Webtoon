@@ -45,8 +45,8 @@ public class WebtoonController {
 		
 		
 		//파일 갯수를 확인하기 위해서
-		File ff = new File(savePath);
-		int cnt = ff.listFiles().length;
+		File saved = new File(savePath);
+		int cnt = saved.listFiles().length;
 			
 		model.addAttribute("cnt", cnt);
 		return Common.SHOW_PATH+"epi_index.jsp";
