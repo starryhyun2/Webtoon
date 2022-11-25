@@ -114,6 +114,11 @@ public class BoardController {
 				String savePath = app.getRealPath(webPath);
 				System.out.println("경로 : " + savePath);
 
+				//에피소드까지의 경로를 위해서 webPath와 savePath 추가
+				String epiPath = "/resources/"+vo.getEpipath();
+				String saveEpiPath = app.getRealPath(epiPath);
+				System.out.println(saveEpiPath);
+				
 				// 업로드를 위해 파라미터로 넘어온 사진의 정보
 				MultipartFile photo = vo.getPhoto();
 
@@ -123,9 +128,14 @@ public class BoardController {
 					// 업로드가 된 실제 파일의 이름
 					filename = photo.getOriginalFilename();
 
+					//에피소드 디렉토리 생성및 경로 지정
+					File saveEpiFile = new File(saveEpiPath,vo.getEpipath());
+					if(!saveEpiFile.exists()) {
+						saveEpiFile.mkdirs();
+					}
+					
 					// 이미지를 저장할 경로를 지정
 					File saveFile = new File(savePath, filename);
-
 					if (!saveFile.exists()) {
 						saveFile.mkdirs();
 					} else {
@@ -152,7 +162,6 @@ public class BoardController {
 				vo.setFilename(filename);
 		
 		//DB에 새 웹툰을 추가하기 위해 DAO에게 vo를 전달
-		
 		int res = mainToon_dao.insert(vo);
 		
 		return "redirect:mainToon.do";

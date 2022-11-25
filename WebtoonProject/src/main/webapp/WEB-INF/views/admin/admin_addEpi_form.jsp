@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>admin_page</title>
+<title>회차추가 페이지</title>
 
 <script>
 
@@ -14,8 +14,7 @@
 		const author = f.author.value;
 		const genre = f.genre.value;
 		const info = f.info.value;
-		const epipath = f.epipath.value;
-		const author_idx = f.author_idx.value;
+		
 		
 		//유효성 체크
 		if(title == ''){
@@ -34,23 +33,19 @@
 
 </head>
 <body>
- 	<h1>관리자 페이지</h1>
+ 	<h1>회차추가 페이지</h1>
  	
  	<form method="post" enctype="multipart/form-data">
  	
  		<table border="1" align="center">
-			<caption><h2> << 새 메인 웹툰 추가 >> 	</h2></caption>
+			<caption><h2> << 새 회차추가 >> 	</h2></caption>
 			<tr>
-				<th>작품제목</th>
+				<th>제목</th>
 				<td><input name="title"></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input name="author">&nbsp<input type="number" name="author_idx"></td>
-			</tr>
-			<tr>
-				<th>파일 이름</th>
-				<td><input name="epipath"></td>
+				<td><input name="author"></td>
 			</tr>
 			<tr>
 				<th>장르</th>

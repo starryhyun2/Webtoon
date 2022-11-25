@@ -4,9 +4,24 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class WebtoonVO {
 	private int webtoon_idx, score, author_idx;		
-	private String title, author , genre, filename, info, regdate;
+	private String title, author , genre, filename, info, regdate, epipath;
 
+	//사진을 받기위한 File 변수 선언
 	private MultipartFile photo;
+	
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
+	}
+	
+	public String getEpipath() {
+		return epipath;
+	}
+	public void setEpipath(String epipath) {
+		this.epipath = epipath;
+	}
 
 	public String getRegdate() {
 		return regdate;
@@ -61,13 +76,6 @@ public class WebtoonVO {
 	}
 	public void setInfo(String info) {
 		this.info = info;
-	}
-
-	public MultipartFile getPhoto() {
-		return photo;
-	}
-	public void setPhoto(MultipartFile photo) {
-		this.photo = photo;
 	}
 
 }

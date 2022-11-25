@@ -52,6 +52,12 @@ public class WebtoonController {
 		return Common.SHOW_PATH+"epi_index.jsp";
 	}
 	
+	@RequestMapping("/addEpi_form")
+	public String addEpi_form(int episode_idx) {
+		
+		return Common.ADMIN_PATH+"admin_addEpi_form.jsp";
+	}
+	
 	
 	
 	
