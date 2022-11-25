@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!--  select * from board order by ref DESC, step ASC -->
 	<!-- 나눠서 조회 -->	
 				select * from 
-		( select rank() over( order by ref DESC, step ASC ) no, b.* 
+		( select rank() over( order by idx DESC ) no, b.* 
 		           from( select * from board ) b )
 		where no BETWEEN #{start} and #{end}
 		
@@ -32,21 +32,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 		seq_board_idx.nextVal,
 		#{name},
-		#{subject},
+		#{title},
 		#{content},
 		#{pwd},
 		#{ip},
 		sysdate,
-		0,
-		seq_board_idx.currVal,
-		0,
 		0,
 		0
 		)
 	
 	</insert>
 	
-	<!-- idx에 해당하는 게시글 한 건 상세보기 -->
+	<!-- board_idx에 해당하는 게시글 한 건 상세보기 -->
 	
 	<select id="board_one" resultType="board" parameterType="int">
 		select * from board where idx = #{idx}	
@@ -59,13 +56,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 댓글 처리를 위한 step값 증가 -->
-	<update id="update_step" parameterType="board">
+<!-- <update id="update_step" parameterType="board">
 		update board set step = step + 1 
 		where ref=#{ref} and step > #{step} 
 	</update>
-	
+	 -->
 	<!-- 댓글 작성  -->
-	
+	<!-- 
 	<insert id="board_reply" parameterType="board">
 		insert into board values(
 			seq_board_idx.nextVal,
@@ -82,13 +79,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			0
 		)
 	</insert>
-	
+	 -->
 	<!-- 삭제용 업데이트 -->
 	
 	<update id="del_update" parameterType="board">
 	
 	update Board set
-	subject = #{subject},
+	title = #{title},
 	name = #{name},
 	del_info = -1
 	where idx = #{idx}

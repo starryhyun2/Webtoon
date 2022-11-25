@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.BoardDAO;
+import dao.c_BoardDAO;
 import dao.mainToonDAO;
 import util.Common;
 import util.Paging;
 import vo.BoardVO;
-import vo.mainToonVO;
+import vo.c_BoardVO;
+import vo.WebtoonVO;
 
 @Controller
 public class BoardController {
@@ -34,6 +36,7 @@ public class BoardController {
 	
 	BoardDAO board_dao;
 	mainToonDAO mainToon_dao;
+	c_BoardDAO c_board_dao;
 	
 	public void setBoard_dao(BoardDAO board_dao) {
 		this.board_dao = board_dao;
@@ -42,6 +45,10 @@ public class BoardController {
 	public void setMainToon_dao(mainToonDAO mainToon_dao) {
 		this.mainToon_dao = mainToon_dao;
 	}
+	public void setC_board_dao(c_BoardDAO c_board_dao) {
+		this.c_board_dao = c_board_dao;
+	}
+	
 	
 	//메인화면 전체목록 조회
 	@RequestMapping( value= {"/", "list.do", "mainToon.do"})
@@ -66,6 +73,8 @@ public class BoardController {
 		//페이지별 목록 조회
 		List<BoardVO> list = board_dao.selectList(map);
 		
+		System.out.println("dd:"+list.get(0).getIdx());
+		
 		//전체 게시물의 갯수 구하기
 		int row_total = board_dao.getRowTotal();
 		
@@ -82,7 +91,7 @@ public class BoardController {
 		
 		//메인툰 전체조회 -----------------------------------------------------------------
 		
-		List<mainToonVO> mt_list = mainToon_dao.selectList();
+		List<WebtoonVO> mt_list = mainToon_dao.selectList();
 		model.addAttribute("mt_list",mt_list); //바인딩
 				
 		return Common.PATH + "board_list.jsp"; //포워딩		
@@ -97,11 +106,9 @@ public class BoardController {
 	
 	//새 웹툰 올리기
 	@RequestMapping("mainToon_insert.do")
-	public String mainToon_insert(mainToonVO vo, HttpServletRequest request) {
+	public String mainToon_insert(WebtoonVO vo, HttpServletRequest request) {
 		
-//		ip 가져오기
-//		String ip = request.getRemoteAddr();
-//		vo.setIp(ip);
+
 		
 		// 클라이언트의 파일 업로드를 위한 절대경로를 생성
 		
@@ -178,11 +185,21 @@ public class BoardController {
 	}
 	
 	//게시글 상세보기
-	@RequestMapping("/view.do")
+	@RequestMapping(value= {"/view.do","/reply.do"})
 	public String view(Model model,int idx) {
 		//view.do?idx = 10
 		BoardVO vo = board_dao.selectOne(idx);
 		
+	//게시판 별 댓글 파트-----------------------------------
+		
+		List<c_BoardVO> cb_list = c_board_dao.selectList();
+		
+		//cb_list 바인딩
+		
+		request.setAttribute("cb_list", cb_list);
+		
+		
+	//	------------------------------------------------
 		//폭발적인 조회수 증가를 방지하기 위해 session저장공간을 사용
 		HttpSession session = request.getSession();
 		
@@ -199,43 +216,20 @@ public class BoardController {
 		return Common.PATH + "board_view.jsp";
 		
 	}
-	
-	//댓글 작성 페이지로 전환
-	@RequestMapping("/reply_form.do")
-	public String reply_form() {
-		return Common.PATH + "board_reply.jsp";
-	} 
-	
-	//댓글 처리
-	@RequestMapping("/reply.do")
-	public String reply(BoardVO vo, Integer page) {
+	//게시판 별 댓글 쓰기
+	@RequestMapping("reply_insert.do")
+	public String reply_insert( c_BoardVO vo) {
 		
-		int nowPage = 1;
+		vo.setIp( request.getRemoteAddr());
 		
-		if( page != null) {
-			nowPage = page;
-		}
+		c_board_dao.insert(vo);
 		
-		//댓글이 달릴 게시물
-		BoardVO base_vo = board_dao.selectOne(vo.getIdx());
-		
-		//기준글의 step값보다 큰 값을 가지고 있는 모든 게시물을 step+1 처리 
-		board_dao.update_step(base_vo);
-		
-		vo.setIp(request.getRemoteAddr());
-		
-		//댓글이 들어갈 위치 선정
-		vo.setRef(base_vo.getRef());
-		vo.setStep(base_vo.getStep()+1);
-		vo.setDepth(base_vo.getDepth()+1);
-		
-		
-		
-		//댓글을 DB에 insert
-		board_dao.reply(vo);
-		return "redirect:list.do?page=" + nowPage;
+		return "redirect:reply.do";
+		// 문서로 이동 후 새로고침
 		
 	}
+	
+
 	
 	//글 삭제(된 것 처럼 업데이트)
 		@RequestMapping("/del.do")
@@ -245,7 +239,7 @@ public class BoardController {
 			//idx에 해당하는 게시글 한 건 조회
 			BoardVO baseVO = board_dao.selectOne(idx);
 			
-			baseVO.setSubject("삭제된 게시글입니다.");
+			baseVO.setTitle("삭제된 게시글입니다.");
 			baseVO.setName("unknown");
 			
 			// 삭제 업데이트

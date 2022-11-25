@@ -1,8 +1,19 @@
 package vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class WebtoonVO {
-	int webtoon_idx, score, author_idx;		
-	String title,author , genre, filename, info;
+	private int webtoon_idx, score, author_idx;		
+	private String title, author , genre, filename, info, regdate;
+
+	private MultipartFile photo;
+
+	public String getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
 	public int getWebtoon_idx() {
 		return webtoon_idx;
 	}
@@ -51,7 +62,12 @@ public class WebtoonVO {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	
-	
-	
+
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
+	}
+
 }

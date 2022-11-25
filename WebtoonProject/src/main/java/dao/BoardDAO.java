@@ -55,24 +55,24 @@ public class BoardDAO {
 		return res;
 	}
 	
-	//댓글처리를 위한 step값을 증가
-	public int update_step(BoardVO baseVO) {
-		
-		int res = sqlSession.update("b.update_step", baseVO);
-		
-		return res;
-		
-	}
-	
-	//댓글 추가 
-	
-	public int reply(BoardVO vo) {
-
-		int res = sqlSession.insert("b.board_reply", vo);
-
-		return res;
-	}
-	
+//	//댓글처리를 위한 step값을 증가
+//	public int update_step(BoardVO baseVO) {
+//		
+//		int res = sqlSession.update("b.update_step", baseVO);
+//		
+//		return res;
+//		
+//	}
+//	
+//	//댓글 추가 
+//	
+//	public int reply(BoardVO vo) {
+//
+//		int res = sqlSession.insert("b.board_reply", vo);
+//
+//		return res;
+//	}
+//	
 	// 글 삭제
 
 		public int del_update(BoardVO vo) {

@@ -47,10 +47,12 @@ public class Paging {
 			sb.append("<a href ='"+pageURL+"?page=");
 			//sb.append(nowPage - blockPage);
 			sb.append( startPage-1 );
-			sb.append("'>◀</a>");
+			sb.append("'></a>");
+			//sb.append("'>◀</a>");
 		}
 		else
-			sb.append("◀");
+			sb.append("");
+		//sb.append("◀");
 		
 //------페이지 목록 출력 -------------------------------------------------------------------------------------------------
 		sb.append(" ");
@@ -81,10 +83,12 @@ public class Paging {
 			else
 				nowPage = nowPage+blockPage;
 			sb.append(nowPage);*/
-			sb.append("'>▶</a>");
+			sb.append("'></a>");
+			//sb.append("'>▶</a>");
 		}
 		else
-			sb.append("▶");
+			sb.append("");
+		//sb.append("▶");
 //---------------------------------------------------------------------------------------------------------------------	    
 
 		return sb.toString();
