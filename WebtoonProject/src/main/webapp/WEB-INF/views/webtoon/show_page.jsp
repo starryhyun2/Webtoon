@@ -43,7 +43,7 @@
 					<img src="resources/upload/${ vo.filename }"/>
 				</td>
 				<td>
-				<a href="Epi?episode_idx=${ epi.episode_idx }">${ epi.episodeName }</a>
+				<a href="Epi?episode_idx=${ epi.episode_idx }">${ epi.episodename }</a>
 				</td>
 				
 				<td style="text-align:center;">

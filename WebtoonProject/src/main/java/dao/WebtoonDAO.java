@@ -36,4 +36,24 @@ public class WebtoonDAO {
 		return vo;
 		
 	}
+	
+	//회차 삽입
+	public int insert(EpisodeVO vo) {
+		int res =sqlSession.insert("w.epi_insert", vo);
+		return res;
+	}
+	
+	//ref로 삽입할 웹툰 찾기
+	public WebtoonVO selectOne_ref(int ref) {
+		WebtoonVO vo = sqlSession.selectOne("w.findByRef", ref);
+		
+		return vo;
+	}
+	
+	//회차 삽입시 정렬을 위해서 선언했던 step 업데이트
+	public int updateStep(int ref) {
+		int res =sqlSession.update("w.updateStep",ref);
+		
+		return res;
+	}
 }

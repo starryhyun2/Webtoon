@@ -10,7 +10,7 @@
 		<property name="defaultEncoding" value="utf-8"/>
 		
 		<!-- 최대 업로드 용량(현재는 10mb로 지정) -->
-		<property name="maxUploadSize" value="10485760" />
+		<property name="maxUploadSize" value="209715200" />
 		
 	</bean>
 		

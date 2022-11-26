@@ -5,24 +5,44 @@
 <head>
 <meta charset="UTF-8">
 <title>회차추가 페이지</title>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 
 	function send(f){
 		
-		const title= f.title.value;
-		const author = f.author.value;
-		const genre = f.genre.value;
-		const info = f.info.value;
+		const episodename= f.episodename.value;
+		const ref = f.ref.value;
 		
-		
+		 
+
+		var imgFile = $('#photo').val();
+		var fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$/;
+		var maxSize = 20 * 1024 * 1024;
+		var fileSize;
 		//유효성 체크
-		if(title == ''){
+		if(episodename == ''){
 		alert("제목은 필수 입니다.");
 		return;
 		}
 		
-		f.action="mainToon_insert.do";
+		if($('#photo').val() == "") {
+			alert("첨부파일은 필수!");
+		    $("#photo").focus();
+		    return;
+		}
+
+		if(imgFile != "" && imgFile != null) {
+			fileSize = document.getElementById("photo").files[0].size;
+		    
+		    if(!imgFile.match(fileForm)) {
+		    	alert("이미지 파일만 업로드 가능");
+		        return;
+		    } else if(fileSize > maxSize) {
+		    	alert("파일 사이즈는 20MB까지 가능");
+		        return;
+		    }
+		}
+		f.action="addEpi.do";
 		f.method="post";
 		f.submit();
 		
@@ -34,43 +54,26 @@
 </head>
 <body>
  	<h1>회차추가 페이지</h1>
- 	
+ 
  	<form method="post" enctype="multipart/form-data">
  	
  		<table border="1" align="center">
 			<caption><h2> << 새 회차추가 >> 	</h2></caption>
 			<tr>
-				<th>제목</th>
-				<td><input name="title"></td>
+				<th>회차 이름</th>
+				<td><input name="episodename"></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input name="author"></td>
+				<td><input name="ref" value="${ ref }" readonly></td>
 			</tr>
-			<tr>
-				<th>장르</th>
-				<td>
-					<select name="genre">
-	
-					    <option value="genre_1"  selected> 액션
-					
-					    <option value="genre_2"> 개그
-					
-					    <option value="genre_3"> 판타지
-	
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td>
-					<textarea rows="10" cols="60" name="info"></textarea>
-				</td>
-			</tr>
-			
 			<tr>
 				<th>썸네일 첨부</th>
-				<td><input type="file" name="photo"></td>
+				<td><input type="file" name="thumbnail" id="thumbnail" accept="image/*"></td>
+			</tr>
+			<tr>
+				<th>회차 첨부</th>
+				<td><input type="file" name="photo" id="photo" accept="image/*" multiple></td>
 			</tr>
 			<tr>
 				<td>
@@ -82,6 +85,5 @@
  		</table>
  	
  	</form>
- 	
 </body>
 </html>

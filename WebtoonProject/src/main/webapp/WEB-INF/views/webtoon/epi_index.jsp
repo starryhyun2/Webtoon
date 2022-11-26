@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${ epi.episodeName }</title>
+<title>${ epi.episodename }</title>
 </head>
 <body>
-	<h1 align="center">${ epi.episodeName }</h1>
+	<h1 align="center">${ epi.episodename }</h1>
 	<c:forEach var="i" begin="1" end="${ cnt }">
 	<div align="center">
-			<img src="resources/study_group/${ epi.episodeName }/${ epi.episodeName } (${ i }).jpg" />
+			<img src="resources/study_group/${ epi.episodename }/${ epi.episodename } (${ i }).jpg" />
 	</div>
 	</c:forEach>
 </body>

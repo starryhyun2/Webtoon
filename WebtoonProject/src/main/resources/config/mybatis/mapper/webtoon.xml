@@ -3,21 +3,51 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="w">
+
+	<!-- idx로 웹툰 찾아서 반환 -->
 	<select id="find" resultType="webtoon">
 		select * from Webtoon
 		where webtoon_idx = #{idx}
 	</select>
 	
+	
+	<!-- 웹툰 회차 선택에서 웹툰을 반환 -->
 	<select id="showepi" resultType="episode" parameterType="int">
-		select * from Episode
-		where ref=#{ idx }
+		select * from Episode 
+		where ref=#{ idx } ORDER BY step
 	</select>
 	
+	<!-- 해당 회차를 선택 후 반환 -->
 	<select id="find_epi" resultType="episode">
 		select * from Episode
 		where episode_idx=#{ idx }
 	</select>
 
+	<!-- 어느 웹툰에 회차를 업로드 할 것인지 찾기 위한 쿼리 -->
+	<select id="findByRef" resultType="webtoon">
+		select * from Webtoon
+		where webtoon_idx = #{ref}
+	</select>
+	
+	<!-- 웹툰에 회차 업로드 -->
+	<insert id="epi_insert">
+		insert into Episode values(
+			seq_episode_idx.nextVal, 
+			#{ref}, 
+			#{episodename}, 
+			#{path}, 
+			5,  
+			sysdate, 
+			1, 
+			0
+		)
+	</insert>
+	
+	<!-- 웹툰 step 업데이트 -->
+	<update id="updateStep" parameterType="int">
+		update Episode set step = step + 1
+		where ref=#{ref}
+	</update>
 </mapper>
 
 
