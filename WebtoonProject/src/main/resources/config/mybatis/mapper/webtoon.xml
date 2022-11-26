@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 <mapper namespace="w">
 
 	<!-- idx로 웹툰 찾아서 반환 -->
@@ -48,6 +49,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update Episode set step = step + 1
 		where ref=#{ref}
 	</update>
+=======
+<mapper namespace="m">
+
+	<!-- 회원 가입 -->
+	<!-- <insert id="mypage_insert" parameterType="vo.Webtoon_UserVO">
+		insert into WEBTOON_USER values(
+			seq_user_idx.nextVal,
+			0,
+			#{name},
+			#{id},
+			#{pwd},
+			#{email}
+		)
+	</insert> -->
+	
+	<!-- 로그인 -->
+	<select id="mypage_selectOne" resultType="vo.Webtoon_UserVO" parameterType="String">
+		select * from WEBTOON_USER where id=#{id}
+	</select>
+	
+	<update id="mypage_update" parameterType="vo.Webtoon_UserVO">
+		update WEBTOON_USER set
+		name=#{name},
+		pwd=#{pwd},
+		email=#{email},
+		phoneNum=#{phoneNum}
+		where user_idx=#{user_idx}
+	</update>
+	
+
+>>>>>>> 66620b602d7814669210c165c5b6a1b37ed897df
 </mapper>
 
 
