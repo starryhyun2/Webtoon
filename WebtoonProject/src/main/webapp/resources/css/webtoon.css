@@ -26,6 +26,21 @@ a {
 	top:10px; 
 	right:20px;
 	}
+	#login_btn{
+	background:none; 
+	border:0px; 
+	position:absolute; 
+	top:10px; 
+	right:140px;
+	}
+	
+	#sign_up_btn{
+	background:none; 
+	border:0px; 
+	position:absolute; 
+	top:10px; 
+	right:200px;
+	}
 	
 	nav{
 	width:auto;

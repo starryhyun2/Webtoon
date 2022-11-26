@@ -41,6 +41,10 @@
 		<beans:property name="c_board_dao" ref="c_board_daoBean"/>
 	</beans:bean>
 	
+	<beans:bean class="com.korea.webtoon.MemberController">
+		<beans:property name="member_dao" ref="member_daoBean"/>
+	</beans:bean>
+	
 
 </beans:beans> 
 

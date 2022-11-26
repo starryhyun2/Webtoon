@@ -25,6 +25,8 @@
 <body>
 
 	<h1 style="width:300px; margin:0 auto;">코리아 웹툰</h1>
+	<input id="login_btn" type="button" value="로그인" onclick="location.href='login_form'">
+	<input id="sign_up_btn" type="button" value="회원가입" onclick="location.href='sign_up_form'">
 	 <input id="admin_btn" type="button" value="관리자 페이지" onclick="location.href='admin_form.do'">
 	 
 	 
