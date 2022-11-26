@@ -12,6 +12,7 @@
 		var id = f.id.value;
 		var pwd = f.pwd.value;
 		var email = f.email.value;
+		var phone = f.phone.value;
 		
 		f.action = "member.do";
 		f.method = "post";
@@ -41,6 +42,11 @@
 			<tr>
 				<td>email :</td>
 				<td><input name="email"></td>	
+			</tr>
+			
+			<tr>
+				<td>Phone :</td>
+				<td><input name="phone"></td>	
 			</tr>
 				
 			<tr>

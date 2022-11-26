@@ -3,8 +3,14 @@ package vo;		//webtoon_user, webtoon, webtoonComments 3개의 vo들을 가질 �
 public class Webtoon_UserVO {	//webtoon_user 테이블의 getter, setter를 가지고 있는 vo
 
 	private int user_idx, webtoon_idx;
-	private String name, id, pwd, email;
+	private String name, id, pwd, email, phoneNum;
 	
+	public String getPhoneNum() {
+		return phoneNum;
+	}
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
 	public int getUser_idx() {
 		return user_idx;
 	}

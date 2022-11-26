@@ -75,7 +75,7 @@ public class MyPageController {
 	public String modify(Webtoon_UserVO vo) {					// /modify.do?user_idx=1&name=WooSeokKing&pwd=WooSeokKing&email=WooSeokKing
 		
 		int res = user_dao.update(vo);							// 받아온 데이터들을 DB에 업데이트하고 업데이트가 되었다면 '1' 반환
-		
+
 		String result = "no";
 		if(res == 1) {											// 데이터 수정이 잘되었다면
 			result = "yes";										

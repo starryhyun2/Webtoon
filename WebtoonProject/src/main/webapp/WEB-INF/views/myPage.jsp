@@ -58,6 +58,11 @@
 				</tr>
 				
 				<tr>
+					<td class="menu">Phone</td>
+					<td class="menu2"><a class="modify">${ vo.getPhoneNum() }</a></td>
+				</tr>
+				
+				<tr>
 					<td colspan="2" align="center" class="button">
 						<input type="hidden" value="${ vo.getId() }" name="id">
 						<input type="hidden" value="${ vo.getPwd() }" name="pwd">

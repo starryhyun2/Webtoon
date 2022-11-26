@@ -25,7 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update WEBTOON_USER set
 		name=#{name},
 		pwd=#{pwd},
-		email=#{email}
+		email=#{email},
+		phoneNum=#{phoneNum}
 		where user_idx=#{user_idx}
 	</update>
 	
