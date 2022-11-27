@@ -40,6 +40,8 @@
 		<beans:property name="board_dao" ref="board_daoBean"/>
 		<beans:property name="mainToon_dao" ref="mainToon_daoBean"/>
 		<beans:property name="c_board_dao" ref="c_board_daoBean"/>
+		<beans:property name="member_dao" ref="member_daoBean"/>
+		
 	</beans:bean>
 	
 	<beans:bean class="com.korea.webtoon.MemberController">

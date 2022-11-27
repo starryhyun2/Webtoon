@@ -11,7 +11,7 @@
 	<h1 align="center">${ epi.episodename }</h1>
 	<c:forEach var="i" begin="1" end="${ cnt }">
 	<div align="center">
-			<img src="resources/study_group/${ epi.episodename }/${ epi.episodename } (${ i }).jpg" />
+			<img src="resources/${ epi.path }/${ epi.episodename }/${ epi.episodename } (${ i }).jpg" />
 	</div>
 	</c:forEach>
 </body>

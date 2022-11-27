@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1 align="center">${ vo.title }</h1>
-<img src="resources/upload/${ vo.filename }" alt="study_group"/>
+<img src="resources/upload/${ vo.filename }" alt="${ vo.filename }"/>
 <input align="left" type="button" value="회차추가" onclick="location.href='addEpi_form?episode_idx=${ vo.webtoon_idx }'">
 <table>
     <tr>

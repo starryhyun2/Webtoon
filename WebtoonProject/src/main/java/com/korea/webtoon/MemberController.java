@@ -1,5 +1,9 @@
 package com.korea.webtoon;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +21,21 @@ public class MemberController {
 		this.member_dao = member_dao;
 	}
 
+	//세션 정보를 다루기 위한 request 생성
+	
+	@Autowired
+	HttpServletRequest request;
+	
+	//로그아웃 버튼 클릭시
+	@RequestMapping("logout.do")
+	public String logout() {
+		
+		HttpSession login = request.getSession();
+		login.removeAttribute("id");
+		
+		return "redirect:mainToon.do";
+	}
+	
 	@RequestMapping("login_form")
 	public String login_form() {
 		
@@ -41,6 +60,11 @@ public class MemberController {
 		if( !vo.getPwd().equals(pwd) ) {
 			return "{'result':'no_pwd'}";
 		}
+		
+		//로그인 정보를 세션에 저장
+		HttpSession login = request.getSession(false);
+		login.setAttribute("id", id); //id 바인딩
+		
 		
 		//로그인 가능
 		return "{'result':'clear'}";
