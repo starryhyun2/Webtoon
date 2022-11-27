@@ -32,7 +32,7 @@
 		var id = f.id.value;
 		var pwd = f.pwd.value;
 		var email = f.email.value;
-		var phoneNum = f.phoneNum.value;
+		var phonenum = f.phonenum.value;
 		
 		
 		
@@ -58,7 +58,7 @@
 					"&id="+f.id.value+
 					"&pwd="+encodeURIComponent(f.pwd.value)+
 					"&email="+encodeURIComponent(f.email.value)+
-					"&phoneNum="+f.phoneNum.value;
+					"&phonenum="+f.phonenum.value;
 		
 		sendRequest( url, param, resultFn, "POST")
 	}
@@ -116,7 +116,7 @@
 				
 				<tr>
 					<td class="menu">Phone</td>
-					<td class="menu2"><input name="phoneNum" class="modify" value="${vo.getPhoneNum() }"></td>
+					<td class="menu2"><input name="phonenum" class="modify" value="${vo.getPhonenum() }"></td>
 				</tr>
 				
 				<tr>

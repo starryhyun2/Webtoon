@@ -59,7 +59,7 @@
 				
 				<tr>
 					<td class="menu">Phone</td>
-					<td class="menu2"><a class="modify">${ vo.getPhoneNum() }</a></td>
+					<td class="menu2"><a class="modify">${ vo.getPhonenum() }</a></td>
 				</tr>
 				
 				<tr>
