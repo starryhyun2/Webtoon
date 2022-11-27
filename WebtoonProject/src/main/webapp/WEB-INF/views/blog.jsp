@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<c:set var="var" value="${ check_login }" />
+	<h1 style="width: 300px; margin: 0 auto;"><a href='mainToon.do'>코리아 웹툰</a></h1>
 	<form>
 		<h1>어서오세요</h1><br>
 		<h1>${ vo.getName() }님의 블로그입니다.</h1><br><br>

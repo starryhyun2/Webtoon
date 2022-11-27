@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 
-<<<<<<< HEAD
 a {
 	text-decoration:none;
 	color:black;
@@ -141,8 +140,6 @@ a {
 			background:pink;
 		}
        
-=======
-
 #page_name{
 	width:500px;
 	margin:auto;
@@ -198,4 +195,3 @@ tr, td {
     border-bottom: 1px solid #dadada;
     padding: 10px;
   }
->>>>>>> 66620b602d7814669210c165c5b6a1b37ed897df

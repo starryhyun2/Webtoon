@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
-    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,6 +70,7 @@
 </head>
 <body>
 <h1>이곳은 휴대폰 회원가입 페이지 입니다.</h1>
+
 
 	<form>
 		<table border="1" align="center" style="width:25%">

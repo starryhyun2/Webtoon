@@ -28,7 +28,7 @@
 </script>
 </head>
 <body>
-
+	<h1 style="width: 300px; margin: 0 auto;"><a href='mainToon.do'>코리아 웹툰</a></h1>
 	<div id="page_name">
 		<h1>::: 마이페이지 :::</h1>
 	</div>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.MemberDAO;
+import util.Common;
 import vo.MemberVO;
 
 @Controller
@@ -38,7 +39,7 @@ public class MyPageController {
 			
 		model.addAttribute("vo", user);							// 반환 받은값을 "vo"에 바인딩
 		
-		return "/WEB-INF/views/myPage.jsp";						// 마이페이지로 이동
+		return Common.Mypg_PATH+"myPage.jsp";						// 마이페이지로 이동
 	}
 	
 
@@ -49,7 +50,7 @@ public class MyPageController {
 		
 		model.addAttribute("vo", vo);							// 반환된 user 정보 바인딩
 		
-		return "/WEB-INF/views/modify_form.jsp";				// 정보수정 페이지로 이동
+		return Common.Mypg_PATH+"modify_form.jsp";				// 정보수정 페이지로 이동
 		
 	}
 	

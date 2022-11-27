@@ -25,10 +25,9 @@
 
 </head>
 <body>
-	<h1>${ check_login }</h1>
 	<!-- if 문을 위해 var에 check_login 값 설정 -->
 	<c:set var="var" value="${ check_login }" />
-	<h1 style="width: 300px; margin: 0 auto;">코리아 웹툰</h1>
+	<h1 style="width: 300px; margin: 0 auto;"><a href='mainToon.do'>코리아 웹툰</a></h1>
 
 	<c:choose>
 		<c:when test="${var eq 'admin' }">
@@ -60,6 +59,8 @@
 				onclick="location.href='Mypage'">
 		</c:otherwise>
 	</c:choose>
+	
+	
 	<!-- 상단 네비게이션 -->
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid">
