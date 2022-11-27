@@ -2,7 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-<<<<<<< HEAD
 
 	<!-- <bean id="board_daoBean" class="dao.BoardDAO"> <constructor-arg name="sqlSession" 
 		ref="sqlSessionBean"/> </bean> -->
@@ -28,11 +27,4 @@
 		<property name="sqlSession" ref="sqlSessionBean"/>
 	</bean>
 
-=======
-	
-	<!-- setter 인젝션 -->
-	<bean id="user_daoBean" class="dao.Webtoon_UserDAO">
-		<property name="sqlSession" ref="sqlSessionBean"/>
-	</bean>
->>>>>>> 66620b602d7814669210c165c5b6a1b37ed897df
 </beans>

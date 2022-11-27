@@ -17,5 +17,18 @@ public class MemberDAO {
 		MemberVO vo = sqlSession.selectOne("u.login_check", id);
 		return vo;
 	}
+	
+	
+	// 마이페이지에 출력될 유저의 정보 불러오기
+	public MemberVO selectOne(String id) {
+		MemberVO res = sqlSession.selectOne("u.mypage_selectOne", id);
+		return res;
+	}
+	
+	//개인정보 수정
+	public int update(MemberVO vo) {
+		int res = sqlSession.update("u.mypage_update", vo);
+		return res;
+	}
 
 }
