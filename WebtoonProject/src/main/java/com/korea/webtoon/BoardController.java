@@ -192,9 +192,9 @@ public class BoardController {
 	
 	//게시글 상세보기
 	@RequestMapping(value= {"/view.do","/reply.do"})
-	public String view(Model model,int idx) {
+	public String view(Model model,int board_idx) {
 		//view.do?idx = 10
-		BoardVO vo = board_dao.selectOne(idx);
+		BoardVO vo = board_dao.selectOne(board_idx);
 		
 	//게시판 별 댓글 파트-----------------------------------
 		
@@ -213,7 +213,7 @@ public class BoardController {
 		if(show == null) {
 		
 			//조회 수 증가
-			int res = board_dao.update_readhit(idx);
+			int res = board_dao.update_readhit(board_idx);
 			session.setAttribute("s", "check");
 			
 		}
@@ -240,23 +240,11 @@ public class BoardController {
 	//글 삭제(된 것 처럼 업데이트)
 		@RequestMapping("/del.do")
 		@ResponseBody
-		public String delete(int idx) {
+		public String delete(int comments_idx) {
+			board_dao.delete(comments_idx);
 			
-			//idx에 해당하는 게시글 한 건 조회
-			BoardVO baseVO = board_dao.selectOne(idx);
-			
-			baseVO.setTitle("삭제된 게시글입니다.");
-			baseVO.setName("unknown");
-			
-			// 삭제 업데이트
-			int res = board_dao.del_update(baseVO);
 
-			String result = "no";
-			if (res == 1) {
-				result = "yes";
-			}
-
-			return result; //
+			return "redirect:mainToon.do";
 			
 		}
 	

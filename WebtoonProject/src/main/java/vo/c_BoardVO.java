@@ -2,15 +2,15 @@ package vo;
 
 public class c_BoardVO {
 
-	private int idx, ref, step, depth, del_info, board_idx;
-	private String name, content, ip, regdate;
+	private int comments_idx, ref, step, depth, del_info, board_idx;
+	private String id, content, ip, regdate;
 	
 	
 	public int getIdx() {
-		return idx;
+		return comments_idx;
 	}
 	public void setIdx(int idx) {
-		this.idx = idx;
+		this.comments_idx = idx;
 	}
 	public int getRef() {
 		return ref;
@@ -43,10 +43,10 @@ public class c_BoardVO {
 		this.board_idx = board_idx;
 	}
 	public String getName() {
-		return name;
+		return id;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.id = name;
 	}
 	public String getContent() {
 		return content;

@@ -39,11 +39,9 @@
 		}
 			
 		
-		function del(){
+		function del(ff){
 			
-			//form태그 검색
-			var f = document.getElementById("ff");
-	
+			var board_idx = ff.board_idx.value;
 		
 			if( !confirm("삭제하시겠습니까?") ){
 				return;
@@ -52,7 +50,7 @@
 			// 삭제를 위한 게시글을 idx를 DB로 전달
 			
 			var url = "del.do";
-			var param = "idx=${vo.idx}";
+			var param = "board_idx="+vo.board_idx;
 			sendRequest(url, param, resultFn, "post");
 			
 		}
@@ -91,7 +89,7 @@
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td>${vo.name}</td>
+				<td>${vo.id}</td>
 			</tr>
 			<tr>
 				<td>작성일</td>
@@ -105,12 +103,12 @@
 			<tr>
 				<td colspan="2">
 						<input type="button" value="목록 보기" onclick="location.href='list.do'">			
-						<input type="button" value="삭제" onclick="del();">
+						<input type="button" value="삭제" onclick="del(ff);">
 				</td>
 			</tr>
 			
 		</table>
-	
+	<input type="hidden" value=${ vo.board_idx }/>
 	</form>
 	
 	<form  id = "cb">

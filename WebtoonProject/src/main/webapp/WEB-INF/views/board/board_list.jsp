@@ -217,32 +217,14 @@
 		<c:forEach var="vo" items="${list}">
 		
 			<tr>
-				<td class="idx">${vo.idx}</td>
+				<td class="board_idx">${vo.board_idx}</td>
 				
-				<!-- 댓글 들여쓰기 -->
-				 <td>
-				<!--<c:forEach begin="1" end="${ vo.depth }">&nbsp;</c:forEach>-->
-				 
-				<!-- 댓글 기호  -->
-				<!--<c:if test="${vo.depth ne 0}">
-					ㄴ
-				</c:if>-->
-				
-				<c:if test="${vo.del_info eq 0}">
-					<a href="view.do?idx=${vo.idx }&page=${param.page}">${vo.title}
-					</a>
-				</c:if>
-				
-				<c:if test="${vo.del_info ne 0}">
-				
-					<font color="gray">${vo.title}</font>
-					
-				</c:if>
-				
-									
+				 <td>				
+					<a href="view.do?board_idx=${vo.board_idx }&page=${param.page}">${vo.title}
+					</a>													
 				</td>
 				
-				<td>${vo.name}</td>
+				<td>${vo.id}</td>
 				<td align="center">${fn:split(vo.regdate,' ')[0]}</td>
 				<td align="center">${vo.readhit}</td>
 			</tr>

@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!--  select * from board order by ref DESC, step ASC -->
 	<!-- 나눠서 조회 -->	
 				select * from 
-		( select rank() over( order by idx DESC ) no, b.* 
+		( select rank() over( order by board_idx DESC ) no, b.* 
 		           from( select * from board ) b )
 		where no BETWEEN #{start} and #{end}
 		
@@ -46,13 +46,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- board_idx에 해당하는 게시글 한 건 상세보기 -->
 	
 	<select id="board_one" resultType="board" parameterType="int">
-		select * from board where idx = #{idx}	
+		select * from board where board_idx = #{idx}	
 	</select>
 	
 	<!-- 조회 수 증가 -->
 	<update id="update_readhit" parameterType="int">
 		update board set readhit = readhit + 1
-		where idx = #{idx}
+		where board_idx = #{idx}
 	</update>
 	
 	<!-- 댓글 처리를 위한 step값 증가 -->
@@ -83,13 +83,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 삭제용 업데이트 -->
 	
 	<update id="del_update" parameterType="board">
-	
-	update Board set
-	title = #{title},
-	name = #{name},
-	del_info = -1
-	where idx = #{idx}
-	
+		DELETE form BOARD
+		WHERE board_idx =#{idx}
 	</update>
 	
 
