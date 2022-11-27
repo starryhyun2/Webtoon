@@ -18,9 +18,9 @@ public class c_BoardDAO {
 	
 	//전체 게시물 조회
 	
-	public List<c_BoardVO> selectList(){
+	public List<c_BoardVO> selectList(int ref){
 		
-		List<c_BoardVO> cb_list = sqlSession.selectList("cb.c_board_list");	
+		List<c_BoardVO> cb_list = sqlSession.selectList("cb.c_board_list",ref);	
 		return cb_list;
 		
 	}

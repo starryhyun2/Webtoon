@@ -10,7 +10,7 @@
 		function send_check(f){
 			
 			var title = f.title.value;
-			var name = f.name.value;
+			var id = f.id.value;
 			var content = f.content.value.trim();
 			var pwd = f.pwd.value.trim();
 			
@@ -20,7 +20,7 @@
 				alert("제목은 필수입니다.");
 				return;
 			}
-			if(name == ''){
+			if(id == ''){
 				alert("이름은 필수입니다.");
 				return;
 			}
@@ -50,8 +50,8 @@
 				<td><input name="title"></td>
 			</tr>
 			<tr>
-				<th>작성자</th>
-				<td><input name="name"></td>
+				<th>아이디</th>
+				<td><input name="id"></td>
 			</tr>
 			<tr>
 				<th>내용</th>

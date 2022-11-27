@@ -57,9 +57,9 @@ public class BoardDAO {
 
 	// 글 삭제
 
-	public int delete(int idx) {
+	public int delete(int board_idx) {
 
-		int res = sqlSession.delete("b.del_update", idx);
+		int res = sqlSession.delete("b.del_update", board_idx);
 
 		return res;
 	}

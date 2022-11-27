@@ -31,13 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into board values(
 		
 		seq_board_idx.nextVal,
-		#{name},
+		#{id},
 		#{title},
 		#{content},
-		#{pwd},
 		#{ip},
 		sysdate,
-		0,
 		0
 		)
 	
@@ -82,9 +80,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 -->
 	<!-- 삭제용 업데이트 -->
 	
-	<update id="del_update" parameterType="board">
-		DELETE form BOARD
-		WHERE board_idx =#{idx}
+	<update id="del_update">
+		DELETE from board 
+		WHERE board_idx= #{board_idx}
 	</update>
 	
 

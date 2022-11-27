@@ -198,7 +198,7 @@ public class BoardController {
 		
 	//게시판 별 댓글 파트-----------------------------------
 		
-		List<c_BoardVO> cb_list = c_board_dao.selectList();
+		List<c_BoardVO> cb_list = c_board_dao.selectList(board_idx);
 		
 		//cb_list 바인딩
 		
@@ -230,7 +230,7 @@ public class BoardController {
 		
 		c_board_dao.insert(vo);
 		
-		return "redirect:reply.do";
+		return "redirect:reply.do?board_idx="+vo.getRef();
 		// 문서로 이동 후 새로고침
 		
 	}
@@ -238,10 +238,9 @@ public class BoardController {
 
 	
 	//글 삭제(된 것 처럼 업데이트)
-		@RequestMapping("/del.do")
-		@ResponseBody
-		public String delete(int comments_idx) {
-			board_dao.delete(comments_idx);
+		@RequestMapping("del")
+		public String delete(int board_idx) {
+			board_dao.delete(board_idx);
 			
 
 			return "redirect:mainToon.do";
