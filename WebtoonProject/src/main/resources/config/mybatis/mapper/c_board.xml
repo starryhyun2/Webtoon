@@ -28,6 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 
+<!-- 게시글 삭제를 위한 ref 삭제 -->
+<delete id="deleteByRef">
+delete BoardComments WHERE ref=#{ref}
+</delete>
 </mapper>
 
 

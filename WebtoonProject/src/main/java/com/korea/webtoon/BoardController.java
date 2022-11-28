@@ -34,7 +34,10 @@ public class BoardController {
 
 	@Autowired
 	HttpServletRequest request;
-
+	
+	@Autowired
+	HttpSession login;
+	
 	BoardDAO board_dao;
 	mainToonDAO mainToon_dao;
 	c_BoardDAO c_board_dao;
@@ -264,6 +267,7 @@ public class BoardController {
 	//글 삭제(된 것 처럼 업데이트)
 	@RequestMapping("del")
 	public String delete(int board_idx) {
+		c_board_dao.delete(board_idx);
 		board_dao.delete(board_idx);
 
 

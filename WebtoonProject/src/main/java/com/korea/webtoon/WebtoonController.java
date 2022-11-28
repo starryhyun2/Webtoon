@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,9 @@ public class WebtoonController {
 	
 	@Autowired
 	ServletContext app;
+	
+	@Autowired
+	HttpSession login;
 
 	public void setWebtoon_DAO(WebtoonDAO webtoon_DAO) {
 		this.webtoon_DAO = webtoon_DAO;

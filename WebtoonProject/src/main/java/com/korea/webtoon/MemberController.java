@@ -16,7 +16,6 @@ import vo.MemberVO;
 public class MemberController {
 	
 	MemberDAO member_dao;
-	
 	public void setMember_dao(MemberDAO member_dao) {
 		this.member_dao = member_dao;
 	}
@@ -26,11 +25,14 @@ public class MemberController {
 	@Autowired
 	HttpServletRequest request;
 	
+	@Autowired
+	HttpSession login;
+	
 	//로그아웃 버튼 클릭시
 	@RequestMapping("logout.do")
 	public String logout() {
 		
-		HttpSession login = request.getSession();
+		HttpSession login = request.getSession(false);
 		login.removeAttribute("id");
 		
 		return "redirect:mainToon.do";
@@ -62,7 +64,7 @@ public class MemberController {
 		}
 		
 		//로그인 정보를 세션에 저장
-		HttpSession login = request.getSession(false);
+		login = request.getSession(false);
 		login.setAttribute("id", id); //id 바인딩
 		
 		
@@ -93,6 +95,7 @@ public class MemberController {
 	
 	//회원가입 정보 확인
 	@RequestMapping("sign_check.do")
+	@ResponseBody
 	public String sign_check() {
 		return "{'result':'clear'}";
 	}

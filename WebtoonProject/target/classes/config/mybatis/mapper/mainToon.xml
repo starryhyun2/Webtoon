@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="mainToon_insert" parameterType="webtoon">
 		insert into WEBTOON values(
-		seq_visit_idx.nextVal,
+		seq_webtoon_idx.nextVal,
 		#{title},
 		#{author},
 		#{author_idx},

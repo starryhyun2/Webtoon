@@ -6,7 +6,7 @@ public interface Common {
 	public	String SHOW_PATH ="/WEB-INF/views/webtoon/";
 	public	String ADMIN_PATH = "/WEB-INF/views/admin/";
 	public 	String MEMB_PATH="/WEB-INF/views/member/";
-	public 	String Mypg_PATH="/WEB-INF/views/mypage";
+	public 	String Mypg_PATH="/WEB-INF/views/mypage/";
 	//한 페이지에 보여질 게시물 수
 	public static int BLOCKLIST = 5;
 	
