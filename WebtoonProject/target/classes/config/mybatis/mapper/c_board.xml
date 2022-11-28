@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cb">
+
+	<!-- 게시글 댓글 조회 -->
+	
+	<select id="c_board_list" resultType="c_board">
+		select * from BoardComments where ref=#{ref} order by comments_idx DESC, step ASC
+	</select>	
+	
+		
+	<!-- 새 글 작성 -->
+	<insert id="c_board_insert" parameterType="c_board">
+	
+		insert into BoardComments values(
+		seq_comments_idx.nextVal,
+		#{content},
+		#{ip},
+		sysdate,
+		#{ref},
+		2,
+		0,
+		#{id},
+		0
+		)
+	
+	</insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

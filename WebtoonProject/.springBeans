@@ -7,13 +7,12 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
-		<config>src/main/resources/config/spring/context/context-3-dao.xml</config>
 	</configs>
 	<autoconfigs>
-		<config>src/main/resources/config/spring/context/context-4-fileupload.xml</config>
 		<config>src/main/resources/config/spring/mvc/servlet-context.xml</config>
 		<config>src/main/resources/config/spring/context/context-1-datasource.xml</config>
 		<config>src/main/resources/config/spring/context/context-2-mybatis.xml</config>
+		<config>src/main/resources/config/spring/context/context-3-dao.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

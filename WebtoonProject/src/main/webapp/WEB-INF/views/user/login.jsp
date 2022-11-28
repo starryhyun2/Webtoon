@@ -1,40 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/user/login.css">
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+    
+loginFrom.jsp
 
-<div class="wrapper">
-	
-	<div class="wrap">
-		<div class="logo_wrap">
-			<span>Book Mall</span>
-		</div>
-		<div class="login_wrap"> 
-			<div class="id_wrap">
-					<div class="id_input_box">
-					<input class="id_input">
-				</div>
-			</div>
-			<div class="pwd_wrap">
-				<div class="pwd_input_box">
-					<input class="pwd_iput">
-				</div>
-			</div>
-			<div class="login_button_wrap">
-				<input type="button" class="login_button" value="ë¡œê·¸ì¸">
-			</div>			
-		</div>
-		
-		
-	</div>
+<h1> ·Î±×ÀÎ </h1>
 
-</div>
-
-</body>
-</html>
+<fieldset>
+  <legend> ITWILL ·Î±×ÀÎ </legend>
+  <!-- <form action="/member/login" method="post"> -->
+  <form action="" method="post">
+    ID : <input type="text" name="ID"> <br>
+    PW : <input type="password" name="PWD"> <br>
+    <input type="submit" value="·Î±×ÀÎ">          
+    <input type="button" onclick="location.href='/user/joinform'" value="È¸¿ø°¡ÀÔ">  
+            
+  </form>  
+</fieldset>

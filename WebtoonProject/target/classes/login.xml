@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- login.xml : 로그인 -->
+
+<!-- loginCheck같은 경우에는, login.loginCheck 이렇게 갖다 쓰면됨  -->
+<sqlMap namespace="login"> <!-- 다른 xml파일에서 "loginCheck"라는 id를 가진게 있을 수도 있으니까, 구분하기 위해 namespace 사용하는거! -->
+	<typeAlias alias="LoginModel" type="net.nice19.smboard.login.model.LoginSessionModel"/> <!-- 아래 select 태그에서 가져다 쓰기위해 이름 설정 -->
+	
+	<!-- login.loginCheck 이런식으로 가져다 사용 -->
+	<!-- 받아줄 userId의 타입이 String, 쿼리문 실행 결과를 자바빈인 LoginModel에 담겠다는 뜻  -->
+	<select id="loginCheck" parameterClass="String" resultClass="LoginModel"> 
+		select USER_IDX,ID,PWD, NAME, EMAIL
+		from WEBTOON_USER
+		where USER_IDX = # USER_IDX# <!-- 변수명앞뒤로 # 붙이기 -->
+	</select>
+
+</sqlMap>

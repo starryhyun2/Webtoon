@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m">
+
+	<!-- 매인툰 조회 -->
+	<select id="mainToon_list" resultType="webtoon">
+		select * from webtoon order by WEBTOON_IDX DESC
+	</select>
+	
+	<!-- 새 메인 툰 추가 -->
+
+	<insert id="mainToon_insert" parameterType="webtoon">
+		insert into WEBTOON values(
+		seq_visit_idx.nextVal,
+		#{title},
+		#{author},
+		#{author_idx},
+		#{filename},
+		#{epipath},
+		#{info},
+		#{genre},
+		5,
+		sysdate
+	)
+	</insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -158,38 +158,6 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
-		 
-		 
-		 <!-- 추가한 부분 --> 
-		  <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>        
-        
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-		
-		<!-- Test -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-        
-        
-		<!-- Spring Test -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

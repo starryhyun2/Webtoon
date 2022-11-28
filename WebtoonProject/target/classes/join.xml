@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- member.xml : 회원가입 -->
+
+<sqlMap namespace="member">
+	<typeAlias alias="MemberModel" type="net.nice19.smboard.member.model.MemberModel"/> <!-- 자바빈인 MemberModel을 MemberModel란 이름으로 갖다쓴다는 의미 -->
+	
+	<!-- memeber.selectOneMember -->
+	<!-- 회원번호에 해당되는 모든 컬럼데이터 조회(즉, 회원의 한줄 데이터 가져오기) member.selectOneMemver -->
+	<select id="selectOneMember" parameterClass="int" resultClass="MemberModel"> <!-- 파라미터 타입은 int로 설정, 쿼리문 실행결과 자바빈인 MemberModel에 담기 -->
+		select USER_IDX,ID,PWD, NAME, EMAIL
+		from WEBTOON_USER
+		where USER_IDX = #USER_IDX# <!-- 변수명앞뒤로 # 붙이기 -->
+	</select>
+
+	<!-- member.selectAllMember -->
+	<!-- 모든 회원의 데이터 조회(여러줄의 회원 데이터 가져오기) member.selectAllMember -->
+	<select id="selectAllMember" resultClass="MemberModel"> <!-- 데이터 가져와서 자바빈인 MemberModel에 담기 -->
+		select USER_IDX,ID,PWD, NAME, EMAIL
+		from WEBTOON_USER
+	</select>
+	
+	<!-- member.findByUserId -->
+	<!-- userId에 해당하는 회원의 데이터 조회 (한줄 데이터 가져오기) member.findByUserId -->
+	<select id="findByUserId" parameterClass="String" resultClass="MemberModel">
+		select  USER_IDX,ID,PWD, NAME, EMAIL
+		from WEBTOON_USER
+		where userId = #userId#
+	</select>
+	
+	<!-- member.addMember -->
+	<!-- 회원가입시 회원정보 insert -->
+	<insert id="addMember" parameterClass="MemberModel"> 
+		insert into WEBTOON_USER( USER_IDX,ID,PWD, NAME, EMAIL)
+		values(seq_user_idx.nextVal,#ID#,#PWD#, #NAME#, #EMAIL#)
+	</insert>	
+	
+</sqlMap>

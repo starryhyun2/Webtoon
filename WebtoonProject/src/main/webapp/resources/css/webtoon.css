@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+
+a {
+	text-decoration:none;
+	color:black;
+	}
+	table{
+		border-collapse:collapse;
+		
+	}
+	table th{
+		border:0.5px solid black;
+		text-align:center;
+	}
+	
+	table td{
+		border:0.5px solid black;
+	}
+	.idx{text-align:center; }
+	
+	#admin_btn{
+	background:none; 
+	border:0px; 
+	position:absolute; 
+	top:10px; 
+	right:20px;
+	}
+	#login_btn{
+	background:none; 
+	border:0px; 
+	position:absolute; 
+	top:10px; 
+	right:140px;
+	}
+	
+	#sign_up_btn{
+	background:none; 
+	border:0px; 
+	position:absolute; 
+	top:10px; 
+	right:200px;
+	}
+	
+	nav{
+	width:auto;
+	background-color:skyblue;
+	}
+	
+	nav .nav-link{
+
+	color:black !important;
+	}
+	
+	
+	 .swiper {
+        width: 80%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+   
+      }
+
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 250px;
+        height: 300px;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+       	height: 100%;
+      }
+      
+      .container{
+      width:100%;
+      height:auto;
+      
+      }
+      
+      .container row{
+ 		height:auto;
+      }
+      
+      .container .col-4 {
+      	margin:2% 0;
+      }
+      
+      .container .col-4 .wrap{
+     	padding:0 5%;
+
+      }
+      
+      .nav{
+      margin:0 auto;
+      width:300px;
+      }
+      .nav .nav-item{
+      width:100px;
+      }
+       .nav .nav-link{
+      font-size:1.2em;
+      }
+      
+       .tab_1 .col-4{
+       
+       }
+       .tab_2 .col-4{
+  
+       }
+       .tab_3 .col-4{
+   
+       }
+       
+       .box-con p{
+      	text-align:left;
+       margin:0;
+       padding: 3px 10px;
+       }
+       
+       .box-con p span{
+       	font-weight:bold;
+       }
+       
+       .type_content{
+		height:80px;
+		overflow:hidden;
+		background:#ece6cc;
+		}
+		
+		.type_name{
+			background:skyblue;
+		}
+		.type_title{
+			background:green;
+		}
+		
+		.type_regdate{
+			background:pink;
+		}
+       
+#page_name{
+	width:500px;
+	margin:auto;
+	margin-top:50px;
+}
+
+h1{
+	text-align:center;
+	font-size:30px;
+	
+}
+
+.box{
+	margin:auto;
+	width:1000px;
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+table{
+  	border: 1px solid #ffffff;
+  	border-top: 1px solid #dadada;
+    border-spacing: 1px;
+    height: 300px;
+   
+}
+
+.menu{
+    text-align: center;
+    font-weight: bold;
+}
+}
+
+.menu2{
+	padding:10px;
+	width:300px;
+}
+.modify{
+	display:block;
+	width:200px;
+	padding:0.375rem 0.75rem;
+	font-size:1rem;
+	line-height:1.0;
+	border: 1px solid #ced4da;
+	border-radius: 0.5rem;
+}
+
+.button{
+	padding:7px;
+}
+
+tr, td {
+    border-bottom: 1px solid #dadada;
+    padding: 10px;
+  }
