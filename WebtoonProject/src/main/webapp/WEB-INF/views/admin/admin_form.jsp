@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,8 @@
 		const author = f.author.value;
 		const genre = f.genre.value;
 		const info = f.info.value;
-		
+		const epipath = f.epipath.value;
+		const author_idx = f.author_idx.value;
 		
 		//유효성 체크
 		if(title == ''){
@@ -34,7 +36,40 @@
 </head>
 <body>
  	<h1>관리자 페이지</h1>
- 	
+ 		<!-- if 문을 위해 var에 check_login 값 설정 -->
+	<c:set var="var" value="${ check_login }" />
+	<h1 style="width: 300px; margin: 0 auto;"><a href='mainToon.do'>코리아 웹툰</a></h1>
+
+	<c:choose>
+		<c:when test="${var eq 'admin' }">
+			<input id="logout_btn" type="button" value="로그아웃"
+				onclick="location.href='logout.do'">
+			<input id="admin_btn" type="button" value="관리자 페이지"
+				onclick="location.href='admin_form.do'">
+		</c:when>
+
+		<c:when test="${var eq 'false' }">
+			<input id="login_btn" type="button" value="로그인"
+				onclick="location.href='login_form'">
+			<input id="sign_up_btn" type="button" value="회원가입"
+				onclick="location.href='sign_up_form'">
+		</c:when>
+
+		<c:when test="${var eq null }">
+			<input id="login_btn" type="button" value="로그인"
+				onclick="location.href='login_form'">
+			<input id="sign_up_btn" type="button" value="회원가입"
+				onclick="location.href='sign_up_form'">
+		</c:when>
+
+		<c:otherwise>
+
+			<input id="logout_btn" type="button" value="로그아웃"
+				onclick="location.href='logout.do'">
+			<input id="Mypage_btn" type="button" value="My 페이지"
+				onclick="location.href='Mypage'">
+		</c:otherwise>
+	</c:choose>
  	<form method="post" enctype="multipart/form-data">
  	
  		<table border="1" align="center">
@@ -45,7 +80,11 @@
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input name="author"></td>
+				<td><input name="author">&nbsp<input type="number" name="author_idx"></td>
+			</tr>
+			<tr>
+				<th>파일 이름</th>
+				<td><input name="epipath"></td>
 			</tr>
 			<tr>
 				<th>장르</th>

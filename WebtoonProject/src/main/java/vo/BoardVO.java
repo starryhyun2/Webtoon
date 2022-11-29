@@ -2,13 +2,14 @@ package vo;
 
 public class BoardVO {
 
-	private int idx, readhit, ref, step, depth, del_info;
-	private String name, title, content, pwd, ip, regdate;
-	public int getIdx() {
-		return idx;
+	private int board_idx, readhit;
+	private String id, title, content, ip, regdate;
+	
+	public int getBoard_idx() {
+		return board_idx;
 	}
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setBoard_idx(int board_idx) {
+		this.board_idx = board_idx;
 	}
 	public int getReadhit() {
 		return readhit;
@@ -16,35 +17,11 @@ public class BoardVO {
 	public void setReadhit(int readhit) {
 		this.readhit = readhit;
 	}
-	public int getRef() {
-		return ref;
+	public String getId() {
+		return id;
 	}
-	public void setRef(int ref) {
-		this.ref = ref;
-	}
-	public int getStep() {
-		return step;
-	}
-	public void setStep(int step) {
-		this.step = step;
-	}
-	public int getDepth() {
-		return depth;
-	}
-	public void setDepth(int depth) {
-		this.depth = depth;
-	}
-	public int getDel_info() {
-		return del_info;
-	}
-	public void setDel_info(int del_info) {
-		this.del_info = del_info;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -58,12 +35,6 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
 	public String getIp() {
 		return ip;
 	}
@@ -76,6 +47,6 @@ public class BoardVO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	
+			
 	
 }

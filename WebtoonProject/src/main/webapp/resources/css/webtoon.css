@@ -4,45 +4,95 @@
 a {
 	text-decoration:none;
 	color:black;
+	
 	}
-	table{
-		border-collapse:collapse;
+	
+a:hover{
+	color:black;
+	
+}
+	
+	
+	#main_title{
+		font-size:60px;
+		width:100%;
+		margin:0 auto;
+		padding: 30px 0;
+		font-family: 'Yeon Sung', cursive;
 		
 	}
-	table th{
-		border:0.5px solid black;
-		text-align:center;
+	#main_title:hover{
+	transform:scale(1.1);
+	transition: transform .2s;
+		
 	}
 	
-	table td{
-		border:0.5px solid black;
-	}
-	.idx{text-align:center; }
-	
-	#admin_btn{
-	background:none; 
-	border:0px; 
-	position:absolute; 
-	top:10px; 
-	right:20px;
+	#header{
+		position:absolute; 
+		top:10px; 
+		right:20px;
+		
 	}
 	
-	nav{
-	width:auto;
-	background-color:skyblue;
-	}
-	
-	nav .nav-link{
+	#header input{
+	background:none;
+	border:0px;
 
-	color:black !important;
 	}
 	
+	
+	.nav_bar{
+	width:80%;
+	margin:0 auto;
+	display:flex;
+	}
+	
+	.nav_list{
+	font-size:20px;
+	margin-left:50px;
+	cursor: pointer;
+	font-family: 'Nanum Gothic', sans-serif;	
+	}
+	
+	.nav_list:hover{
+	color:red;
+	
+	}
+	
+	.nav_list{
+            position: relative;
+        }
+        .nav_list:before{
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 16px;
+            bottom: 0px;
+            z-index: -1;
+            background-color: rgb(255, 189, 9);
+            clip: rect(0px, 0px, 50px, 0px);
+            transform: skew(30deg);
+            transition: all 0.6s;
+        }
+        .nav_list.line::before{
+            clip: rect(0px, 150px, 50px, 0px);
+        }
+        
+       .slide-background{
+       
+       width:100%;
+       height:auto;
+       background-image:url("/webtoon/resources/thumbnail/night_move.gif");
+       background-size:contain;
+       margin:50px 0;
+       }
+      
+      
 	
 	 .swiper {
         width: 80%;
         padding-top: 50px;
-        padding-bottom: 50px;
-   
+        padding-bottom: 50px; 
       }
 
       .swiper-slide {
@@ -50,6 +100,7 @@ a {
         background-size: cover;
         width: 250px;
         height: 300px;
+        box-shadow: 10px 5px 5px rgba(255, 255, 255, 0.3);
       }
 
       .swiper-slide img {
@@ -60,7 +111,7 @@ a {
       
       .container{
       width:100%;
-      height:auto;
+      min-height:500px;
       
       }
       
@@ -83,19 +134,33 @@ a {
       }
       .nav .nav-item{
       width:100px;
+  
       }
        .nav .nav-link{
       font-size:1.2em;
       }
       
-       .tab_1 .col-4{
-       
+      .nav .nav-item:nth-child(1) .nav-link{
+      color:orange;
+      }
+      .nav .nav-item:nth-child(2) .nav-link{
+      color:blue;
+      }
+      .nav .nav-item:nth-child(3) .nav-link{
+      color:green;
+      }
+      
+      .nav-pills .nav-item:nth-child(1) .nav-link.active{
+       background-color:orange;
+       color:white;
        }
-       .tab_2 .col-4{
-  
+       .nav-pills .nav-item:nth-child(2) .nav-link.active{
+       background-color:blue;
+       color:white;
        }
-       .tab_3 .col-4{
-   
+       .nav-pills .nav-item:nth-child(3) .nav-link.active{
+       background-color:green;
+       color:white;
        }
        
        .box-con p{
@@ -125,3 +190,65 @@ a {
 			background:pink;
 		}
        
+#page_name{
+	width:500px;
+	margin:auto;
+	margin-top:50px;
+}
+
+h1{
+	text-align:center;
+	font-size:30px;
+	
+}
+
+.box{
+	margin:auto;
+	width:1000px;
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+ #youtube_link{
+        width:80%;
+  		height:600px;
+  		margin:0 auto;    
+       }
+
+
+table{
+  	border: 1px solid #ffffff;
+  	border-top: 1px solid #dadada;
+    border-spacing: 1px;
+    height: 300px;
+   
+}
+
+.menu{
+    text-align: center;
+    font-weight: bold;
+}
+}
+
+.menu2{
+	padding:10px;
+	width:300px;
+}
+.modify{
+	display:block;
+	width:200px;
+	padding:0.375rem 0.75rem;
+	font-size:1rem;
+	line-height:1.0;
+	border: 1px solid #ced4da;
+	border-radius: 0.5rem;
+}
+
+.button{
+	padding:7px;
+}
+
+tr, td {
+    border-bottom: 1px solid #dadada;
+    padding: 10px;
+  }

@@ -4,102 +4,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="w">
 
-	<!-- 게시글 전체목록 조회 -->
-	<select id="board_list" resultType="board"
-		parameterType="java.util.HashMap">
-		select * from
-		( select rank() over( order by ref DESC, step ASC ) no, b.*
-		from( select * from board ) b )
-		where no BETWEEN #{ start } and #{ end }
+	<!-- idx로 웹툰 찾아서 반환 -->
+	<select id="find" resultType="webtoon">
+		select * from Webtoon
+		where webtoon_idx = #{idx}
 	</select>
 	
-	<!-- 전체 게시물 수 조회 -->
-	<select id="board_count" resultType="int">
-		select COUNT(*) from board
+	
+	<!-- 웹툰 회차 선택에서 웹툰을 반환 -->
+	<select id="showepi" resultType="episode" parameterType="int">
+		select * from Episode 
+		where ref=#{ idx } ORDER BY step
+	</select>
+	
+	<!-- 해당 회차를 선택 후 반환 -->
+	<select id="find_epi" resultType="episode">
+		select * from Episode
+		where episode_idx=#{ idx }
 	</select>
 
-	<!-- 새 글 추가 -->
-	<insert id="board_new" parameterType="board">
-		insert into BOARD values(
-		seq_board_idx.nextVal,
-		#{name},
-		#{subject},
-		#{content},
-		#{pwd},
-		#{ip},
-		sysdate,
-		0,
-		seq_board_idx.currVal,
-		0,
-		0,
-		0
-		)
-
-	</insert>
-
-	<!-- 게시글 상세 조회 -->
-	<select id="searchOne" resultType="board" parameterType="int">
-		select *
-		from BOARD where idx=#{idx}
-
+	<!-- 어느 웹툰에 회차를 업로드 할 것인지 찾기 위한 쿼리 -->
+	<select id="findByRef" resultType="webtoon">
+		select * from Webtoon
+		where webtoon_idx = #{ref}
 	</select>
-
-	<!-- 조회수 증가 : 업데이트 -->
-	<update id="update_readhit" parameterType="int">
-		update BOARD set
-		readhit=readhit + 1
-		where idx=#{idx}
-	</update>
-
-	<!-- 댓글처리를 위한 step 값 증가 -->
-	<update id="update_step" parameterType="board">
-		update BOARD set
-		step=step+1
-		where ref=#{ref} and step > #{step}
-	</update>
-
-	<!-- 댓글 추가 -->
-	<insert id="board_reply" parameterType="board">
-		insert into BOARD values(
-		seq_board_idx.nextVal,
-		#{name},
-		#{subject},
-		#{content},
-		#{pwd},
-		#{ip},
-		sysdate,
-		0,
-		#{ref},
-		#{step},
-		#{depth},
-		0
+	
+	<!-- 웹툰에 회차 업로드 -->
+	<insert id="epi_insert">
+		insert into Episode values(
+			seq_episode_idx.nextVal, 
+			#{ref}, 
+			#{episodename}, 
+			#{path}, 
+			5,  
+			sysdate, 
+			1, 
+			0
 		)
 	</insert>
-
-	<!-- 삭제 시도 -->
-	<update id="del_update" parameterType="board">
-		update BOARD set
-		subject=
-		#{subject},
-		name= #{name},
-		del_info= -1
-		where idx=#{idx}
+	
+	<!-- 웹툰 step 업데이트 -->
+	<update id="updateStep" parameterType="int">
+		update Episode set step = step + 1
+		where ref=#{ref}
 	</update>
-
-	<!-- 게시글 수정 -->
-	<update id="modify_update" parameterType="board">
-		update BOARD set
-		name=#{name},
-		subject=#{subject},
-		content=#{content},
-		pwd=#{pwd},
-		ip=#{ip},
-		regdate=sysdate
-		where idx=#{idx}
-	</update>
-
 </mapper>
-
 
 
 
