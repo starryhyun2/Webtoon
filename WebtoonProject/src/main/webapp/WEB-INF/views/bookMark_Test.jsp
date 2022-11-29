@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>북마크</title>
+<title>Insert title here</title>
 
 <script src="/webtoon/resources/js/httpRequest.js"></script>
 
@@ -29,20 +29,22 @@
 			if( xhr.readyState == 4 && xhr.status == 200 ){
 				
 				var bookmark = xhr.responseText;
-				alert("bookmark");
+
 				if( bookmark == 'no'){
-					alert("삭제되었습니다");
+					alert("북마크 삭제되었습니다.");
 					return;
 				}
 				
 				alert("북마크 추가되었습니다.");
-				location.href="bookmark.do";
+				
 			}
 	}
 </script>
+
 </head>
 <body>
 
+	<!-- 테스트용 화면(홈화면) -->
 	<c:forEach var="bm" items="${bm}">
 		<form>
 			<p>${ bm.info }</p>
@@ -66,7 +68,7 @@
 			
 			<div>
 				<p>
-					user_idx : <span>${user}</span>
+					user_id : <span>${user}</span>
 				</p>
 			</div>
 			
@@ -76,10 +78,12 @@
 				</p>
 			</div>
 		
-			<input type="hidden" name="user_idx" value="${user}">
+			<input type="hidden" name="user_id" value="${user}">	<!-- 임의의 id값을 받아왔지만 session 설정시 session값 받기 -->
 			<input type="hidden" name="webtoon_idx" value="${bm.webtoon_idx}">
 			<input type="button" value="북마크" onclick="send(this.form);">
 	</form>
 	</c:forEach>
+
+	
 </body>
 </html>

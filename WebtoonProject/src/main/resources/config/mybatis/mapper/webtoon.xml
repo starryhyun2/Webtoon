@@ -30,7 +30,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where user_idx=#{user_idx}
 	</update>
 	
-
+	<!-- 북마크 -->
+	<select id="select_list" resultType="vo.WebtoonVO">
+		select * from webtoon order by WEBTOON_IDX DESC
+	</select>
+	
+	<select id="check_bookmark" parameterType="vo.BookmarkVO" resultType="vo.BookmarkVO">
+		select * from BOOKMARK where ref=#{ref} AND user_id = #{user_id}
+	</select>
+	
+	<insert id="add_bookmark" parameterType="vo.BookmarkVO">
+		insert into BOOKMARK values(
+		seq_bookmark_idx.nextVal,
+		#{ref},
+		#{user_id}
+		)
+	</insert>
+	
+	<delete id="del_bookmark" parameterType="vo.BookmarkVO">
+		delete from BOOKMARK where ref=#{ref} AND user_id=#{user_id}
+	</delete>
+	
+	<select id="list_bookmark"  parameterType="String" resultType="vo.BookmarkVO">
+		select ref from BOOKMARK where user_id=#{id} order by bookmark_idx DESC
+	</select>
+	
+	<select id="select_bookmark" parameterType="int" resultType="vo.WebtoonVO">
+		select * from WEBTOON where webtoon_idx=#{ref}
+	</select>
 </mapper>
 
 

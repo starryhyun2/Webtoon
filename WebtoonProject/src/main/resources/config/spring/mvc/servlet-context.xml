@@ -30,10 +30,17 @@
 	<!-- @Autowired( 자동생성 )을 위해 반드시 필요한 코드 -->
 	<context:annotation-config/>
 	
-	<!-- 컨트롤러의 수동생성 setter 인젝션-->
+	<!-- MyPageController 수동생성 setter인젝션-->
 	<beans:bean class="com.korea.webtoon.MyPageController">
 		<beans:property name="user_dao" ref="user_daoBean"/> 
 	</beans:bean>
+	
+	<!-- BookmarkController 수동생성 setter인젝션-->
+	<beans:bean class="com.korea.webtoon.BookmarkController">
+		<beans:property name="webtoon_dao" ref="webtoon_daoBean" />
+		<beans:property name="bookmark_dao" ref="bookmark_daoBean" />
+	</beans:bean>
+	
 </beans:beans>
 
 

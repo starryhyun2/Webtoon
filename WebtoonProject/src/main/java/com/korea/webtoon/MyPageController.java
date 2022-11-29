@@ -1,5 +1,6 @@
 package com.korea.webtoon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import dao.BookmarkDAO;
+import dao.WebtoonDAO;
 import dao.Webtoon_UserDAO;
+import vo.BookmarkVO;
+import vo.WebtoonVO;
 import vo.Webtoon_UserVO;
 
 @Controller
@@ -28,6 +33,7 @@ public class MyPageController {
 	public void setUser_dao(Webtoon_UserDAO user_dao) {
 		this.user_dao = user_dao;
 	}
+
 	
 	/*
 	 * @RequestMapping("/") // 기본화면 public String home() { // 회원가입 페이지를 홈으로 설정
@@ -83,5 +89,6 @@ public class MyPageController {
 		
 		return result;											
 	}
+	
 	
 }
