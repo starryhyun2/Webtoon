@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+
+
+body {
+	overflow-x: hidden;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	color: black;
+}
+
+
+#main_title {
+	font-size: 60px;
+	width: 360px;
+	margin: 0 auto;
+	padding: 40px 0;
+	font-family: 'Yeon Sung', cursive;
+	
+}
+
+#main_title img {
+	width: 80px;
+	text-align:center;
+}
+
+#main_title:hover {
+	transform: scale(1.1);
+	transition: transform .2s;
+}
+
+#header {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+}
+
+#header input {
+	background: none;
+	border: 0px;
+}
+
+.nav_bar {
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+}
+
+.nav_list {
+	font-size: 20px;
+	margin-left: 50px;
+	cursor: pointer;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.nav_list:hover {
+	color: red;
+}
+
+.nav_list {
+	position: relative;
+}
+
+.nav_list:before {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 16px;
+	bottom: 0px;
+	z-index: -1;
+	background-color: rgb(255, 189, 9);
+	clip: rect(0px, 0px, 50px, 0px);
+	transform: skew(30deg);
+	transition: all 0.6s;
+}
+
+.nav_list.line::before {
+	clip: rect(0px, 150px, 50px, 0px);
+}
+
+#main_img{	
+	width:50%;
+	margin:auto;
+	display:flex;
+}
+#main_img img{
+	width:100%	
+}
+
+#add_epi{
+	height:50px;
+	border:0;
+}
+
+.webtoon_info{
+	width:80%;
+	margin:0 auto;
+	list-style:none;
+}
+
+.webtoon_info li{
+	margin-top:10px;
+	font-size:1em;
+	}
+.webtoon_info li span{
+	font-size:1.2em;
+	font-weight:bold;
+}
+
+#epi_table{
+	width:100%;
+	margin-top:50px;
+}
+
+#epi_table th{
+	font-size:1.5em;
+	text-align:center;
+}
+
+#epi_table tr{
+	margin-top:20px;
+	border-bottom:0.5px solid black;
+}

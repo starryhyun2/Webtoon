@@ -47,6 +47,10 @@
 					<td class="menu2"><a class="modify">${ vo.getId() }</a></td>	
 				</tr>
 				
+				<tr>
+					<td class="menu">비밀번호</td>
+					<td class="menu2"><a class="modify">${ vo.getPwd() }</a></td>	
+				</tr>
 				
 				<tr>
 					<td class="menu">Email</td>

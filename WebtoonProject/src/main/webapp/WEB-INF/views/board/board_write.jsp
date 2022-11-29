@@ -44,11 +44,12 @@
 </head>
 <body>
 
-	<!-- if 문을 위해 var에 check_login 값 설정 -->
-	<c:set var="id" value="${sessionScope.id}" />
 	<h1 style="width: 300px; margin: 0 auto;">
 		<a href='mainToon.do'>코리아 웹툰</a>
 	</h1>
+
+<!-- if 문을 위해 var에 check_login 값 설정 -->
+	<c:set var="id" value="${sessionScope.id}" />
 
 	<c:choose>
 		<c:when test="${id eq 'admin' }">
@@ -56,6 +57,8 @@
 				onclick="location.href='logout.do'">
 			<input id="admin_btn" type="button" value="관리자 페이지"
 				onclick="location.href='admin_form.do'">
+			<input id="Mypage_btn" type="button" value="My 페이지"
+				onclick="location.href='Mypage'">
 		</c:when>
 
 		<c:when test="${id ne null }">
@@ -72,6 +75,7 @@
 				onclick="location.href='sign_up_form'">
 		</c:otherwise>
 	</c:choose>
+
 	<form>
 		<table border="1" align="center">
 			<tr>

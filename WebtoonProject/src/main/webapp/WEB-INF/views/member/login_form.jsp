@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/webtoon/resources/css/loginForm.css">
+
 
 	<!-- Ajax사용을 위한 js를 추가 -->
 	<script src="/webtoon/resources/js/httpRequest.js"></script>

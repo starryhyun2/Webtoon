@@ -32,6 +32,7 @@ public class MemberDAO {
 		int res = sqlSession.update("u.mypage_update", vo);
 		return res;
 	}
+
 	
 	//신원 인증용 개인 문자메시지 보내는 메서드
 	public void sendMessage(String phonenum,String key ) {

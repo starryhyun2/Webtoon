@@ -1,11 +1,11 @@
 package com.korea.webtoon;
 
+
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +17,9 @@ import vo.MemberVO;
 
 @Controller
 public class MemberController {
-
+	
 	MemberDAO member_dao;
-	public void setMember_dao(MemberDAO member_dao) {
-		this.member_dao = member_dao;
-	}
-
+	
 	//세션 정보를 다루기 위한 request 생성
 
 	@Autowired
@@ -30,37 +27,41 @@ public class MemberController {
 
 	@Autowired
 	HttpSession login;
+	
+	public void setMember_dao(MemberDAO member_dao) {
+		this.member_dao = member_dao;
+	}
 
 	//로그아웃 버튼 클릭시
 	@RequestMapping("logout.do")
 	public String logout() {
-
-		HttpSession login = request.getSession(false);
+		
+		HttpSession login = request.getSession();
 		login.removeAttribute("id");
-
+		
 		return "redirect:mainToon.do";
 	}
-
+	
 	@RequestMapping("login_form")
 	public String login_form() {
-
+		
 		return Common.MEMB_PATH+"login_form.jsp";
 	}
-
+	
 	@RequestMapping("/login_check.do")
 	@ResponseBody
 	public String login( MemberVO vo ) {
-
+		
 		String id = vo.getId();
 		String pwd = vo.getPwd();
-
+		
 		//DAO에게 id를 요청
 		vo = member_dao.loginCheck( id );
-
+		
 		if( vo == null ) {//DB에 아이디가 존재하지 않는다
 			return "{'result':'no_id'}";
 		}
-
+		
 		//아이디는 존재함
 		if( !vo.getPwd().equals(pwd) ) {
 			return "{'result':'no_pwd'}";
@@ -95,7 +96,6 @@ public class MemberController {
 
 		return Common.MEMB_PATH+"sign_up_email.jsp";
 	}
-
 	//회원가입 정보 확인
 	@RequestMapping("sign_check.do")
 	@ResponseBody
@@ -161,5 +161,5 @@ public class MemberController {
 
 	}
 
-
+	
 }

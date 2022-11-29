@@ -33,6 +33,7 @@ public class WebtoonController {
 	@Autowired
 	HttpSession login;
 
+
 	public void setWebtoon_DAO(WebtoonDAO webtoon_DAO) {
 		this.webtoon_DAO = webtoon_DAO;
 	}

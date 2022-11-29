@@ -1,197 +1,264 @@
 @charset "UTF-8";
 
+body {
+	overflow-x: hidden;
+}
 
 a {
-	text-decoration:none;
-	color:black;
-	}
-	table{
-		border-collapse:collapse;
-		
-	}
-	table th{
-		border:0.5px solid black;
-		text-align:center;
-	}
-	
-	table td{
-		border:0.5px solid black;
-	}
-	.idx{text-align:center; }
-	
-	#admin_btn{
-	background:none; 
-	border:0px; 
-	position:absolute; 
-	top:10px; 
-	right:20px;
-	}
-	#login_btn{
-	background:none; 
-	border:0px; 
-	position:absolute; 
-	top:10px; 
-	right:140px;
-	}
-	
-	#sign_up_btn{
-	background:none; 
-	border:0px; 
-	position:absolute; 
-	top:10px; 
-	right:200px;
-	}
-	
-	nav{
-	width:auto;
-	background-color:skyblue;
-	}
-	
-	nav .nav-link{
-
-	color:black !important;
-	}
-	
-	
-	 .swiper {
-        width: 80%;
-        padding-top: 50px;
-        padding-bottom: 50px;
-   
-      }
-
-      .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        width: 250px;
-        height: 300px;
-      }
-
-      .swiper-slide img {
-        display: block;
-        width: 100%;
-       	height: 100%;
-      }
-      
-      .container{
-      width:100%;
-      height:auto;
-      
-      }
-      
-      .container row{
- 		height:auto;
-      }
-      
-      .container .col-4 {
-      	margin:2% 0;
-      }
-      
-      .container .col-4 .wrap{
-     	padding:0 5%;
-
-      }
-      
-      .nav{
-      margin:0 auto;
-      width:300px;
-      }
-      .nav .nav-item{
-      width:100px;
-      }
-       .nav .nav-link{
-      font-size:1.2em;
-      }
-      
-       .tab_1 .col-4{
-       
-       }
-       .tab_2 .col-4{
-  
-       }
-       .tab_3 .col-4{
-   
-       }
-       
-       .box-con p{
-      	text-align:left;
-       margin:0;
-       padding: 3px 10px;
-       }
-       
-       .box-con p span{
-       	font-weight:bold;
-       }
-       
-       .type_content{
-		height:80px;
-		overflow:hidden;
-		background:#ece6cc;
-		}
-		
-		.type_name{
-			background:skyblue;
-		}
-		.type_title{
-			background:green;
-		}
-		
-		.type_regdate{
-			background:pink;
-		}
-       
-#page_name{
-	width:500px;
-	margin:auto;
-	margin-top:50px;
+	text-decoration: none;
+	color: black;
 }
 
-h1{
-	text-align:center;
-	font-size:30px;
-	
+a:hover {
+	color: black;
 }
 
-.box{
-	margin:auto;
-	width:1000px;
-	margin-top:50px;
-	margin-bottom:50px;
+
+#main_title {
+	font-size: 60px;
+	width: 360px;
+	margin: 0 auto;
+	padding: 20px 0;
+	font-family: 'Yeon Sung', cursive;
 }
 
-table{
-  	border: 1px solid #ffffff;
-  	border-top: 1px solid #dadada;
-    border-spacing: 1px;
-    height: 300px;
-   
+#main_title img {
+	width: 80px;
+	text-align: center;
 }
 
-.menu{
-    text-align: center;
-    font-weight: bold;
-}
-}
-
-.menu2{
-	padding:10px;
-	width:300px;
-}
-.modify{
-	display:block;
-	width:200px;
-	padding:0.375rem 0.75rem;
-	font-size:1rem;
-	line-height:1.0;
-	border: 1px solid #ced4da;
-	border-radius: 0.5rem;
+#main_title:hover {
+	transform: scale(1.1);
+	transition: transform .2s;
 }
 
-.button{
-	padding:7px;
+#header {
+	position: absolute;
+	top: 10px;
+	right: 20px;
 }
 
-tr, td {
-    border-bottom: 1px solid #dadada;
-    padding: 10px;
-  }
+#header input {
+	background: none;
+	border: 0px;
+}
+
+.nav_bar {
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+}
+
+.nav_list {
+	font-size: 20px;
+	margin-left: 50px;
+	cursor: pointer;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.nav_list:hover {
+	color: red;
+}
+
+.nav_list {
+	position: relative;
+}
+
+.nav_list:before {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 16px;
+	bottom: 0px;
+	z-index: -1;
+	background-color: rgb(255, 189, 9);
+	clip: rect(0px, 0px, 50px, 0px);
+	transform: skew(30deg);
+	transition: all 0.6s;
+}
+
+.nav_list.line::before {
+	clip: rect(0px, 150px, 50px, 0px);
+}
+
+.slide-background {
+	width: 100%;
+	height: auto;
+	background-image: url("/webtoon/resources/thumbnail/night_move.gif");
+	background-size: contain;
+	margin: 20px 0;
+}
+
+.swiper {
+	width: 80%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.swiper-slide {
+	background-position: center;
+	background-size: cover;
+	width: 250px;
+	height: 300px;
+	box-shadow: 10px 5px 5px rgba(255, 255, 255, 0.3);
+}
+
+.swiper-slide img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+}
+
+.container {
+	width: 100%;
+	min-height: 400px;
+	height: auto;
+}
+
+.container row {
+	height: auto;
+}
+
+.container .col-4 {
+	margin: 2% 0;
+}
+
+.container .col-4 .wrap {
+	padding: 0 5%;
+}
+
+.nav {
+	margin: 0 auto;
+	width: 300px;
+}
+
+.nav .nav-item {
+	width: 100px;
+}
+
+.nav .nav-link {
+	font-size: 1.2em;
+}
+
+.nav .nav-item:nth-child(1) .nav-link {
+	color: orange;
+}
+
+.nav .nav-item:nth-child(2) .nav-link {
+	color: blue;
+}
+
+.nav .nav-item:nth-child(3) .nav-link {
+	color: green;
+}
+
+.nav-pills .nav-item:nth-child(1) .nav-link.active {
+	background-color: orange;
+	color: white;
+}
+
+.nav-pills .nav-item:nth-child(2) .nav-link.active {
+	background-color: blue;
+	color: white;
+}
+
+.nav-pills .nav-item:nth-child(3) .nav-link.active {
+	background-color: green;
+	color: white;
+}
+
+.box-con p {
+	text-align: left;
+	margin: 0;
+	padding: 3px 10px;
+}
+
+.type_content {
+	height: 80px;
+	overflow: hidden;
+	background: #f0f0f0;
+}
+
+.type_title {
+	background: skyblue;
+}
+
+.type_title .author {
+	font-size: 1em;
+}
+
+.type_title .title {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.type_regdate {
+	background: pink;
+}
+
+#page_name {
+	width: 500px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.box {
+	margin: auto;
+	width: 1000px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#youtube_link {
+	width: 100%;
+	height: 600px;
+	margin: 0 auto;
+}
+
+#second_right {
+	width: 15%;
+}
+
+#second_right .img_box {
+	width: 100%;
+	height: auto;
+	position: sticky;
+	top: 0;
+}
+
+table {
+	width: 80%;
+	margin-top: 100px;
+	border-spacing: 1px;
+	height: 300px;
+}
+
+table tr {
+	border-bottom: 0.5px solid black;
+}
+
+table tr:first-child {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 10px;
+	text-align: center;
+	background-color: #99d280;
+}
+
+table tr:last-child {
+	border-bottom: 0px;
+}
+
+table .board_idx {
+	text-align: center;
+	width: 10%;
+}
+
+table .board_title {
+	width: 40%;
+}
+
+table .board_author {
+	text-align: center;
+}

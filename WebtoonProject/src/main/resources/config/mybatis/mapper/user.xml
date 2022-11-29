@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="String">
 		select * from WEBTOON_USER where id=#{id}
 	</select>
-
+	
 	<update id="mypage_update" parameterType="member">
 		update WEBTOON_USER set
 		name=#{name},
