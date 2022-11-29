@@ -3,6 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+            classpath:application-config.xml
+            classpath:email/email-config.xml
+        </param-value>
+  </context-param>
+
 	<!-- 파라미터로 전달되는 한글데이터가 깨지지 않도록 UTF8형식의 인코딩 필터 등록 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>

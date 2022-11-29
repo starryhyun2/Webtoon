@@ -65,8 +65,7 @@
 			var data = xhr.responseText;
 
 			//서버에서 넘어온 데이터를 실제 JSON형식으로 변환
-			var json = (new Function('return' + data))();
-
+			var json = (new Function('return'+data))();
 			if (json.result == 'no_id') {
 				alert("아이디가 존재하지 않습니다");
 				return;
@@ -76,8 +75,7 @@
 				return;
 			}
 
-			alert("회원가입 성공");
-			location.href = "mainToon.do";
+			location.href = "certifiacion_form";
 		}
 
 	}

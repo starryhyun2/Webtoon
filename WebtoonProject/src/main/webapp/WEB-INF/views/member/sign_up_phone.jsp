@@ -66,8 +66,7 @@
 					return;
 				}
 				
-				alert("회원가입 성공");
-				location.href="mainToon.do";
+				location.href="certifiacion_form";
 			}
 			
 		}

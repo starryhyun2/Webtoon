@@ -37,6 +37,8 @@
 				onclick="location.href='logout.do'">
 			<input id="admin_btn" type="button" value="관리자 페이지"
 				onclick="location.href='admin_form.do'">
+			<input id="Mypage_btn" type="button" value="My 페이지"
+				onclick="location.href='Mypage'">
 		</c:when>
 
 		<c:when test="${id ne null }">
