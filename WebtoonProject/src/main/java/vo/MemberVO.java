@@ -1,6 +1,6 @@
 package vo;		//webtoon_user, webtoon, webtoonComments 3개의 vo들을 가질 패키지 
 
-public class Webtoon_UserVO {	//webtoon_user 테이블의 getter, setter를 가지고 있는 vo
+public class MemberVO {	//webtoon_user 테이블의 getter, setter를 가지고 있는 vo
 
 	private int user_idx, webtoon_idx;
 	private String name, id, pwd, email, phoneNum;

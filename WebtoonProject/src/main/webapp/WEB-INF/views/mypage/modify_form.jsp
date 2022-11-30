@@ -53,12 +53,12 @@
 		
 		
 		var url = "modify.do";
-		var param = "user_idx="+f.user_idx.value+
-					"&name="+f.name.value+
-					"&id="+f.id.value+
-					"&pwd="+encodeURIComponent(f.pwd.value)+
-					"&email="+encodeURIComponent(f.email.value)+
-					"&phoneNum="+f.phoneNum.value;
+		var param = "user_idx="+user_idx+
+					"&name="+name+
+					"&id="+id+
+					"&pwd="+pwd+
+					"&email="+email+
+					"&phoneNum="+phoneNum;
 		
 		sendRequest( url, param, resultFn, "POST")
 	}
@@ -75,7 +75,7 @@
 			}
 			
 			alert("수정되었습니다.");
-			location.href="list.do";
+			location.href="mypage.do";
 		}
 	}
 </script>
@@ -122,7 +122,7 @@
 				<tr>
 					<td colspan="2" align="center" class="button">
 						<input type="button" value="수정하기" onclick="send(this.form);">
-						<input type="button" value="취소" onclick="location.href='list.do'">
+						<input type="button" value="취소" onclick="location.href='mypage.do'">
 					</td>
 				</tr>
 			</table>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="u">
+
+	<!-- 회원 가입 -->
+	<!-- <insert id="mypage_insert" parameterType="vo.Webtoon_UserVO">
+		insert into WEBTOON_USER values(
+			seq_user_idx.nextVal,
+			0,
+			#{name},
+			#{id},
+			#{pwd},
+			#{email}
+		)
+	</insert> -->
+	
+	<!-- 로그인 (병합시 필요없음)-->
+	<select id="mypage_selectOne" resultType="member" parameterType="String">
+		select * from WEBTOON_USER where id=#{id}
+	</select>
+	
+	<!-- 정보 수정 -->
+	<update id="mypage_update" parameterType="member">
+		update WEBTOON_USER set
+		name=#{name},
+		pwd=#{pwd},
+		email=#{email},
+		phoneNum=#{phoneNum}
+		where user_idx=#{user_idx}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

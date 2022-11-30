@@ -8,7 +8,18 @@
 		<setting name="defaultExecutorType" value="REUSE" />
 	</settings>
 	
+	<typeAliases>
+
+		<typeAlias type="vo.WebtoonVO" alias="webtoon"/>
+
+		<typeAlias type="vo.MemberVO" alias="member"/>
+		
+		<typeAlias type="vo.BookmarkVO" alias="bookmark"/>
+		
+	</typeAliases>
+	
 	<mappers>
-		<mapper resource="config/mybatis/mapper/webtoon.xml" />
+		<mapper resource="config/mybatis/mapper/user.xml" />
+		<mapper resource="config/mybatis/mapper/bookmark.xml" />
 	</mappers>
 </configuration>

@@ -6,22 +6,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>북마크</title>
 
 <script src="/webtoon/resources/js/httpRequest.js"></script>
 
 <script>
 	function send(f){
 		
+		
 		var ref = f.webtoon_idx.value;
 		var user_id = f.user_id.value;
 		
 		var url = "addBookmark.do";
-		var param = "ref="+f.webtoon_idx.value+
-					"&user_id="+f.user_id.value;
+		var param = "ref="+ref+
+					"&user_id="+user_id;
 
 		sendRequest( url, param, resultFn, "POST");
-
+	
+		alert("삭제되었습니다.");
+		window.location.reload();
 	}
 	
 	function resultFn(){
@@ -29,22 +32,19 @@
 			if( xhr.readyState == 4 && xhr.status == 200 ){
 				
 				var bookmark = xhr.responseText;
-
+				
 				if( bookmark == 'no'){
-					alert("북마크 삭제되었습니다.");
 					return;
 				}
 				
-				alert("북마크 추가되었습니다.");
-				
 			}
+			
+			
 	}
 </script>
-
 </head>
 <body>
 
-	<!-- 테스트용 화면(홈화면) -->
 	<c:forEach var="bm" items="${bm}">
 		<form>
 			<p>${ bm.info }</p>
@@ -65,25 +65,11 @@
 					작성일 : <span>${fn:split(bm.regdate,' ')[0]}</span>
 				</p>
 			</div>
-			
-			<div>
-				<p>
-					user_id : <span>${user}</span>
-				</p>
-			</div>
-			
-			<div>
-				<p>
-					webtoon_idx: <span>${bm.webtoon_idx}</span>
-				</p>
-			</div>
 		
-			<input type="hidden" name="user_id" value="${user}">	<!-- 임의의 id값을 받아왔지만 session 설정시 session값 받기 -->
+			<input type="hidden" name="user_id" value="${user}">
 			<input type="hidden" name="webtoon_idx" value="${bm.webtoon_idx}">
 			<input type="button" value="북마크" onclick="send(this.form);">
 	</form>
 	</c:forEach>
-
-	
 </body>
 </html>

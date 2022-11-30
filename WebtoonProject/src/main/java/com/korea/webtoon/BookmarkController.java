@@ -3,6 +3,10 @@ package com.korea.webtoon;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,12 +14,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.BookmarkDAO;
 import dao.WebtoonDAO;
+import util.Common;
 import vo.BookmarkVO;
 import vo.WebtoonVO;
 
 @Controller
 public class BookmarkController {
 
+	@Autowired
+	HttpServletRequest request;
+	
+	HttpSession session;
+	
 	WebtoonDAO webtoon_dao;
 	public void setWebtoon_dao(WebtoonDAO webtoon_dao) {
 		this.webtoon_dao = webtoon_dao;
@@ -32,12 +42,13 @@ public class BookmarkController {
 		List<WebtoonVO> list = webtoon_dao.selectList();	//모든 웹툰 리스트
 			
 		model.addAttribute("bm", list);	
-			
-		String id = "WooSeokKing";							//임의의 id를 넘김(session으로 바꾸겠습니다.)
+					
+		session = request.getSession();
+		String id = (String)session.getAttribute("id");		
 			
 		model.addAttribute("user", id);
 			
-		return "/WEB-INF/views/bookMark_Test.jsp";			//테스트 화면(홈화면)
+		return Common.Mypg_PATH+"bookMark_Test.jsp";			//테스트 화면(홈화면)
 			
 	}
 		
@@ -62,11 +73,10 @@ public class BookmarkController {
 	}
 		
 	@RequestMapping("/bookmark.do")							// 북마크 페이지
-	@ResponseBody
-	public String bookmark(Model model) {					//세션값 필요
-			
-		String id = "WooSeokKing";							//임의의 id값(세션설정시 세션으로 변경)
-		
+	public String bookmark(Model model) {				
+						
+		String id = (String)session.getAttribute("id");
+
 		List<BookmarkVO> webtoon_name = bookmark_dao.selectList(id);//id값을 DB로 넘겨 user_id=#{id}인 모든 데이터를 list에 저장
 		List<WebtoonVO> list = new ArrayList<WebtoonVO>();			//깡통 list 생성
 	
@@ -76,13 +86,13 @@ public class BookmarkController {
 				
 			WebtoonVO vo = webtoon_dao.select(ref);			//ref를 보내 맞는 웹툰 데이터 하나씩 가져오기
 
-			list.add(vo);									//깡통 list에 하나씩 입력
+			list.add(vo);									//깡통 list에 하나씩 저장
 		}						
 			
 		model.addAttribute("bm", list);						//바인딩
 		model.addAttribute("user", id);						//바인딩
 			
-		return "/WEB-INF/views/bookMark.jsp";
-			
+		return Common.Mypg_PATH+"bookMark.jsp";
 	}
+	
 }

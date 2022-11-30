@@ -59,9 +59,7 @@
 				
 				<tr>
 					<td colspan="2" align="center" class="button">
-						<input type="hidden" value="${ vo.getId() }" name="id">
 						<input type="hidden" value="${ vo.getPwd() }" name="pwd">
-						<input type="hidden" value="${ vo.getUser_idx() }" name ="idx">
 						<input type="button" value="정보 수정" onclick="modify(this.form)">
 					</td>
 				</tr>

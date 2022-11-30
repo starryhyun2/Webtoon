@@ -15,14 +15,14 @@ public class WebtoonDAO {
 		this.sqlSession = sqlSession;
 	}
 	
-	//북마크
+	//북마크(병합시 필요없음)
 	public List<WebtoonVO> selectList(){
-		List<WebtoonVO> list = sqlSession.selectList("m.select_list");
+		List<WebtoonVO> list = sqlSession.selectList("bm.select_list");
 		return list;
 	}
 	
 	public WebtoonVO select(int ref){
-		WebtoonVO list = sqlSession.selectOne("m.select_bookmark", ref);
+		WebtoonVO list = sqlSession.selectOne("bm.select_bookmark", ref);
 		return list;
 	}
 	

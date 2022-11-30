@@ -5,10 +5,10 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import vo.Webtoon_UserVO;
+import vo.MemberVO;
 
 @Repository
-public class Webtoon_UserDAO {
+public class MemberDAO {
 
 	SqlSession sqlSession;
 	public void setSqlSession(SqlSession sqlSession) {
@@ -22,14 +22,14 @@ public class Webtoon_UserDAO {
 	//}
 	
 	// 마이페이지에 출력될 유저의 정보 불러오기
-	public Webtoon_UserVO selectOne(String id) {
-		Webtoon_UserVO res = sqlSession.selectOne("m.mypage_selectOne", id);
+	public MemberVO selectOne(String id) {
+		MemberVO res = sqlSession.selectOne("u.mypage_selectOne", id);
 		return res;
 	}
 	
 	//개인정보 수정
-	public int update(Webtoon_UserVO vo) {
-		int res = sqlSession.update("m.mypage_update", vo);
+	public int update(MemberVO vo) {
+		int res = sqlSession.update("u.mypage_update", vo);
 		return res;
 	}
 	
