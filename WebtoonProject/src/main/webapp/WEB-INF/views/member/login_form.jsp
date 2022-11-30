@@ -2,10 +2,13 @@
     pageEncoding="UTF-8"%>    
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/webtoon/resources/css/login.css">
+<link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
 
 	<!-- Ajax사용을 위한 js를 추가 -->
 	<script src="/webtoon/resources/js/httpRequest.js"></script>
@@ -60,44 +63,29 @@
 	</script>
 </head>
 <body>
-로그인 페이지<br>
+<div class="wrapper">
 
-	<form>
-		<table border="1" align="center">
+<h2 id="login_title" style="font-family: 'Yeon Sung', cursive; font-size:60px; color:#2B2B2B;">코리아 웹툰</h2>
+	
+	<form id="login_form">
+		<table align="center" class="wrap">
 			<tr>
-				<th>ID : </th>
-				<td><input name="id"></td>
+				<td><input name="id" class="text-field"placeholder="아이디">
+				</td>
 			</tr>
 			
 			<tr>
-				<th>PWD : </th>
-				<td><input type="password" name="pwd"></td>
+				<td><input type="password" name="pwd" class="text-field"placeholder="비밀번호">
+				</td>
 			</tr>
 			
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="로그인" onclick="send(this.form);">
+					<input type="button" value="로그인" class=loginbutton onclick="send(this.form);">
 				</td>
 			</tr>
 		</table>
 	</form>
-
+</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,11 +1,8 @@
 package com.korea.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
-
-import com.korea.controller.UserDTO;
 
 import vo.UserVO;
 
@@ -43,8 +40,6 @@ public interface UserService {
 	    
 	    public boolean join_id_check(String user_id) throws Exception;    //회원가입시 아이디를 체크하는 메소드
 	    
-	    
-	    public List<UserDTO> member_profile(String user_id) throws Exception;    //회원의 프로필을 볼 수 있는 메소드
 	    
 	    
 	 
