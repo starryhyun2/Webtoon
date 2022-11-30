@@ -33,15 +33,11 @@
 			var url = "login_check.do";
 			var param = "id="+id+"&pwd="+pwd;
 			sendRequest(url, param, resultFn, "POST");
-			
-			if(prevPage ==''){
-				location.href = "mainToon.do";
-			}
-			location.href = prevPage;
+		
 		}
 		
 		function resultFn(){
-			
+			const prevPage = document.getElementById('prevPage');
 			if( xhr.readyState == 4 && xhr.status == 200 ){
 				//"{'result':'clear'}"
 				var data = xhr.responseText;
@@ -59,6 +55,7 @@
 				}
 				
 				alert("로그인 성공");
+				location.href=prevPage.value;
 			}
 			
 		}
@@ -86,7 +83,7 @@
 				</td>
 			</tr>
 		</table>
-		<input name="prevPage" type="hidden" value="${sessionScope.prevPage }"/>
+		<input id="prevPage" type="hidden" value="${sessionScope.prevPage }"/>
 	</form>
 
 </body>
