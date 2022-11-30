@@ -136,9 +136,11 @@ public class MemberController {
 			vo.setPhonenum("");
 			member_dao.sendEmail(email, sKey);
 		}
-		//로그인 정보를 세션에 저장
+		//회원가입 정보 세션 저장
 		login = request.getSession();
 		login.setAttribute("member", vo); //vo 바인딩
+		
+		//인증을 위한 KEY 세션에 저장
 		login.setAttribute("sKey", sKey);
 		return "{'result':'clear'}";
 	}
@@ -156,10 +158,12 @@ public class MemberController {
 	@ResponseBody
 	public String sKey_check(String Key) {
 		String sKey = (String) login.getAttribute("sKey");
-		System.out.println(Key);
 		if(sKey.equals(Key)) {
 			MemberVO vo = (MemberVO) login.getAttribute("member");
 			member_dao.insert(vo);
+			
+			login.removeAttribute("member");
+			login.removeAttribute("sKey");
 			return "{'result':'clear'}";
 		}
 		return "{'result':'false'}";

@@ -34,7 +34,9 @@
 			var param = "id="+id+"&pwd="+pwd;
 			sendRequest(url, param, resultFn, "POST");
 			
-			
+			if(prevPage ==''){
+				location.href = "mainToon.do";
+			}
 			location.href = prevPage;
 		}
 		

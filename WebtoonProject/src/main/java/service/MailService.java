@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 public class MailService {
 	
  
-    public static void sendmail(String email, String key) {
+    public static int sendmail(String email, String key) {
  
 
         Properties props = new Properties();
@@ -42,8 +42,10 @@ public class MailService {
 			message.setContent(content, "text/html; charset=utf-8");
 
 			Transport.send(message);
+			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return 0;
 		}
 	}
  
