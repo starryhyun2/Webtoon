@@ -65,6 +65,7 @@ public class BoardController {
 	
 	@RequestMapping( value= {"/", "list.do", "mainToon.do"})
 	public String list( Integer page, Model model ) {
+		
 
 
 		//로그인 유지를 위한 세션

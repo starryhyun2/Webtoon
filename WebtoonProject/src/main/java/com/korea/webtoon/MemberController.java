@@ -39,12 +39,15 @@ public class MemberController {
 		HttpSession login = request.getSession();
 		login.removeAttribute("id");
 		
+		
 		return "redirect:mainToon.do";
 	}
 	
 	@RequestMapping("login_form")
 	public String login_form() {
 		
+	    String referrer = request.getHeader("Referer");
+	    request.getSession().setAttribute("prevPage", referrer);
 		return Common.MEMB_PATH+"login_form.jsp";
 	}
 	
@@ -71,6 +74,8 @@ public class MemberController {
 		login = request.getSession(false);
 		login.setAttribute("id", id); //id 바인딩
 
+		//이전 페이지 바인딩 해놓은 세션 제거
+		request.getSession().removeAttribute("prevPage");
 
 		//로그인 가능
 		return "{'result':'clear'}";

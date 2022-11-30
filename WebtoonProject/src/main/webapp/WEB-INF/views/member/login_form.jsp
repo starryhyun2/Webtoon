@@ -17,6 +17,7 @@
 			
 			var id = f.id.value;
 			var pwd = f.pwd.value;
+			var prevPage = f.prevPage.value;
 			
 			if( id == '' ){
 				alert("아이디를 입력하세요");
@@ -33,6 +34,8 @@
 			var param = "id="+id+"&pwd="+pwd;
 			sendRequest(url, param, resultFn, "POST");
 			
+			
+			location.href = prevPage;
 		}
 		
 		function resultFn(){
@@ -54,7 +57,6 @@
 				}
 				
 				alert("로그인 성공");
-				location.href="mainToon.do";
 			}
 			
 		}
@@ -82,6 +84,7 @@
 				</td>
 			</tr>
 		</table>
+		<input name="prevPage" type="hidden" value="${sessionScope.prevPage }"/>
 	</form>
 
 </body>
