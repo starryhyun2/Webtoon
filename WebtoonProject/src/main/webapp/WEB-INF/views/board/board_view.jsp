@@ -15,16 +15,19 @@
 
 <script>
 	function reply_send(cb) {
-
 		const id = cb.id.value;
 		const content = cb.content.value.trim();
 		const ref = cb.ref.value;
 		//유효성 체크
 
-		if (id == '') {
-			alert("아이디는 필수입니다.");
+		if(id==null){
+			alert('로그인 한 후에 글을 쓸 수 있습니다.');
+			return;
+		}else if(id==''){
+			alert('로그인 한 후에 글을 쓸 수 있습니다.');
 			return;
 		}
+
 		if (content == '') {
 			alert("내용은 한글자 이상 넣어주세요.");
 			return;
@@ -78,7 +81,7 @@
 		<a href='mainToon.do'>코리아 웹툰</a>
 	</h1>
 
-<!-- if 문을 위해 var에 check_login 값 설정 -->
+	<!-- if 문을 위해 var에 check_login 값 설정 -->
 	<c:set var="id" value="${sessionScope.id}" />
 
 	<c:choose>
@@ -105,8 +108,8 @@
 				onclick="location.href='sign_up_form'">
 		</c:otherwise>
 	</c:choose>
-	
-	
+
+
 	<form id="ff">
 		<table border="1" align="center" width="80%">
 			<caption>
@@ -143,14 +146,12 @@
 	<form id="cb">
 		<table border="1" align="center" width="80%">
 			<tr>
-			
-				<td colspan="4">
-					<input type="text" name="id" placeholder="아이디"
-					style="width: 10%"> <input type="text" name="content"
-					placeholder="댓글 쓰기" style="width: 70%"> <input
-					type="button" value="댓글" onclick="reply_send(this.form);">
-					<input name="ref" type="hidden" value=${ vo.board_idx } />
-				</td>
+
+				<td colspan="4"><input type="text" name="id"
+					value="${sessionScope.id}" style="width: 10%" readOnly> <input
+					type="text" name="content" placeholder="댓글 쓰기" style="width: 70%">
+					<input type="button" value="댓글" onclick="reply_send(this.form);">
+					<input name="ref" type="hidden" value=${ vo.board_idx } /></td>
 
 			</tr>
 		</table>
