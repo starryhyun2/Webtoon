@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.Random;
+
 import org.apache.ibatis.session.SqlSession;
 
 import vo.MemberVO;
@@ -28,6 +30,25 @@ public class MemberDAO {
 	//개인정보 수정
 	public int update(MemberVO vo) {
 		int res = sqlSession.update("u.mypage_update", vo);
+		return res;
+	}
+
+	
+	//신원 인증용 개인 문자메시지 보내는 메서드
+	public void sendMessage(String phonenum,String key ) {
+		service.MessageService.sendMessage(phonenum, key);
+		System.out.println(key);
+	}
+	
+	//개인 이메일 보내는 메서드
+	public void sendEmail(String email,String key) {
+		service.MailService.sendmail(email,key);
+		System.out.println(key);
+	}
+	
+	//회원가입 정보를 DB에 저장하는 코드
+	public int insert(MemberVO vo) {
+		int res = sqlSession.insert("u.sign_in", vo);
 		return res;
 	}
 

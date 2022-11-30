@@ -8,183 +8,150 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판 보기</title>
 
 <!-- Ajax 사용을 위한 js를 로드 -->
 <script src="/webtoon/resources/js/httpRequest.js"></script>
 
-<script>
-	function reply_send(cb) {
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="/webtoon/resources/css/common.css">
+<link rel="stylesheet" href="/webtoon/resources/css/board.css">
 
-		const id = cb.id.value;
-		const content = cb.content.value.trim();
-		const ref = cb.ref.value;
-		//유효성 체크
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
+	rel="stylesheet">
 
-		if (id == '') {
-			alert("아이디는 필수입니다.");
-			return;
-		}
-		if (content == '') {
-			alert("내용은 한글자 이상 넣어주세요.");
-			return;
-		}
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
+	defer></script>
+<!-- 웹툰 js -->
+<script src="/webtoon/resources/js/webtoon.js" defer></script>
+<script src="/webtoon/resources/js/board.js" defer></script>
 
-		cb.action = "reply_insert.do";
-		//cb.method = "post";
-		cb.submit();
-
-	}
-
-	function del(ff) {
-
-		var board_idx = ff.board_idx.value;
-
-		if (!confirm("삭제하시겠습니까?")) {
-			return;
-		}
-
-		// 삭제를 위한 게시글을 idx를 DB로 전달
-
-		var url = "del";
-		var param = "board_idx="+board_idx;
-		sendRequest(url, param, resultFn, "post");
-
-	}
-
-	function resultFn() {
-
-		if (xhr.readyState == 4 && xhr.status == 200) {
-
-			//"no" or "yes"
-			var data = xhr.responseText;
-
-			if (data == 'no') {
-
-				alert("삭제 실패");
-				return;
-			}
-
-			alert("삭제 성공");
-			location.href = "list.do";
-
-		}
-
-	}
-</script>
 </head>
 <body>
-	<!-- if 문을 위해 var에 check_login 값 설정 -->
-	<c:set var="var" value="${ check_login }" />
-	<h1 style="width: 300px; margin: 0 auto;"><a href='mainToon.do'>코리아 웹툰</a></h1>
+	<div id="total_wrap">
 
-	<c:choose>
-		<c:when test="${var eq 'admin' }">
-			<input id="logout_btn" type="button" value="로그아웃"
-				onclick="location.href='logout.do'">
-			<input id="admin_btn" type="button" value="관리자 페이지"
-				onclick="location.href='admin_form.do'">
-		</c:when>
+		<div id="first">
+			<!-- if 문을 위해 var에 check_login 값 설정 -->
+			<!--<c:set var="var" value="${ check_login }" />-->
+			<c:set var="id" value="${sessionScope.id}" />
+			<h1 id="main_title">
+				<a href='mainToon.do'> <img
+					src="/webtoon/resources/thumbnail/korea_logo.jpg" /> <span>코리아
+						웹툰</span>
+				</a>
+			</h1>
 
-		<c:when test="${var eq 'false' }">
-			<input id="login_btn" type="button" value="로그인"
-				onclick="location.href='login_form'">
-			<input id="sign_up_btn" type="button" value="회원가입"
-				onclick="location.href='sign_up_form'">
-		</c:when>
+			<div id="header">
+				<c:choose>
+					<c:when test="${id eq 'admin' }">
+						<input id="logout_btn" type="button" value="로그아웃"
+							onclick="location.href='logout.do'">
+						<input id="admin_btn" type="button" value="관리자 페이지"
+							onclick="location.href='admin_form.do'">
+						<input id="Mypage_btn" type="button" value="My 페이지"
+							onclick="location.href='Mypage'">
+					</c:when>
 
-		<c:when test="${var eq null }">
-			<input id="login_btn" type="button" value="로그인"
-				onclick="location.href='login_form'">
-			<input id="sign_up_btn" type="button" value="회원가입"
-				onclick="location.href='sign_up_form'">
-		</c:when>
+					<c:when test="${id ne null }">
+						<input id="logout_btn" type="button" value="로그아웃"
+							onclick="location.href='logout.do'">
+						<input id="Mypage_btn" type="button" value="My 페이지"
+							onclick="location.href='Mypage'">
+					</c:when>
 
-		<c:otherwise>
+					<c:otherwise>
+						<input id="login_btn" type="button" value="로그인"
+							onclick="location.href='login_form'">
+						<input id="sign_up_btn" type="button" value="회원가입"
+							onclick="location.href='sign_up_form'">
+					</c:otherwise>
+				</c:choose>
+			</div>
 
-			<input id="logout_btn" type="button" value="로그아웃"
-				onclick="location.href='logout.do'">
-			<input id="Mypage_btn" type="button" value="My 페이지"
-				onclick="location.href='Mypage'">
-		</c:otherwise>
-	</c:choose>
-	
-	
-	<form id="ff">
-		<table border="1" align="center" width="80%">
-			<caption>
-				<h2>::: 상세보기 :::</h2>
-			</caption>
+			<!-- 상단 네비게이션 -->
+			<nav class="nav_bar">
+				<span class="nav_list">홈</span> <span class="nav_list">오늘의 웹툰</span>
+				<span class="nav_list">최신 웹툰</span>
+			</nav>
+		</div>
+		<!-- first -->
+		<hr>
 
-			<tr>
-				<td>제목</td>
-				<td>${vo.title}</td>
+		<form id="ff">
+			<table align="center" id="main_board">
+
+				<tr>
+					<td>제목</td>
+					<td>${vo.title}</td>
+				</tr>
+				<tr>
+					<td>작성자</td>
+					<td>${vo.id}</td>
+				</tr>
+				<tr>
+					<td>작성일</td>
+					<td>${vo.regdate}</td>
+				</tr>
+				<tr id="content_row">
+					<td>내용</td>
+					<td><pre>${vo.content}</pre></td>
+				</tr>
+
+			</table>
+			<div class="board_btn">
+				<input type="button" value="목록 보기" onclick="location.href='list.do'">
+				<input type="button" value="삭 제" onclick="del(this.form);">
+				<input name="board_idx" type="hidden" value=${ vo.board_idx } />
+			</div>
+		</form>
+
+		<form id="cb">
+			<table align="center" width="80%">
+				<tr>
+
+					<td colspan="4"><input type="text" name="id" placeholder="아이디"
+					value="${sessionScope.id}" readOnly> <input type="text" name="content"
+						placeholder="댓글 쓰기" style="width: 80%;"> <input
+						type="button" value="댓글" onclick="reply_send(this.form);">
+						<input name="ref" type="hidden" value=${ vo.board_idx } /></td>
+
+				</tr>
+			</table>
+		</form>
+		<table align="center" width="80%" id="reply_board">
+			<!-- 	<tr>
+				<th>번호</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>내용</th>
 			</tr>
-			<tr>
-				<td>작성자</td>
-				<td>${vo.id}</td>
-			</tr>
-			<tr>
-				<td>작성일</td>
-				<td>${vo.regdate}</td>
-			</tr>
-			<tr style="height: 400px;">
-				<td>내용</td>
-				<td><pre>${vo.content}</pre></td>
-			</tr>
+			 -->
 
-			<tr>
-				<td colspan="2"><input type="button" value="목록 보기"
-					onclick="location.href='list.do'"> <input type="button"
-					value="삭제" onclick="del(this.form);"></td>
-			</tr>
+			<c:forEach var="cb" items="${cb_list}">
+				<tr>
+					<td width="3%">${cb.comments_idx}</td>
+					<td width="10%">${cb.id}</td>
 
-		</table>
-		<input name="board_idx" type="hidden" value=${ vo.board_idx } />
-	</form>
-
-	<form id="cb">
-		<table border="1" align="center" width="80%">
-			<tr>
-			
-				<td colspan="4">
-					<input type="text" name="id" placeholder="아이디"
-					style="width: 10%"> <input type="text" name="content"
-					placeholder="댓글 쓰기" style="width: 70%"> <input
-					type="button" value="댓글" onclick="reply_send(this.form);">
-					<input name="ref" type="hidden" value=${ vo.board_idx } />
-				</td>
-
-			</tr>
-		</table>
-	</form>
-	<table border="1" align="center" width="80%">
-		<tr>
-			<th>번호</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>내용</th>
-		</tr>
-
-		<c:forEach var="cb" items="${cb_list}">
-			<tr>
-				<td>${cb.comments_idx}</td>
-				<td>${cb.id}</td>
-				<td align="center">${cb.regdate }</td>
-
-				<!-- 댓글 들여쓰기 -->
-				<td><c:if test="${cb.del_info eq 0}">
+					<!-- 댓글 들여쓰기 -->
+					<td><c:if test="${cb.del_info eq 0}">
 					${cb.content}
 				</c:if> <c:if test="${cb.del_info ne 0}">
 
-						<font>${cb.content}</font>
+							<font>${cb.content}</font>
 
-					</c:if></td>
+						</c:if></td>
 
-			</tr>
-		</c:forEach>
+					<td width="20%">${cb.regdate }</td>
+				</tr>
+			</c:forEach>
 
-	</table>
-
+		</table>
+	</div>
 </body>
 </html>

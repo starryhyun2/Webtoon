@@ -33,7 +33,13 @@ public class MyPageController {
 	@RequestMapping("Mypage")					// 로그인 페이지에서 '로그인' 버튼을 누르면 마이페이지로 이동
 	public String loginTest(Model model) {						// 로그인 페이지에서 입력한 값을 vo에 넣어 저장(지금은 로그인이 없기 때문에 넘겨받는 값이 없다.)
 		
-		String id = "WooSeokKing";								// 샘플데이터에 있는 id값을 임의로 저장
+		String id ="false";
+		HttpSession login = request.getSession(false);
+		//id_now가 null값이 아니라면, 모델에 바인딩 해서 전송
+		if(login != null) {
+			String binding_tmp = (String)login.getAttribute("id");
+			id=binding_tmp;
+		}
 		
 		MemberVO user = member_dao.selectOne(id);			// 저장된 id값으로 db에 저장되어있는 user정보 한개 반환
 			

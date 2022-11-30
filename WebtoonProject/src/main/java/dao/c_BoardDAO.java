@@ -34,5 +34,11 @@ public class c_BoardDAO {
 		
 	}
 	
+	public int delete(int ref) {
+		int res = sqlSession.delete("cb.deleteByRef", ref);
+		
+		return res;
+	}
+	
 
 }

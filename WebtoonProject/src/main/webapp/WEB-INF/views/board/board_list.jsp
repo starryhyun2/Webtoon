@@ -7,6 +7,24 @@
 <!DOCTYPE html>
 <html>
 
+
+<script>
+	function send(id){
+		if(id==null){
+			alert('로그인 한 후에 글을 쓸 수 있습니다.');
+			return;
+		}else if(id==''){
+			alert('로그인 한 후에 글을 쓸 수 있습니다.');
+			return;
+		}
+		location.href='insert_form.do';
+		
+	}
+</script>
+<head>
+<meta charset="UTF-8">
+<title>코리아 웹툰</title>
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
@@ -14,24 +32,30 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
-<head>
-<meta charset="UTF-8">
-<title>코리아 웹툰</title>
-
+<link rel="stylesheet" href="/webtoon/resources/css/common.css">
 <link rel="stylesheet" href="/webtoon/resources/css/webtoon.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
 	rel="stylesheet">
+	
+	<!-- 부트스트랩 JS -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+			crossorigin="anonymous"  defer></script>
+
+		<!-- Swiper JS -->
+		<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"  defer></script>
+		<!-- 웹툰 js -->
+		<script src="/webtoon/resources/js/webtoon.js"  defer></script>
 
 </head>
 <body>
 	<div id="total_wrap">
 
 		<div id="first">
-			<!-- if 문을 위해 var에 check_login 값 설정 -->
-			<c:set var="var" value="${ check_login }" />
 			<h1 id="main_title">
 				<a href='mainToon.do'> <img
 					src="/webtoon/resources/thumbnail/korea_logo.jpg" /> <span>코리아
@@ -40,35 +64,31 @@
 			</h1>
 
 			<div id="header">
+				<!-- if 문을 위해 var에 check_login 값 설정 -->
+				<c:set var="id" value="${sessionScope.id}" />
+
 				<c:choose>
-					<c:when test="${var eq 'admin' }">
+					<c:when test="${id eq 'admin' }">
 						<input id="logout_btn" type="button" value="로그아웃"
 							onclick="location.href='logout.do'">
 						<input id="admin_btn" type="button" value="관리자 페이지"
 							onclick="location.href='admin_form.do'">
+						<input id="Mypage_btn" type="button" value="My 페이지"
+							onclick="location.href='Mypage'">
 					</c:when>
 
-					<c:when test="${var eq 'false' }">
-						<input id="login_btn" type="button" value="로그인"
-							onclick="location.href='login_form'">
-						<input id="sign_up_btn" type="button" value="회원가입"
-							onclick="location.href='sign_up_form'">
-					</c:when>
-
-					<c:when test="${var eq null }">
-						<input id="login_btn" type="button" value="로그인"
-							onclick="location.href='login_form'">
-						<input id="sign_up_btn" type="button" value="회원가입"
-							onclick="location.href='sign_up_form'">
-					</c:when>
-
-					<c:otherwise>
-						<h4 style="font-size: 1.2em; padding: 20px;">안녕하세요.
-							${sessionScope.id } 님</h4>
+					<c:when test="${id ne null }">
 						<input id="logout_btn" type="button" value="로그아웃"
 							onclick="location.href='logout.do'">
 						<input id="Mypage_btn" type="button" value="My 페이지"
 							onclick="location.href='Mypage'">
+					</c:when>
+
+					<c:otherwise>
+						<input id="login_btn" type="button" value="로그인"
+							onclick="location.href='login_form'">
+						<input id="sign_up_btn" type="button" value="회원가입"
+							onclick="location.href='sign_up_form'">
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -330,24 +350,15 @@
 				</td>
 				<td colspan="1" align="right"><input type="button"
 					style="background-color: #99d280; border: 0px; padding: 10px; border-radius: 8px; font-weight: bold;"
-					value="새 글 쓰기" onclick="location.href='insert_form.do'" /></td>
+					value="새 글 쓰기" onclick="send('${sessionScope.id}')" /></td>
+					
 			</tr>
 
 		</table>
-		
-		</div>
+
+	</div>
 	<!-- total_wrap -->
-		<!-- 부트스트랩 JS -->
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-			crossorigin="anonymous"></script>
-
-		<!-- Swiper JS -->
-		<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-		<!-- 웹툰 js -->
-		<script src="/webtoon/resources/js/webtoon.js"></script>
-
 	
+
 </body>
 </html>

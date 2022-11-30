@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/webtoon/resources/css/loginForm.css">
 
+
 	<!-- Ajax사용을 위한 js를 추가 -->
 	<script src="/webtoon/resources/js/httpRequest.js"></script>
 
@@ -16,6 +17,7 @@
 			
 			var id = f.id.value;
 			var pwd = f.pwd.value;
+			var prevPage = f.prevPage.value;
 			
 			if( id == '' ){
 				alert("아이디를 입력하세요");
@@ -32,6 +34,8 @@
 			var param = "id="+id+"&pwd="+pwd;
 			sendRequest(url, param, resultFn, "POST");
 			
+			
+			location.href = prevPage;
 		}
 		
 		function resultFn(){
@@ -53,7 +57,6 @@
 				}
 				
 				alert("로그인 성공");
-				location.href="mainToon.do";
 			}
 			
 		}
@@ -81,6 +84,7 @@
 				</td>
 			</tr>
 		</table>
+		<input name="prevPage" type="hidden" value="${sessionScope.prevPage }"/>
 	</form>
 
 </body>

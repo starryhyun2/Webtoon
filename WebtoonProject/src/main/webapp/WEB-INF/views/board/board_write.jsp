@@ -1,112 +1,107 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판 글쓰기</title>
 
-	<script>
-		function send_check(f){
-			
-			var title = f.title.value;
-			var id = f.id.value;
-			var content = f.content.value.trim();
-			var pwd = f.pwd.value.trim();
-			
-			
-			//유효성 체크
-			if( title == ''){
-				alert("제목은 필수입니다.");
-				return;
-			}
-			if(id == ''){
-				alert("이름은 필수입니다.");
-				return;
-			}
-			if( content == ''){
-				alert("내용은 한글자 이상 넣어주세요.")
-				return;
-			}
-			if( pwd == ''){
-				alert("비밀번호는 필수입니다.")
-				return;
-			}
-			
-			f.action = "insert.do";
-			f.method = "post";
-			f.submit();
-			
-		}
-	
-	</script>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="/webtoon/resources/css/common.css">
+<link rel="stylesheet" href="/webtoon/resources/css/board.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
+	rel="stylesheet">
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
+	defer></script>
+<!-- 웹툰 js -->
+<script src="/webtoon/resources/js/webtoon.js" defer></script>
+<script src="/webtoon/resources/js/board.js" defer></script>
+
 </head>
 <body>
 
-	<!-- if 문을 위해 var에 check_login 값 설정 -->
-	<c:set var="var" value="${ check_login }" />
-	<h1 style="width: 300px; margin: 0 auto;"><a href='mainToon.do'>코리아 웹툰</a></h1>
+	<div id="total_wrap">
 
-	<c:choose>
-		<c:when test="${var eq 'admin' }">
+		<div id="first">
+			<!-- if 문을 위해 var에 check_login 값 설정 -->
+			<c:set var="id" value="${sessionScope.id}" />
+			<h1 id="main_title">
+				<a href='mainToon.do'> <img
+					src="/webtoon/resources/thumbnail/korea_logo.jpg" /> <span>코리아
+						웹툰</span>
+				</a>
+			</h1>
+
+			<div id="header">
+				<c:choose>
+		<c:when test="${id eq 'admin' }">
 			<input id="logout_btn" type="button" value="로그아웃"
 				onclick="location.href='logout.do'">
 			<input id="admin_btn" type="button" value="관리자 페이지"
 				onclick="location.href='admin_form.do'">
+			<input id="Mypage_btn" type="button" value="My 페이지"
+				onclick="location.href='Mypage'">
 		</c:when>
 
-		<c:when test="${var eq 'false' }">
-			<input id="login_btn" type="button" value="로그인"
-				onclick="location.href='login_form'">
-			<input id="sign_up_btn" type="button" value="회원가입"
-				onclick="location.href='sign_up_form'">
-		</c:when>
-
-		<c:when test="${var eq null }">
-			<input id="login_btn" type="button" value="로그인"
-				onclick="location.href='login_form'">
-			<input id="sign_up_btn" type="button" value="회원가입"
-				onclick="location.href='sign_up_form'">
-		</c:when>
-
-		<c:otherwise>
-
+		<c:when test="${id ne null }">
 			<input id="logout_btn" type="button" value="로그아웃"
 				onclick="location.href='logout.do'">
 			<input id="Mypage_btn" type="button" value="My 페이지"
 				onclick="location.href='Mypage'">
+		</c:when>
+
+		<c:otherwise>
+			<input id="login_btn" type="button" value="로그인"
+				onclick="location.href='login_form'">
+			<input id="sign_up_btn" type="button" value="회원가입"
+				onclick="location.href='sign_up_form'">
 		</c:otherwise>
 	</c:choose>
-	<form>
-		<table border="1" align="center">
-			<tr>
-				<th>제목</th>
-				<td><input name="title"></td>
-			</tr>
-			<tr>
-				<th>아이디</th>
-				<td><input name="id"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td>
-					<textarea name="content" rows="10" cols="60">
-					</textarea>
-				</td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="pwd"></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-				<input type="button" value="등록하기" onclick="send_check(this.form)">
-				<input type="button" value="취소" onclick="location.href="list.do">
-				</td>
-			</tr>
-		</table>
-	</form>
+			</div>
 
+			<!-- 상단 네비게이션 -->
+			<nav class="nav_bar">
+				<span class="nav_list">홈</span> <span class="nav_list">오늘의 웹툰</span>
+				<span class="nav_list">최신 웹툰</span>
+			</nav>
+		</div>
+		<!-- first -->
+		<hr>
+		<h3 style="text-align:center; margin:20px 0;">새 글 쓰기</h3>
+		<form>
+			<table align="center" id="board_write">
+				<tr>
+					<th>제목</th>
+					<td><input name="title"  style="width:100%;"></td>
+				</tr>
+				<tr>
+					<th>아이디</th>
+					<td><input name="id" value="${sessionScope.id}" readOnly style="width:30%;"></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><textarea name="content" rows="10" cols="100" style="width:100%;">
+					</textarea></td>
+				</tr>
+				
+				</table><div class="board_btn">
+					<input type="button" value="등록하기"
+						onclick="send_check(this.form)"> <input type="button"
+						value="취소" onclick="location.href="list.do"></div>
+				
+			
+		</form>
+
+	</div>
 </body>
 </html>
