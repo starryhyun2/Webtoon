@@ -22,9 +22,7 @@ public class ScoreController {
 	public String giveScore(ScoreVO score_vo) {
 		
 		//검색을 위한 id 확인
-		String id = score_vo.getId();
-		
-		ScoreVO base_score_vo = score_dao.findById(id);
+		ScoreVO base_score_vo = score_dao.findByIdEpiId(score_vo);
 		
 		//만약 별점을 처음 주었다면 그대로 반환
 		if( base_score_vo == null ) {

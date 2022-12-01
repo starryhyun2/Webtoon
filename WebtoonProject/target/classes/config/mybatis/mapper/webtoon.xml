@@ -51,15 +51,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where ref=#{ref}
 	</update>
 	
-	<!-- 최종계산을 위한 readhit 업데이트 -->
-	<update id="updateScoreReadhit">
-		update Episode set readhit = readhit + 1
-		where episode_idx=#{episode_idx}
-	</update>
-	
 	<!-- 별점 업데이트 -->
 	<update id="updateScore">
-		update Episode set score = #{score}, totalscore =#{totalscore}
+		update Episode set score = #{score}, totalscore =#{totalscore}, readhit=#{readhit}
 		where episode_idx=#{episode_idx}
 	</update>
 </mapper>

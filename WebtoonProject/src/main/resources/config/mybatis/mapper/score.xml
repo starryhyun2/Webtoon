@@ -14,9 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<!-- 별점 추가를 위해 유저를 검색 -->
-	<select id="findById" resultType="score" parameterType="String">
+	<select id="findByIdEpiId" resultType="score" parameterType="score">
 		select * from Score
-		where id=#{id}
+		where id=#{id} AND episode_idx =#{episode_idx}
 	</select>
 
 	<update id="updateScore" parameterType="score">

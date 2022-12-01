@@ -19,14 +19,13 @@ public class ScoreDAO {
 		int episode_idx = score_vo.getEpisode_idx();
 		int scoreNum = score_vo.getScore();
 		
-		//평점 계산을 위한 readhit 업데이트
-		int res = sqlSession.update("w.updateScoreReadhit", episode_idx);
 		
 		//해당 회차의 에피소드 찾기
 		EpisodeVO vo =sqlSession.selectOne("w.find_epi",episode_idx);
 		
 		//에피소드 평점 계산
-		double readhit = vo.getReadhit();
+		int readhit = vo.getReadhit();
+		readhit+=1;
 		double totalscore = vo.getTotalscore();
 		totalscore += scoreNum;
 		double middlescore = totalscore/readhit;
@@ -35,7 +34,8 @@ public class ScoreDAO {
 		middlescore = Math.round(middlescore*10)/10.0;
 		vo.setScore(middlescore);
 		vo.setTotalscore(totalscore);
-		res = sqlSession.update("w.updateScore",vo);
+		vo.setReadhit(readhit);
+		int res = sqlSession.update("w.updateScore",vo);
 		
 		//StoreScoreUser
 		res = sqlSession.insert("ssu.insertssu", score_vo);
@@ -43,8 +43,8 @@ public class ScoreDAO {
 		return res;
 	}
 	
-	public ScoreVO findById(String id) {
-		ScoreVO vo = sqlSession.selectOne("ssu.findById", id);
+	public ScoreVO findByIdEpiId(ScoreVO score_vo) {
+		ScoreVO vo = sqlSession.selectOne("ssu.findByIdEpiId", score_vo);
 		return vo;
 	}
 	
