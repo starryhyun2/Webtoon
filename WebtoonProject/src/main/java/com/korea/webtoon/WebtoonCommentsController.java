@@ -41,4 +41,6 @@ public class WebtoonCommentsController {
 		webtoonCommentsDAO.delete(vo);
 		return "redirect:Epi?episode_idx="+epi;
 	}
+	
+	//댓글 좋아요 기능 
 }

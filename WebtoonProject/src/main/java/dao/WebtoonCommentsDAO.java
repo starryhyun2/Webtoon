@@ -24,7 +24,6 @@ public class WebtoonCommentsDAO {
 	}
 	
 	// 새 글 작성
-	
 	public int insert(WebtoonCommentsVO vo) {
 		
 		int res = sqlSession.insert("wc.wc_insert" , vo);
@@ -38,6 +37,7 @@ public class WebtoonCommentsDAO {
 		return res;
 	}
 	
+	//웹툰 댓글 삭제
 	public int delete(WebtoonCommentsVO vo) {
 		int res = sqlSession.delete("wc.deleteByidx", vo);
 		return res;
