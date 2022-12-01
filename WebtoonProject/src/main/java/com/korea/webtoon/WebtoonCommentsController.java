@@ -27,4 +27,18 @@ public class WebtoonCommentsController {
 		
 	}
 	
+	//웹툰 댓글 수정 코드
+	@RequestMapping("modify_wc.do")
+	public String modify_wc(WebtoonCommentsVO vo) {
+		webtoonCommentsDAO.update(vo);
+		return "redirect:Epi?episode_idx="+vo.getEpisode_idx();
+	}
+	
+	//웹툰 댓글 삭제 코드
+	@RequestMapping("del_wc.do")
+	public String del_wc(WebtoonCommentsVO vo) {
+		int epi = vo.getEpisode_idx();
+		webtoonCommentsDAO.delete(vo);
+		return "redirect:Epi?episode_idx="+epi;
+	}
 }

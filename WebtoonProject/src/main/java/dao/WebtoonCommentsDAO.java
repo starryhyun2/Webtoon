@@ -32,9 +32,14 @@ public class WebtoonCommentsDAO {
 		
 	}
 	
-	public int delete(int ref) {
-		int res = sqlSession.delete("wc.deleteByRef", ref);
-		
+	//웹툰 댓글 수정
+	public int update(WebtoonCommentsVO vo) {
+		int res = sqlSession.insert("wc.wc_update" , vo);
+		return res;
+	}
+	
+	public int delete(WebtoonCommentsVO vo) {
+		int res = sqlSession.delete("wc.deleteByidx", vo);
 		return res;
 	}
 	

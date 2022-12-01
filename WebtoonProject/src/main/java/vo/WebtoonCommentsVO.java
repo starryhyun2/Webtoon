@@ -28,17 +28,18 @@ public class WebtoonCommentsVO {
 	public void setEpisode_idx(int episode_idx) {
 		this.episode_idx = episode_idx;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	
 }

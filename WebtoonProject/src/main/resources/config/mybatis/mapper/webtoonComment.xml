@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where episode_idx= #{episode_idx}
 	</select>
 
-	<insert id="wc_insert" parameterType="c_board">
+	<insert id="wc_insert" parameterType="wc">
 
 		insert into WebtoonComments values(
 		seq_w_comments_idx.nextVal,
@@ -20,8 +20,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{episode_idx},
 		#{id}
 		)
-
 	</insert>
+	
+	<!-- 웹툰 수정  -->
+	<update id="wc_update" parameterType="wc">
+		update WebtoonComments set content=#{content}
+		where comments_idx=#{comments_idx}
+	</update>
+	
+	<!-- 웹툰 삭제 -->
+	<delete id="deleteByidx" parameterType="wc">
+		DELETE from WebtoonComments 
+		WHERE comments_idx= #{comments_idx}
+	</delete>
 </mapper>
 
 
