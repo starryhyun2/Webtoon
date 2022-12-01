@@ -6,8 +6,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class EpisodeVO {
 	int episode_idx,ref,score, step, readhit;
-	String episodename,path,regdate;
+	String episodename,path,regdate,filename;
 	
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	//사진을 받기위한 File 변수 선언
 	private List<MultipartFile> photo;
 	private MultipartFile thumbnail;

@@ -39,7 +39,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			5,  
 			sysdate, 
 			1, 
-			0
+			0,
+			#{filename}
 		)
 	</insert>
 	

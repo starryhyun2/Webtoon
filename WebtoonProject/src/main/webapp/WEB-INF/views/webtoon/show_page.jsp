@@ -84,7 +84,7 @@
 
 
 		<ul class="webtoon_info">
-			<li><a href='addEpi_form?episode_idx=${ vo.webtoon_idx }'
+			<li><a href='addEpi_form?episode_idx=${ vo.webtoon_idx }&path=${ vo.epipath }'
 				style="font-weight: bold">회차 추가</a></li>
 
 			<li>작가 : <span>${ vo.author }</span></li>
@@ -120,7 +120,7 @@
 				<c:forEach var="epi" items="${ epi }">
 
 					<tr>
-						<td><img src="resources/upload/${ vo.filename }" /></td>
+						<td><img src="resources/${ epi.path }/thumbnail/${ epi.filename }" /></td>
 						<td><a href="Epi?episode_idx=${ epi.episode_idx }">${ epi.episodename }</a>
 						</td>
 
@@ -133,7 +133,8 @@
 			</tbody>
 		</table>
 	</div>
-	</div>
+	
+
 	<!-- total_wrap -->
 
 	<!-- Swiper JS -->

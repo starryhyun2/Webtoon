@@ -4,8 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <title>${ epi.episodename }</title>
+
+
 <script>
 	function reply_send(wc) {
 		const id = wc.id.value;
@@ -73,6 +75,9 @@
 
 	</c:forEach>
 
+
+
+<a href="#" onClick="javascript:window.scrollTo(0,0)">맨 위로</a>
 	<table border="1" align="center" width="80%">
 		<tr>
 			<th>번호</th>
