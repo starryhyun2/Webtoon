@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta charset="UTF-8" name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <title>${ epi.episodename }</title>
 
-
+<!-- Ajax사용을 위한 js를 추가 -->
+<script src="/webtoon/resources/js/httpRequest.js"></script>
 <script>
 	function reply_send(wc) {
 		const id = wc.id.value;
@@ -32,6 +34,33 @@
 		//cb.method = "post";
 		wc.submit();
 
+	}
+
+	function giveScore(f) {
+		var scoreNum = f.scoreNum.value;
+		var episode_idx = f.episode_idx.value;
+		
+		//Ajax로 ID와 PWD를 전달
+		var url = "giveScore.do";
+		var param = "scoreNum=" + scoreNum +"&episode_idx=" +episode_idx;
+		sendRequest(url, param, resultFn, "POST");
+		
+	}
+	function resultFn() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			//"{'result':'clear'}"
+			var data = xhr.responseText;
+			//서버에서 넘어온 데이터를 실제 JSON형식으로 변환
+			var json = (new Function('return'+data))();
+			if (json.result == 'no_id') {
+				alert("아이디가 존재하지 않습니다");
+				return;
+			} else if (json.result == 'no_pwd') {
+				alert("비밀번호 불일치");
+				return;
+			}
+			return;
+		}
 	}
 </script>
 </head>
@@ -75,9 +104,19 @@
 
 	</c:forEach>
 
+	<form>
+		<input type="button" value="별점주기" onclick="giveScore(this.form);" /> 
+		<select name="scoreNum" size="1">
+			<option selected>5</option>
+			<option>4</option>
+			<option>3</option>
+			<option>2</option>
+			<option>1</option>
+		</select>
+		<input name="episode_idx" type="hidden" value=${ epi.episode_idx } />
+	</form>
 
-
-<a href="#" onClick="javascript:window.scrollTo(0,0)">맨 위로</a>
+	<a href="#" onClick="javascript:window.scrollTo(0,0)">맨 위로</a>
 	<table border="1" align="center" width="80%">
 		<tr>
 			<th>번호</th>

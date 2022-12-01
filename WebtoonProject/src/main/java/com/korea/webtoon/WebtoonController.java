@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -178,7 +179,18 @@ public class WebtoonController {
 
 		return "redirect:show?idx="+ref;
 	}
-
+	
+	
+	//별점 주기 기능을 위한 메서드
+	@RequestMapping("giveScore.do")
+	@ResponseBody
+	public String giveScore(String scoreNum, int episode_idx) {
+		
+		int score = Integer.parseInt(scoreNum);
+		webtoon_DAO.updateScore(score, episode_idx);
+		return "{'result':'clear'}";
+		
+	}
 
 
 

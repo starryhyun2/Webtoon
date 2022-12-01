@@ -5,9 +5,16 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class EpisodeVO {
-	int episode_idx,ref,score, step, readhit;
+	int episode_idx,ref, step, readhit;
+	double score, totalscore;
 	String episodename,path,regdate,filename;
 	
+	public double getTotalscore() {
+		return totalscore;
+	}
+	public void setTotalscore(double totalscore) {
+		this.totalscore = totalscore;
+	}
 	public String getFilename() {
 		return filename;
 	}
@@ -43,10 +50,10 @@ public class EpisodeVO {
 	public void setRef(int ref) {
 		this.ref = ref;
 	}
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(int score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 	public int getStep() {

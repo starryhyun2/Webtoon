@@ -125,7 +125,7 @@
 					<datalist id="user_email_address">
 						<option value="naver.com"></option>
 						<option value="daum.com"></option>
-						<option value="google.com"></option>
+						<option value="gmail.com"></option>
 						<option value="직접입력"></option>
 					</datalist> <input type="hidden" name="email" value=""></td>
 			</tr>
