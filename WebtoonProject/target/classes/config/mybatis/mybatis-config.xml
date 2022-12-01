@@ -19,6 +19,8 @@
 
 		<typeAlias type="vo.MemberVO" alias="member"/>
 		
+		<typeAlias type="vo.WebtoonCommentsVO" alias="wc"/>
+		
 	</typeAliases>
 	
 	
@@ -28,6 +30,7 @@
 		<mapper resource="config/mybatis/mapper/mainToon.xml" />
 		<mapper resource="config/mybatis/mapper/c_board.xml" />
 		<mapper resource="config/mybatis/mapper/user.xml"/>
+		<mapper resource="config/mybatis/mapper/webtoonComment.xml"/>
 	</mappers>
 	
 	

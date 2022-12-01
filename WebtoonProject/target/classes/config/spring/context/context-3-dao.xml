@@ -26,5 +26,10 @@
 	<bean id="member_daoBean" class="dao.MemberDAO">
 		<property name="sqlSession" ref="sqlSessionBean"/>
 	</bean>
+	
+	<bean id="webtoonComments_daoBean" class="dao.WebtoonCommentsDAO">
+		<property name="sqlSession" ref="sqlSessionBean"/>
+	</bean>
+
 
 </beans>

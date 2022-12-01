@@ -166,6 +166,7 @@
 			<version>2.2</version>
 		</dependency>
 
+		<!-- 메일 발송을 위한 의존성 -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>

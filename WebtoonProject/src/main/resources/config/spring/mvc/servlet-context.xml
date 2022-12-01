@@ -34,6 +34,7 @@
 	<!-- 컨트롤러의 수동생성 -->
 	<beans:bean class="com.korea.webtoon.WebtoonController">
 		<beans:property name="webtoon_DAO" ref="webtoon_daoBean" />
+		<beans:property name="webtoonCommentsDAO" ref="webtoonComments_daoBean"/>
 	</beans:bean>
 
   	<beans:bean class="com.korea.webtoon.BoardController">
@@ -50,6 +51,10 @@
 	
 	<beans:bean class="com.korea.webtoon.MyPageController">
 		<beans:property name="member_dao" ref="member_daoBean"/> 
+	</beans:bean>
+	
+	<beans:bean class="com.korea.webtoon.WebtoonCommentsController">
+		<beans:property name="webtoonCommentsDAO" ref="webtoonComments_daoBean"/>
 	</beans:bean>
 </beans:beans>
 

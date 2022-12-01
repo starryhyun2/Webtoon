@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>	
 	
 		
-	<!-- 새 글 작성 -->
+	<!-- 댓글 작성 -->
 	<insert id="c_board_insert" parameterType="c_board">
 	
 		insert into BoardComments values(
