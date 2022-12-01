@@ -21,6 +21,8 @@
 		
 		<typeAlias type="vo.WebtoonCommentsVO" alias="wc"/>
 		
+		<typeAlias type="vo.ScoreVO" alias="score"/>
+		
 	</typeAliases>
 	
 	
@@ -31,6 +33,7 @@
 		<mapper resource="config/mybatis/mapper/c_board.xml" />
 		<mapper resource="config/mybatis/mapper/user.xml"/>
 		<mapper resource="config/mybatis/mapper/webtoonComment.xml"/>
+		<mapper resource="config/mybatis/mapper/score.xml"/>
 	</mappers>
 	
 	

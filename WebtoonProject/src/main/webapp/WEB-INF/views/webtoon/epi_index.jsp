@@ -37,12 +37,21 @@
 	}
 
 	function giveScore(f) {
-		var scoreNum = f.scoreNum.value;
+		var score = f.score.value;
 		var episode_idx = f.episode_idx.value;
+		var id = f.id.value;
+		
+		if (id == null) {
+			alert('로그인 한 후에 별점을 줄 수 있습니다.');
+			return;
+		} else if (id == '') {
+			alert('로그인 한 후에 별점을 줄 수 있습니다.');
+			return;
+		}
 		
 		//Ajax로 ID와 PWD를 전달
 		var url = "giveScore.do";
-		var param = "scoreNum=" + scoreNum +"&episode_idx=" +episode_idx;
+		var param = "score=" + score +"&episode_idx=" +episode_idx + "&id="+id;
 		sendRequest(url, param, resultFn, "POST");
 		
 	}
@@ -52,13 +61,11 @@
 			var data = xhr.responseText;
 			//서버에서 넘어온 데이터를 실제 JSON형식으로 변환
 			var json = (new Function('return'+data))();
-			if (json.result == 'no_id') {
-				alert("아이디가 존재하지 않습니다");
+			if (json.result == 'already_id') {
+				alert("별점을 수정했습니다.");
 				return;
-			} else if (json.result == 'no_pwd') {
-				alert("비밀번호 불일치");
-				return;
-			}
+			} 
+			alert("별점을 주었습니다!");
 			return;
 		}
 	}
@@ -106,14 +113,16 @@
 
 	<form>
 		<input type="button" value="별점주기" onclick="giveScore(this.form);" /> 
-		<select name="scoreNum" size="1">
+		<select name="score" size="1">
 			<option selected>5</option>
 			<option>4</option>
 			<option>3</option>
 			<option>2</option>
 			<option>1</option>
 		</select>
-		<input name="episode_idx" type="hidden" value=${ epi.episode_idx } />
+		<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
+		<input name="id" type="hidden" value="${sessionScope.id}" />
+		
 	</form>
 
 	<a href="#" onClick="javascript:window.scrollTo(0,0)">맨 위로</a>

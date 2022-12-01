@@ -14,22 +14,25 @@
 		<constructor-arg name="sqlSession"
 			ref="sqlSessionBean" />
 	</bean>
-	
+
 	<bean id="c_board_daoBean" class="dao.c_BoardDAO">
-		<property name="sqlSession" ref="sqlSessionBean"/>
-	</bean>
-	
-	<bean id="mainToon_daoBean" class="dao.mainToonDAO">
-		<property name="sqlSession" ref="sqlSessionBean"/>
-	</bean>
-	
-	<bean id="member_daoBean" class="dao.MemberDAO">
-		<property name="sqlSession" ref="sqlSessionBean"/>
-	</bean>
-	
-	<bean id="webtoonComments_daoBean" class="dao.WebtoonCommentsDAO">
-		<property name="sqlSession" ref="sqlSessionBean"/>
+		<property name="sqlSession" ref="sqlSessionBean" />
 	</bean>
 
+	<bean id="mainToon_daoBean" class="dao.mainToonDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
+
+	<bean id="member_daoBean" class="dao.MemberDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
+
+	<bean id="webtoonComments_daoBean" class="dao.WebtoonCommentsDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
+
+	<bean id="score_daoBean" class="dao.ScoreDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
 
 </beans>

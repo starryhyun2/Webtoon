@@ -181,16 +181,6 @@ public class WebtoonController {
 	}
 	
 	
-	//별점 주기 기능을 위한 메서드
-	@RequestMapping("giveScore.do")
-	@ResponseBody
-	public String giveScore(String scoreNum, int episode_idx) {
-		
-		int score = Integer.parseInt(scoreNum);
-		webtoon_DAO.updateScore(score, episode_idx);
-		return "{'result':'clear'}";
-		
-	}
 
 
 

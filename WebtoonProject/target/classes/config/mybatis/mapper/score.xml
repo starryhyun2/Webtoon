@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssu">
+
+	<!-- 별점 삭제를 위한 -->
+	<insert id="insertssu" parameterType="score">
+		insert into Score values(
+		#{episode_idx},
+		#{id},
+		#{score}
+		)
+	</insert>
+
+	<!-- 별점 추가를 위해 유저를 검색 -->
+	<select id="findById" resultType="score" parameterType="String">
+		select * from Score
+		where id=#{id}
+	</select>
+
+	<update id="updateScore" parameterType="score">
+		update Score set score=#{score}
+		where id=#{id}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

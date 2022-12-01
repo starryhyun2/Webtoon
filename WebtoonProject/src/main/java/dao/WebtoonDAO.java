@@ -57,27 +57,4 @@ public class WebtoonDAO {
 		return res;
 	}
 	
-	//웹툰 회차 별점 업데이트
-	public int updateScore(int scoreNum, int episode_idx) {
-		
-		//평점 계산을 위한 readhit 업데이트
-		int res = sqlSession.update("w.updateScoreReadhit", episode_idx);
-		
-		//해당 회차의 에피소드 찾기
-		EpisodeVO vo =sqlSession.selectOne("w.find_epi",episode_idx);
-		
-		//에피소드 평점 계산
-		double readhit = vo.getReadhit();
-		double totalscore = vo.getTotalscore();
-		totalscore += scoreNum;
-		double middlescore = totalscore/readhit;
-		
-		//Math.round 를 사용하여 언제나 소수점  1자리까지만 저장함
-		middlescore = Math.round(middlescore*10)/10.0;
-		vo.setScore(middlescore);
-		vo.setTotalscore(totalscore);
-		res = sqlSession.update("w.updateScore",vo);
-		
-		return res;
-	}
 }
