@@ -22,6 +22,8 @@ public class WebtoonCommentsController {
 		
 		//나중에 IP 추가를 위한 코드
 		//vo.setIp( request.getRemoteAddr());
+		int episode_idx = vo.getEpisode_idx();
+		webtoonCommentsDAO.update_step(episode_idx);
 		webtoonCommentsDAO.insert(vo);
 		return "redirect:Epi?episode_idx="+vo.getEpisode_idx();
 		

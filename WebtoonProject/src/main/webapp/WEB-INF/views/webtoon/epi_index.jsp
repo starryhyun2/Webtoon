@@ -84,7 +84,7 @@
 		<c:forEach var="wc" items="${wc_list}" varStatus="i">
 			<tr>
 			<form>
-				<td>${wc.comments_idx}</td>
+				<td>${wc.step}</td>
 				<td>${wc.id}</td>
 
 				<!-- 댓글 들여쓰기 -->

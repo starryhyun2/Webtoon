@@ -15,12 +15,17 @@ public class WebtoonCommentsDAO {
 	}
 	
 	//전체 게시물 조회
-	
 	public List<WebtoonCommentsVO> selectList(int episode_idx){
 		
 		List<WebtoonCommentsVO> wc_list = sqlSession.selectList("wc.wc_list",episode_idx);	
 		return wc_list;
 		
+	}
+	
+	//웹툰 댓글 step 추가
+	public int update_step(int episode_idx) {
+		int res = sqlSession.update("wc.update_step", episode_idx);
+		return res;
 	}
 	
 	// 새 글 작성
@@ -42,6 +47,7 @@ public class WebtoonCommentsDAO {
 		int res = sqlSession.delete("wc.deleteByidx", vo);
 		return res;
 	}
+	
 	
 
 }

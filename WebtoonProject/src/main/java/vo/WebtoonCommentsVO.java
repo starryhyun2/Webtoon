@@ -2,25 +2,24 @@ package vo;
 
 public class WebtoonCommentsVO {
 
-	int comments_idx,step, depth, episode_idx; 
-	String content, id;
-	public int getComments_idx() {
-		return comments_idx;
-	}
-	public void setComments_idx(int comments_idx) {
-		this.comments_idx = comments_idx;
-	}
+	int comments_idx, love, episode_idx, step; 
 	public int getStep() {
 		return step;
 	}
 	public void setStep(int step) {
 		this.step = step;
 	}
-	public int getDepth() {
-		return depth;
+	public int getComments_idx() {
+		return comments_idx;
 	}
-	public void setDepth(int depth) {
-		this.depth = depth;
+	public void setComments_idx(int comments_idx) {
+		this.comments_idx = comments_idx;
+	}
+	public int getLove() {
+		return love;
+	}
+	public void setLove(int love) {
+		this.love = love;
 	}
 	public int getEpisode_idx() {
 		return episode_idx;
@@ -40,6 +39,9 @@ public class WebtoonCommentsVO {
 	public void setId(String id) {
 		this.id = id;
 	}
+	String content, id;
+	
+	
 	
 	
 }
