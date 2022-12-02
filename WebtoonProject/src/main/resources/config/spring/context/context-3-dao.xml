@@ -34,5 +34,9 @@
 	<bean id="score_daoBean" class="dao.ScoreDAO">
 		<property name="sqlSession" ref="sqlSessionBean" />
 	</bean>
+	
+	<bean id="love_daoBean" class="dao.LoveDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
 
 </beans>

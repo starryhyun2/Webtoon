@@ -23,6 +23,8 @@
 		
 		<typeAlias type="vo.ScoreVO" alias="score"/>
 		
+		<typeAlias type="vo.LoveVO" alias="love"/>
+		
 	</typeAliases>
 	
 	
@@ -34,6 +36,7 @@
 		<mapper resource="config/mybatis/mapper/user.xml"/>
 		<mapper resource="config/mybatis/mapper/webtoonComment.xml"/>
 		<mapper resource="config/mybatis/mapper/score.xml"/>
+		<mapper resource="config/mybatis/mapper/love.xml"/>
 	</mappers>
 	
 	

@@ -98,10 +98,10 @@
 			var love = document.getElementsByName("love")[i-1].value;
 			
 			if (id == null) {
-			alert('로그인 한 후에 별점을 줄 수 있습니다.');
+			alert('로그인 한 후에 좋아요를 누를 수 있습니다.');
 				return;
 			} else if (id == '') {
-				alert('로그인 한 후에 별점을 줄 수 있습니다.');
+				alert('로그인 한 후에 좋아요를 누를 수 있습니다.');
 			return;
 			}
 
@@ -116,7 +116,12 @@
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			
 			var data = xhr.responseText;
-			
+			if( data == 'cancle'){
+				alert('좋아요를 취소했습니다!');
+				location.reload();
+				return;
+			}
+			alert('좋아요를 눌렀습니다!');
 			location.reload();
 		}
 	}

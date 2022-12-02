@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import dao.LoveDAO;
 import dao.WebtoonCommentsDAO;
 import vo.WebtoonCommentsVO;
 
@@ -13,8 +14,14 @@ public class WebtoonCommentsController {
 	
 	WebtoonCommentsDAO webtoonCommentsDAO;
 
+	LoveDAO love_dao;
+
 	public void setWebtoonCommentsDAO(WebtoonCommentsDAO webtoonCommentsDAO) {
 		this.webtoonCommentsDAO = webtoonCommentsDAO;
+	}
+	
+	public void setLove_dao(LoveDAO love_dao) {
+		this.love_dao = love_dao;
 	}
 	
 	//웹툰 댓글 추가
@@ -45,17 +52,4 @@ public class WebtoonCommentsController {
 		return "redirect:Epi?episode_idx="+epi;
 	}
 	
-	//댓글 좋아요 기능 
-	@RequestMapping("giveLove.do")
-	@ResponseBody
-	public String give_love(WebtoonCommentsVO vo) {
-		int love = vo.getLove();
-		love+=1;
-		vo.setLove(love);
-
-		webtoonCommentsDAO.update_love(vo);
-		
-		return "clear";
-		
-	}
 }

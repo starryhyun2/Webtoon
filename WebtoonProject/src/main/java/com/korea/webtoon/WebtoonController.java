@@ -73,8 +73,13 @@ public class WebtoonController {
 
 		//epi_index를 참조받는 댓글을 확인하기 위해서 리스트 댓글 바인딩해서 전송
 		List<WebtoonCommentsVO> wc_list = webtoonCommentsDAO.selectList(episode_idx);
+		
+		//베스트 댓글을 위해서 댓글을 새롭게 참조
+		List<WebtoonCommentsVO> best_wc_list = webtoonCommentsDAO.selectList2(episode_idx);
 
 		//댓글과, 해당 에피소드의 전체 파일갯수 바인딩해서 전송
+		//베스트 댓글도 바인딩
+		model.addAttribute("best_wc_list", best_wc_list);
 		model.addAttribute("wc_list",wc_list);
 		model.addAttribute("cnt", cnt);
 		return Common.SHOW_PATH+"epi_index.jsp";

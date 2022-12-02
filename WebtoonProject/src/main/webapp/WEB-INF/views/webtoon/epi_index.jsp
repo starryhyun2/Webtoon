@@ -78,8 +78,73 @@
 				value="${sessionScope.id}" style="width: 10%" readOnly> <input
 				type="text" name="content" placeholder="댓글 쓰기" style="width: 70%">
 				<input type="button" value="댓글" onclick="reply_send(this.form);">
-				<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" /></td>
+				<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
+				</td>
 		</form>
+		
+		<tr>
+			<td>베스트 댓글</td>
+		</tr>
+		
+		<c:forEach var="best_wc" items="${best_wc_list }" varStatus="i">
+		
+		<tr>
+			<form>
+				<td>${best_wc.step}</td>
+				<td>${best_wc.id}</td>
+
+				<!-- 댓글 들여쓰기 -->
+				<td><font>${best_wc.content}</font></td>
+				
+				<td>${ best_wc.love }</td>
+				
+				<c:set var="now_id" value="${sessionScope.id }" />
+				<c:set var="comment_id" value="${best_wc.id }"/>
+					<c:if test="${now_id eq comment_id}">
+						<td>
+							<input type="button"  id="modify${i.count }" value="수정하기" onclick="modifyView(this.id)">
+							<input type="button"  value="삭제하기" onclick="del_send(this.form)">
+						</td>
+					</c:if>
+				<td>
+					<input type="button" value="좋아요" onclick="love_send(${i.count})"/>
+					
+					<!-- 좋아요, 수정, 삭제 기능을 위한 히든값 -->
+					<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
+					<input name="comments_idx" type="hidden" value="${ best_wc.comments_idx }" />
+					<input name="id" type="hidden" value="${sessionScope.id}" />
+					<input name="love" type="hidden" value="${ best_wc.love }"/>
+				</td>
+				</form>
+			</tr>
+			
+
+			
+			
+			<!--여기부터 댓글 수정창-->
+			<tr class="modifyViews">
+				<form >
+					<td colspan="3"><input type="hidden" name="comments_idx"
+						value="${best_wc.comments_idx }"> <input type="hidden"
+						name="episode_idx" value="${epi.episode_idx }"> <textarea
+							rows="3" cols="55" placeholder="내용을 작성하세요" name="content"
+							required="required">
+							${best_wc.content }
+					</textarea></td>
+					<td>
+						<input type="button" value="수정" onclick="modify_send(this.form)"/>
+						<input type="button" value="취소" onclick="modifyCancle('modify${i.count }')" />
+					</td>
+				</form>
+			</tr>
+		
+		</c:forEach>
+		
+		<tr>
+			<td>베스트 댓글</td>
+		</tr>
+		
+		<!-- 여기서 부터 일반 댓글 -->
 
 		<c:forEach var="wc" items="${wc_list}" varStatus="i">
 			<tr>
@@ -111,6 +176,9 @@
 				</td>
 				</form>
 			</tr>
+			
+
+			
 			
 			<!--여기부터 댓글 수정창-->
 			<tr class="modifyViews">

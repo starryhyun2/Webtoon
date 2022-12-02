@@ -22,6 +22,12 @@ public class WebtoonCommentsDAO {
 		
 	}
 	
+	//베스트 댓글 조회
+	public List<WebtoonCommentsVO>selectList2(int episode_idx){
+		List<WebtoonCommentsVO> best_wc_list = sqlSession.selectList("wc.wc_list2",episode_idx);	
+		return best_wc_list;
+	}
+	
 	//웹툰 댓글 step 추가
 	public int update_step(int episode_idx) {
 		int res = sqlSession.update("wc.update_step", episode_idx);
@@ -48,11 +54,6 @@ public class WebtoonCommentsDAO {
 		return res;
 	}
 	
-	//웹툰 좋아요 업데이트
-	public int update_love(WebtoonCommentsVO vo) {
-		int res = sqlSession.insert("wc.wc_update_love" , vo);
-		return res;
-	}
 	
 
 }

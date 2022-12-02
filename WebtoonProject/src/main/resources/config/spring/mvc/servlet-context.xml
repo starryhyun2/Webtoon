@@ -55,10 +55,15 @@
 	
 	<beans:bean class="com.korea.webtoon.WebtoonCommentsController">
 		<beans:property name="webtoonCommentsDAO" ref="webtoonComments_daoBean"/>
+		<beans:property name="love_dao" ref="love_daoBean"/>
 	</beans:bean>
 	
 	<beans:bean class="com.korea.webtoon.ScoreController">
 		<beans:property name="score_dao" ref="score_daoBean"/>
+	</beans:bean>
+	
+	<beans:bean class="com.korea.webtoon.LoveController">
+		<beans:property name="love_dao" ref="love_daoBean"/>
 	</beans:bean>
 </beans:beans>
 

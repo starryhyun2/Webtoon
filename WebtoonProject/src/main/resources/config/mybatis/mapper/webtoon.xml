@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 별점 업데이트 -->
-	<update id="updateScore" parameterType="int">
+	<update id="updateScore" parameterType="episode">
 		update Episode set score = #{score}, totalscore =#{totalscore}, readhit=#{readhit}
 		where episode_idx=#{episode_idx}
 	</update>
