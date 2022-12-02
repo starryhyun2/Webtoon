@@ -8,8 +8,7 @@
 	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <title>${ epi.episodename }</title>
 <!-- https://velog.io/@hana78786/67.-%EB%8C%93%EA%B8%80-%EC%88%98%EC%A0%95%EC%B0%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0 -->
-<!-- Ajax사용을 위한 js를 추가 -->
-<script src="/webtoon/resources/js/httpRequest.js"></script>
+
 
 </head>
 <body>
@@ -116,108 +115,15 @@
 					</textarea></td>
 					<td>
 						<input type="button" value="수정" onclick="modify_send(this.form)"/>
-						<intpue type="button" onclick="modifyCancle('modify${i.count }')" value="취소"/>
+						<input type="button" value="취소" onclick="modifyCancle('modify${i.count }')" />
 					</td>
 				</form>
 			</tr>
 		</c:forEach>
 
 	</table>
-	
-	<script>
-	function reply_send(wc) {
-		const id = wc.id.value;
-		const content = wc.content.value.trim();
-		const episode_idx = wc.episode_idx.value;
-		//유효성 체크
-
-		if (id == null) {
-			alert('로그인 한 후에 글을 쓸 수 있습니다.');
-			return;
-		} else if (id == '') {
-			alert('로그인 한 후에 글을 쓸 수 있습니다.');
-			return;
-		}
-
-		if (content == '') {
-			alert("내용은 한글자 이상 넣어주세요.");
-			return;
-		}
-
-		wc.action = "webtoon_reply_insert.do";
-		//cb.method = "post";
-		wc.submit();
-
-	}
-
-	function giveScore(f) {
-		var score = f.score.value;
-		var episode_idx = f.episode_idx.value;
-		var id = f.id.value;
-		
-		if (id == null) {
-			alert('로그인 한 후에 별점을 줄 수 있습니다.');
-			return;
-		} else if (id == '') {
-			alert('로그인 한 후에 별점을 줄 수 있습니다.');
-			return;
-		}
-		
-		//Ajax로 ID와 PWD를 전달
-		var url = "giveScore.do";
-		var param = "score=" + score +"&episode_idx=" +episode_idx + "&id="+id;
-		sendRequest(url, param, resultFn, "POST");
-		
-	}
-	function resultFn() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			//"{'result':'clear'}"
-			var data = xhr.responseText;
-			//서버에서 넘어온 데이터를 실제 JSON형식으로 변환
-			var json = (new Function('return'+data))();
-			if (json.result == 'already_id') {
-				alert("별점을 수정했습니다.");
-				return;
-			} 
-			alert("별점을 주었습니다!");
-			return;
-		}
-	}
-	
-	function modify_send(f){
-		//확인을 선택한 경우 자바스크립트를 호출할 때 같이 넘어온 url이라는 변수에 들어있는 주소로 페이지 이동
-		if(window.confirm("이대로 변경하시겠습니까?") == true){
-			f.action = "modify_wc.do";
-			f.submit();
-		}
-	}
-	function del_send(f){
-		if(window.confirm("댓글을 삭제하시겠습니까?")){
-			f.action="del_wc.do";
-			f.submit();
-		}
-	}
-</script>
-	<script>
-		var modifyViews = document.getElementsByClassName('modifyViews')
-
-		for (var i = 0; i < modifyViews.length; i++) {
-			modifyViews[i].style.display = 'none'
-		}
-
-		function modifyCancle(idI) {
-			var modifiId = document.getElementById(idI);
-			modifiId.parentElement.parentElement.style.display = '';
-			modifiId.parentElement.parentElement.nextElementSibling.style.display = 'none';
-
-		}
-		function modifyView(idI) {
-			var modifiId = document.getElementById(idI);
-			modifiId.parentElement.parentElement.style.display = 'none';
-			modifiId.parentElement.parentElement.nextElementSibling.style.display = '';
-
-		}
-
-	</script>
+	<!-- Ajax사용을 위한 js를 추가 -->
+<script src="/webtoon/resources/js/httpRequest.js"></script>
+<script src="/webtoon/resources/js/epi_index.js"></script>
 </body>
 </html>
