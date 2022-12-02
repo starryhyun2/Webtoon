@@ -89,3 +89,36 @@
 			modifiId.parentElement.parentElement.nextElementSibling.style.display = '';
 
 		}
+
+	function love_send(i){		
+		
+			var episode_idx = document.getElementsByName("episode_idx")[i-1].value;
+			var id = document.getElementsByName("id")[i-1].value;
+			var comments_idx = document.getElementsByName("comments_idx")[i-1].value;
+			var love = document.getElementsByName("love")[i-1].value;
+			
+			if (id == null) {
+			alert('로그인 한 후에 별점을 줄 수 있습니다.');
+				return;
+			} else if (id == '') {
+				alert('로그인 한 후에 별점을 줄 수 있습니다.');
+			return;
+			}
+
+			//Ajax로 ID와 PWD를 전달
+			var url = "giveLove.do";
+			var param = "episode_idx=" + episode_idx +"&comments_idx=" +comments_idx + "&id="+id +"&love=" +love;
+			sendRequest(url, param, resultlove, "POST");
+	}
+	
+	//현재 페이지를 유지하기 위해서 Ajax를 활용
+	function resultlove() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			
+			var data = xhr.responseText;
+			
+			location.reload();
+		}
+	}
+
+		

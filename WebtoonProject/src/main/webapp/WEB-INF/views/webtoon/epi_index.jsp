@@ -90,16 +90,25 @@
 				<!-- 댓글 들여쓰기 -->
 				<td><font>${wc.content}</font></td>
 				
+				<td>${ wc.love }</td>
+				
 				<c:set var="now_id" value="${sessionScope.id }" />
 				<c:set var="comment_id" value="${wc.id }"/>
 					<c:if test="${now_id eq comment_id}">
 						<td>
 							<input type="button"  id="modify${i.count }" value="수정하기" onclick="modifyView(this.id)">
 							<input type="button"  value="삭제하기" onclick="del_send(this.form)">
-							<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
-							<input name="comments_idx" type="hidden" value="${ wc.comments_idx }" />
 						</td>
 					</c:if>
+				<td>
+					<input type="button" value="좋아요" onclick="love_send(${i.count})"/>
+					
+					<!-- 좋아요, 수정, 삭제 기능을 위한 히든값 -->
+					<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
+					<input name="comments_idx" type="hidden" value="${ wc.comments_idx }" />
+					<input name="id" type="hidden" value="${sessionScope.id}" />
+					<input name="love" type="hidden" value="${ wc.love }"/>
+				</td>
 				</form>
 			</tr>
 			
@@ -120,7 +129,6 @@
 				</form>
 			</tr>
 		</c:forEach>
-
 	</table>
 	<!-- Ajax사용을 위한 js를 추가 -->
 <script src="/webtoon/resources/js/httpRequest.js"></script>

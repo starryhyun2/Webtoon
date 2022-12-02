@@ -39,6 +39,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE from WebtoonComments 
 		WHERE comments_idx= #{comments_idx}
 	</delete>
+	
+	<!-- 웹툰 좋아요 업데이트 -->
+	<update id="wc_update_love" parameterType="wc">
+		update WebtoonComments set love=#{love}
+		where comments_idx=#{comments_idx}
+	</update>
 </mapper>
 
 

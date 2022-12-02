@@ -2,6 +2,7 @@ package com.korea.webtoon;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.WebtoonCommentsDAO;
 import vo.WebtoonCommentsVO;
@@ -45,4 +46,16 @@ public class WebtoonCommentsController {
 	}
 	
 	//댓글 좋아요 기능 
+	@RequestMapping("giveLove.do")
+	@ResponseBody
+	public String give_love(WebtoonCommentsVO vo) {
+		int love = vo.getLove();
+		love+=1;
+		vo.setLove(love);
+
+		webtoonCommentsDAO.update_love(vo);
+		
+		return "clear";
+		
+	}
 }

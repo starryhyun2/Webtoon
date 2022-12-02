@@ -48,6 +48,11 @@ public class WebtoonCommentsDAO {
 		return res;
 	}
 	
+	//웹툰 좋아요 업데이트
+	public int update_love(WebtoonCommentsVO vo) {
+		int res = sqlSession.insert("wc.wc_update_love" , vo);
+		return res;
+	}
 	
 
 }
