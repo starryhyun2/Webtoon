@@ -85,19 +85,19 @@
 		<tr>
 			<td>★베스트 댓글★</td>
 		</tr>
-		<c:forEach var="wc" items="${bese_wc_list}" varStatus="i">
+		<c:forEach var="best_wc_list" items="${best_wc_list}" varStatus="i">
 			<tr>
 			<form>
-				<td>${wc.step}</td>
-				<td>${wc.id}</td>
+				<td>${best_wc_list.step}</td>
+				<td>${best_wc_list.id}</td>
 
 				<!-- 댓글 들여쓰기 -->
-				<td><font>${wc.content}</font></td>
+				<td><font>${best_wc_list.content}</font></td>
 				
-				<td>${ wc.love }</td>
+				<td>${ best_wc_list.love }</td>
 				
 				<c:set var="now_id" value="${sessionScope.id }" />
-				<c:set var="comment_id" value="${wc.id }"/>
+				<c:set var="comment_id" value="${best_wc_list.id }"/>
 					<c:if test="${now_id eq comment_id}">
 						<td>
 							<input type="button"  id="modify${i.count }" value="수정하기" onclick="modifyView(this.id)">
@@ -105,19 +105,19 @@
 							
 							<!-- 삭제를 위한 plain 숫자가 안붙어 있는 일반 텍스트 -->
 							<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
-							<input name="comments_idx" type="hidden" value="${ wc.comments_idx }" />
+							<input name="comments_idx" type="hidden" value="${ best_wc_list.comments_idx }" />
 							<input name="id" type="hidden" value="${sessionScope.id}" />
-							<input name="love" type="hidden" value="${ wc.love }"/>
+							<input name="love" type="hidden" value="${ best_wc_list.love }"/>
 						</td>
 					</c:if>
 				<td>
 					<input type="button" value="좋아요 ${i.index }" onclick="best_love_send(${i.index})"/>
 					
 					<!-- 좋아요, 수정, 삭제 기능을 위한 히든값 -->
-					<input name="episode_idx3" type="hidden" value="${ epi.episode_idx }" />
-					<input name="comments_idx3" type="hidden" value="${ wc.comments_idx }" />
-					<input name="id3" type="hidden" value="${sessionScope.id}" />
-					<input name="love3" type="hidden" value="${ wc.love }"/>
+					<input name="episode_idxb" type="hidden" value="${ epi.episode_idx }" />
+					<input name="comments_idxb" type="hidden" value="${ best_wc_list.comments_idx }" />
+					<input name="idb" type="hidden" value="${sessionScope.id}" />
+					<input name="loveb" type="hidden" value="${ best_wc_list.love }"/>
 				</td>
 				</form>
 			</tr>
@@ -129,11 +129,11 @@
 			<tr class="modifyViews">
 				<form >
 					<td colspan="3"><input type="hidden" name="comments_idx"
-						value="${wc.comments_idx }"> <input type="hidden"
+						value="${best_wc_list.comments_idx }"> <input type="hidden"
 						name="episode_idx" value="${epi.episode_idx }"> <textarea
 							rows="3" cols="55" placeholder="내용을 작성하세요" name="content"
 							required="required">
-							${wc.content }
+							${best_wc_list.content }
 					</textarea></td>
 					<td>
 						<input type="button" value="수정" onclick="modify_send(this.form)"/>
