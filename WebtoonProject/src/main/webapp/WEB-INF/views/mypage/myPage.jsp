@@ -28,7 +28,7 @@
 </script>
 </head>
 <body>
-
+	<h1 style="width: 300px; margin: 0 auto;"><a href='mainToon.do'>코리아 웹툰</a></h1>
 	<div id="page_name">
 		<h1>::: 마이페이지 :::</h1>
 	</div>
@@ -46,7 +46,7 @@
 					<td class="menu">ID</td>
 					<td class="menu2"><a class="modify">${ vo.getId() }</a></td>	
 				</tr>
-			
+		
 				<tr>
 					<td class="menu">Email</td>
 					<td class="menu2"><a class="modify">${ vo.getEmail() }</a></td>
@@ -54,13 +54,16 @@
 				
 				<tr>
 					<td class="menu">Phone</td>
-					<td class="menu2"><a class="modify">${ vo.getPhoneNum() }</a></td>
+					<td class="menu2"><a class="modify">${ vo.getPhonenum() }</a></td>
 				</tr>
 				
 				<tr>
 					<td colspan="2" align="center" class="button">
+						<input type="hidden" value="${ vo.getId() }" name="id">
 						<input type="hidden" value="${ vo.getPwd() }" name="pwd">
+						<input type="hidden" value="${ vo.getUser_idx() }" name ="idx">
 						<input type="button" value="정보 수정" onclick="modify(this.form)">
+						<input type="button" value="홈으로" onclick="location.href='list.do'">
 					</td>
 				</tr>
 			</table>

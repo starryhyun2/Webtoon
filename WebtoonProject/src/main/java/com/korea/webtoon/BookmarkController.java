@@ -1,6 +1,7 @@
 package com.korea.webtoon;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,27 +25,27 @@ public class BookmarkController {
 	@Autowired
 	HttpServletRequest request;
 	
-	HttpSession session;
+	HttpSession login;
 	
-	WebtoonDAO webtoon_dao;
-	public void setWebtoon_dao(WebtoonDAO webtoon_dao) {
-		this.webtoon_dao = webtoon_dao;
+	WebtoonDAO webtoon_DAO;
+	public void setWebtoon_DAO(WebtoonDAO webtoon_DAO) {
+		this.webtoon_DAO = webtoon_DAO;
 	}
 	BookmarkDAO bookmark_dao;
 	public void setBookmark_dao(BookmarkDAO bookmark_dao) {
 		this.bookmark_dao = bookmark_dao;
 	}
 	
-	//bookmark 호출 테스트용(메인화면 or 웹툰 상세보기 페이지에 추가되어야 할 코드들)
+	//bookmark 호출 테스트용(웹툰 상세보기 페이지에 추가되어야 할 코드들 ***북마크 버튼은 웹툰 상세보기 페이지에 추가해야합니다***)
 	@RequestMapping("/bookmarkTest.do")
 	public String test(Model model) {						//저는 메인화면을 기준으로 작성했습니다.
 			
-		List<WebtoonVO> list = webtoon_dao.selectList();	//모든 웹툰 리스트
+		List<WebtoonVO> list = webtoon_DAO.selectList();	//모든 웹툰 리스트
 			
 		model.addAttribute("bm", list);	
 					
-		session = request.getSession();
-		String id = (String)session.getAttribute("id");		
+		login = request.getSession();
+		String id = (String)login.getAttribute("id");		
 			
 		model.addAttribute("user", id);
 			
@@ -56,6 +57,7 @@ public class BookmarkController {
 	@ResponseBody
 	public String addBookmark(BookmarkVO vo) {				// webtoon_idx와 user_id를 VO에 넣어서 받음							
 			
+		System.out.println(vo.getGenre());
 		BookmarkVO res = bookmark_dao.select(vo);			// vo값을 DB에 넘겨 동일한 값을 가진 데이터가 있는지 확인
 															// 있다면 1 반환
 		String bookmark = "yes";						
@@ -75,7 +77,9 @@ public class BookmarkController {
 	@RequestMapping("/bookmark.do")							// 북마크 페이지
 	public String bookmark(Model model) {				
 						
-		String id = (String)session.getAttribute("id");
+		login = request.getSession();
+		System.out.println((String)login.getAttribute("id"));
+		String id = (String)login.getAttribute("id");
 
 		List<BookmarkVO> webtoon_name = bookmark_dao.selectList(id);//id값을 DB로 넘겨 user_id=#{id}인 모든 데이터를 list에 저장
 		List<WebtoonVO> list = new ArrayList<WebtoonVO>();			//깡통 list 생성
@@ -84,7 +88,7 @@ public class BookmarkController {
 				
 			int ref = webtoon_name.get(i).getRef();			//위에서 받아온 데이터들의 ref(webtoon_idx)
 				
-			WebtoonVO vo = webtoon_dao.select(ref);			//ref를 보내 맞는 웹툰 데이터 하나씩 가져오기
+			WebtoonVO vo = webtoon_DAO.select(ref);			//ref를 보내 맞는 웹툰 데이터 하나씩 가져오기
 
 			list.add(vo);									//깡통 list에 하나씩 저장
 		}						
@@ -92,6 +96,14 @@ public class BookmarkController {
 		model.addAttribute("bm", list);						//바인딩
 		model.addAttribute("user", id);						//바인딩
 			
+		//----------웹툰 추천-----------
+		
+		String genre = bookmark_dao.count(id);
+		
+		List<WebtoonVO> recommend = bookmark_dao.selectGenre(genre);			//id값을 DB로 넘겨 genre=#{genre}인 모든 데이터를 list에 저장
+		
+		model.addAttribute("rc", recommend);				// 바인딩
+		
 		return Common.Mypg_PATH+"bookMark.jsp";
 	}
 	

@@ -17,10 +17,12 @@
 		
 		var ref = f.webtoon_idx.value;
 		var user_id = f.user_id.value;
+		var genre = f.genre.value;
 		
 		var url = "addBookmark.do";
 		var param = "ref="+ref+
-					"&user_id="+user_id;
+					"&user_id="+user_id+
+					"&genre="+genre;
 
 		sendRequest( url, param, resultFn, "GET");
 
@@ -70,6 +72,7 @@
 		
 			<input type="hidden" name="user_id" value="${user}">	<!-- 임의의 id값을 받아왔지만 session 설정시 session값 받기 -->
 			<input type="hidden" name="webtoon_idx" value="${bm.webtoon_idx}">
+			<input type="hidden" name="genre" value="${bm.genre }">
 			<input type="button" id="btn" value="북마크" onclick="send(this.form);">
 	</form>
 	</c:forEach>

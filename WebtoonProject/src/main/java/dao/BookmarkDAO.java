@@ -1,10 +1,12 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import vo.BookmarkVO;
+import vo.WebtoonVO;
 
 public class BookmarkDAO {
 
@@ -34,6 +36,16 @@ public class BookmarkDAO {
 	//내 북마크 리스트
 	public List<BookmarkVO> selectList(String id) {
 		List<BookmarkVO> res = sqlSession.selectList("bm.list_bookmark", id);
+		return res;
+	}
+	
+	public String count(String id){
+		String res = sqlSession.selectOne("bm.count_bookmark",id);
+		return res;
+	}
+	
+	public List<WebtoonVO> selectGenre(String genre) {
+		List<WebtoonVO> res = sqlSession.selectList("bm.select_genre", genre);
 		return res;
 	}
 	

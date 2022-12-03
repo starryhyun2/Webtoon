@@ -1,7 +1,6 @@
 package com.korea.webtoon;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,12 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import dao.BookmarkDAO;
-import dao.WebtoonDAO;
-import util.Common;
 import dao.MemberDAO;
-import vo.BookmarkVO;
-import vo.WebtoonVO;
+import util.Common;
 import vo.MemberVO;
 
 @Controller
@@ -27,75 +22,102 @@ public class MyPageController {
 	@Autowired
 	HttpServletRequest request;
 	
-	HttpSession session;
+	HttpSession login;
 	
+	MemberDAO member_dao;					
+	//Webtoon_UserDAO의 setter 인젝션 생성
 	
-	MemberDAO user_dao;					//Webtoon_UserDAO의 setter 인젝션 생성
-	public void setUser_dao(MemberDAO user_dao) {
-		this.user_dao = user_dao;
-	}
 
+	public void setMember_dao(MemberDAO member_dao) {
+		this.member_dao = member_dao;
+	}
 	
-	/*
-	 * @RequestMapping("/") // 기본화면 public String home() { // 회원가입 페이지를 홈으로 설정
-	 * return "/WEB-INF/views/memberForm.jsp"; }
-	 * 
-	 * @RequestMapping("member.do") // 회원가입 페이지에서 정보들을 입력후 '회원가입' 버튼을 누르면 실행되는 메서드
-	 * public String member(Webtoon_UserVO vo) { // 회원가입 페이지에서 받아온 정보들을
-	 * Webtoon_UserVO에 저장
-	 * 
-	 * int res = user_dao.insert(vo); // user_dao의 modify메소드에게 저장된 vo객체를 넘겨 DB에 정보
-	 * 저장
-	 * 
-	 * return "redirect:login.do"; // 회원가입 후 바로 로그인 페이지로 넘어가기 }
-	 * 
-	 * @RequestMapping("/login.do") // /login.do가 실행되면 loginform.jsp 화면 출력 public
-	 * String login() { return "/WEB-INF/views/loginForm.jsp"; }
-	 */
-	
-	
-	@RequestMapping(value= {"/", "/mypage.do"})				// 로그인 페이지에서 '로그인' 버튼을 누르면 마이페이지로 이동
-	public String loginTest(Model model) {					// 로그인 페이지에서 입력한 값을 vo에 넣어 저장(지금은 로그인이 없기 때문에 넘겨받는 값이 없다.)
+	@RequestMapping("Mypage")					// 로그인 페이지에서 '로그인' 버튼을 누르면 마이페이지로 이동
+	public String loginTest(Model model) {						// 로그인 페이지에서 입력한 값을 vo에 넣어 저장(지금은 로그인이 없기 때문에 넘겨받는 값이 없다.)
 		
-		session = request.getSession();
-		//병합시 필요없는 코드
-		session.setAttribute("id", "WooSeokKing");			// 아직 받아온 값이 없어서 session에 임의의 값 저장
+		String id ="false";
+		HttpSession login = request.getSession();
+		//id_now가 null값이 아니라면, 모델에 바인딩 해서 전송
+		login.setAttribute("id", "WooSeokKing"); //id 바인딩(병합시 필요없음)
 		
-		String id = (String)session.getAttribute("id");		
+		if(login != null) {
+			String binding_tmp = (String)login.getAttribute("id");
+			id=binding_tmp;
+		}
 		
-		MemberVO user = user_dao.selectOne(id);				// 저장된 값으로 db에 저장되어있는 user정보 한개 반환
+		MemberVO user = member_dao.selectOne(id);				// 저장된 id값으로 db에 저장되어있는 user정보 한개 반환
 			
-		model.addAttribute("vo", user);						// 반환 받은값을 "vo"에 바인딩
+		model.addAttribute("vo", user);							// 반환 받은값을 "vo"에 바인딩
 		
-		return Common.Mypg_PATH+"myPage.jsp";					// 마이페이지로 이동
+		return Common.Mypg_PATH+"myPage.jsp";						// 마이페이지로 이동
 	}
 	
-	@RequestMapping("/modify_form.do")						// '정보 수정' 버튼 클릭시 호출
-	public String modify_form(Model model) {
+
+	@RequestMapping("modify_form.do")							// '정보 수정' 버튼 클릭시 호출
+	public String modify_form(Model model, String id) {			// String id를 넘겨받아온다.
 		
-		String id = (String)session.getAttribute("id");		// session값에 저장된 id
+		MemberVO vo = member_dao.selectOne(id);				// id값으로 db에 저장되어있는 user정보 한개 반환
 		
-		MemberVO vo = user_dao.selectOne(id);				// id값으로 db에 저장되어있는 user정보 한개 반환
+		model.addAttribute("vo", vo);							// 반환된 user 정보 바인딩
 		
-		model.addAttribute("vo", vo);						// 반환된 user 정보 바인딩
-		
-		return Common.Mypg_PATH+"modify_form.jsp";			// 정보수정 페이지로 이동
+		return Common.Mypg_PATH+"modify_form.jsp";				// 정보수정 페이지로 이동
 		
 	}
 	
-	@RequestMapping("/modify.do")							// 정보수정 페이지에서 '수정하기' 버튼 클릭시 호출
+	@RequestMapping("modify.do")								// 정보수정 페이지에서 '수정하기' 버튼 클릭시 호출
 	@ResponseBody
-	public String modify(MemberVO vo) {						// /modify.do?user_idx=1&name=WooSeokKing&pwd=WooSeokKing&email=WooSeokKing
+	public String modify(MemberVO vo) {					// /modify.do?user_idx=1&name=WooSeokKing&pwd=WooSeokKing&email=WooSeokKing
 		
-		int res = user_dao.update(vo);						// 받아온 데이터들을 DB에 업데이트하고 업데이트가 되었다면 '1' 반환
+		int res = member_dao.update(vo);							// 받아온 데이터들을 DB에 업데이트하고 업데이트가 되었다면 '1' 반환
 
 		String result = "no";
-		if(res == 1) {										// 데이터 수정이 잘되었다면
+		if(res == 1) {											// 데이터 수정이 잘되었다면
 			result = "yes";										
 		}
 		
 		return result;											
 	}
 	
+	@RequestMapping("modify_email_phone.do")
+	@ResponseBody
+	public String modify_email_phone(MemberVO vo) {
+		//vo에서 email과 휴대폰번호 받아오기
+		String email = vo.getEmail();
+		String phonenum = vo.getPhonenum();
+		
+		
+		//랜덤한 키 생성
+		StringBuffer key = new StringBuffer();
+		Random rnd = new Random();
+
+		for (int i = 0; i < 6; i++) { 
+			int index = rnd.nextInt(3);
+			switch (index) {
+			case 0:
+				key.append((char) (rnd.nextInt(26) + 97));
+				break;
+			case 1:
+				key.append((char) (rnd.nextInt(26) + 65));
+				break;
+			case 2:
+				key.append((rnd.nextInt(10)));
+				break;
+			}
+		}
+		int res = 0;											//key 체크용 
+		String sKey = key.toString();
+		if(email!= null) {
+			res = service.MailService.sendmail(email, sKey);
+		}else {
+			res = service.MessageService.sendMessage(phonenum, sKey);
+		}
+
+		
+		String result = "no";
+		if(res == 1) {											//key가 잘 보내졌으면 
+			result = "yes";										
+		}
+		return result;
+	}
 	
 }

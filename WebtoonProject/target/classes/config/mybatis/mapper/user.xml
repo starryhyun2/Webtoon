@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		name=#{name},
 		pwd=#{pwd},
 		email=#{email},
-		phoneNum=#{phoneNum}
+		phoneNum=#{phonenum}
 		where user_idx=#{user_idx}
 	</update>
 	

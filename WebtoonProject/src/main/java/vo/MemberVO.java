@@ -1,27 +1,13 @@
-package vo;		//webtoon_user, webtoon, webtoonComments 3개의 vo들을 가질 패키지 
+package vo;
 
-public class MemberVO {	//webtoon_user 테이블의 getter, setter를 가지고 있는 vo
-
-	private int user_idx, webtoon_idx;
-	private String name, id, pwd, email, phoneNum;
-	
-	public String getPhoneNum() {
-		return phoneNum;
-	}
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
-	}
+public class MemberVO {
+	private int user_idx;
+	private String name, id, pwd, email, phonenum;
 	public int getUser_idx() {
 		return user_idx;
 	}
 	public void setUser_idx(int user_idx) {
 		this.user_idx = user_idx;
-	}
-	public int getWebtoon_idx() {
-		return webtoon_idx;
-	}
-	public void setWebtoon_idx(int webtoon_idx) {
-		this.webtoon_idx = webtoon_idx;
 	}
 	public String getName() {
 		return name;
@@ -47,6 +33,10 @@ public class MemberVO {	//webtoon_user 테이블의 getter, setter를 가지고 
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+	public String getPhonenum() {
+		return phonenum;
+	}
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
+	}
 }

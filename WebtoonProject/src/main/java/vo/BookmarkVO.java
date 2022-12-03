@@ -3,7 +3,15 @@ package vo;
 public class BookmarkVO {
 
 	int bookmark_idx, ref;
-	String user_id;
+	String user_id, genre;
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
 
 	public String getUser_id() {
 		return user_id;

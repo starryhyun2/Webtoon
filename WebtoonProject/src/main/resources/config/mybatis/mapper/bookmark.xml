@@ -19,7 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into BOOKMARK values(
 		seq_bookmark_idx.nextVal,
 		#{ref},
-		#{user_id}
+		#{user_id},
+		#{genre}
 		)
 	</insert>
 	
@@ -36,6 +37,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 북마크 해놓은 웹툰들 정보 가져오기 -->
 	<select id="select_bookmark" parameterType="int" resultType="webtoon">
 		select * from WEBTOON where webtoon_idx=#{ref}
+	</select>
+	
+	<select id="count_bookmark" parameterType="String" resultType="String">
+		select genre
+		from bookmark
+		where user_id=#{id}
+		group by genre
+		having count(*) = (select max(cnt)
+							from( select count(*) as cnt
+									from bookmark
+									group by genre))
+	</select>
+	
+	<select id="select_genre" parameterType="String" resultType="vo.WebtoonVO">
+		select * from WEBTOON where genre=#{genre} order by webtoon_idx DESC
 	</select>
 </mapper>
 
