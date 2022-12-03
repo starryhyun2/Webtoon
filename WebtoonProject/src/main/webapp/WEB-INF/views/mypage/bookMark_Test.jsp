@@ -12,6 +12,7 @@
 
 <script>
 
+// 병합시 웹툰 상세보기 페이지에 function send() 기능만 추가하고 필요없는 페이지
 
 	function send(f){
 		

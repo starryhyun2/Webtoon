@@ -98,7 +98,7 @@ public class BookmarkController {
 			
 		//----------웹툰 추천-----------
 		
-		String genre = bookmark_dao.count(id);
+		String genre = bookmark_dao.count(id);				// 북마크 한 웹툰들 중 가장 많은 수의 장르를 뽑아오기
 		
 		List<WebtoonVO> recommend = bookmark_dao.selectGenre(genre);			//id값을 DB로 넘겨 genre=#{genre}인 모든 데이터를 list에 저장
 		
