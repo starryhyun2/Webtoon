@@ -84,7 +84,7 @@
 			</tr>
 			<tr>
 				<th>아이디</th>
-				<td><input name="id" readOnly>${sessionScope.id}</td>
+				<td><input name="id" value="${sessionScope.id}"readOnly></td>
 			</tr>
 			<tr>
 				<th>내용</th>

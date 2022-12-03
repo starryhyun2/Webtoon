@@ -95,6 +95,14 @@ public class WebtoonController {
 	@RequestMapping("/addEpi.do")
 	public String addEpi(EpisodeVO vo,MultipartHttpServletRequest mRequest) {
 		int ref = vo.getRef();
+		
+		HttpSession login = request.getSession(false);
+		String id = (String)login.getAttribute("id");
+		
+		//관리자가 아닌 다른 유저를 막기 위해 session에 저장된 id를 검사
+		if(!id.equals("admin")) {
+			return "redirect:mainToon.do";
+		}
 
 
 		//외래키로 참조받는 WebtoonVO를 base_vo로 선언,

@@ -10,33 +10,35 @@ import vo.WebtoonCommentsVO;
 
 @Controller
 public class LoveController {
-	
+
 	LoveDAO love_dao;
 
 	public void setLove_dao(LoveDAO love_dao) {
 		this.love_dao = love_dao;
 	}
-	
+
 	//댓글 좋아요 기능 
 	@RequestMapping("giveLove.do")
 	@ResponseBody
 	public String give_love(WebtoonCommentsVO vo) {
 		LoveVO love_vo =love_dao.findByID_comments(vo);
+		
+		System.out.println(vo.getComments_idx());
+		int love = vo.getLove();
 		if(love_vo== null) {
-			int love = vo.getLove();
 			love+=1;
 			vo.setLove(love);
 			love_dao.insert(vo);
 			love_dao.update_love(vo);
-			
+
 			return "clear";
+		}else {
+			love-=1;
+			vo.setLove(love);
+			love_dao.delete(vo);
+			love_dao.update_love(vo);
+			return "cancle";
 		}
-		int love = vo.getLove();
-		love-=1;
-		vo.setLove(love);
-		love_dao.update_love(vo);
-		love_dao.delete(vo);
-		return "cancle";
 	}
 
 

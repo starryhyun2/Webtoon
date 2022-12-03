@@ -81,39 +81,43 @@
 				<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
 				</td>
 		</form>
-		
+		<!-- 베스트 댓글 좋아요가 10개 이상인 댓글들-->
 		<tr>
-			<td>베스트 댓글</td>
+			<td>★베스트 댓글★</td>
 		</tr>
-		
-		<c:forEach var="best_wc" items="${best_wc_list }" varStatus="i">
-		
-		<tr>
+		<c:forEach var="wc" items="${bese_wc_list}" varStatus="i">
+			<tr>
 			<form>
-				<td>${best_wc.step}</td>
-				<td>${best_wc.id}</td>
+				<td>${wc.step}</td>
+				<td>${wc.id}</td>
 
 				<!-- 댓글 들여쓰기 -->
-				<td><font>${best_wc.content}</font></td>
+				<td><font>${wc.content}</font></td>
 				
-				<td>${ best_wc.love }</td>
+				<td>${ wc.love }</td>
 				
 				<c:set var="now_id" value="${sessionScope.id }" />
-				<c:set var="comment_id" value="${best_wc.id }"/>
+				<c:set var="comment_id" value="${wc.id }"/>
 					<c:if test="${now_id eq comment_id}">
 						<td>
 							<input type="button"  id="modify${i.count }" value="수정하기" onclick="modifyView(this.id)">
 							<input type="button"  value="삭제하기" onclick="del_send(this.form)">
+							
+							<!-- 삭제를 위한 plain 숫자가 안붙어 있는 일반 텍스트 -->
+							<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
+							<input name="comments_idx" type="hidden" value="${ wc.comments_idx }" />
+							<input name="id" type="hidden" value="${sessionScope.id}" />
+							<input name="love" type="hidden" value="${ wc.love }"/>
 						</td>
 					</c:if>
 				<td>
-					<input type="button" value="좋아요" onclick="love_send(${i.count})"/>
+					<input type="button" value="좋아요 ${i.index }" onclick="best_love_send(${i.index})"/>
 					
 					<!-- 좋아요, 수정, 삭제 기능을 위한 히든값 -->
-					<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
-					<input name="comments_idx" type="hidden" value="${ best_wc.comments_idx }" />
-					<input name="id" type="hidden" value="${sessionScope.id}" />
-					<input name="love" type="hidden" value="${ best_wc.love }"/>
+					<input name="episode_idx3" type="hidden" value="${ epi.episode_idx }" />
+					<input name="comments_idx3" type="hidden" value="${ wc.comments_idx }" />
+					<input name="id3" type="hidden" value="${sessionScope.id}" />
+					<input name="love3" type="hidden" value="${ wc.love }"/>
 				</td>
 				</form>
 			</tr>
@@ -125,11 +129,11 @@
 			<tr class="modifyViews">
 				<form >
 					<td colspan="3"><input type="hidden" name="comments_idx"
-						value="${best_wc.comments_idx }"> <input type="hidden"
+						value="${wc.comments_idx }"> <input type="hidden"
 						name="episode_idx" value="${epi.episode_idx }"> <textarea
 							rows="3" cols="55" placeholder="내용을 작성하세요" name="content"
 							required="required">
-							${best_wc.content }
+							${wc.content }
 					</textarea></td>
 					<td>
 						<input type="button" value="수정" onclick="modify_send(this.form)"/>
@@ -137,15 +141,13 @@
 					</td>
 				</form>
 			</tr>
-		
 		</c:forEach>
 		
 		<tr>
-			<td>베스트 댓글</td>
+			<td>★베스트 댓글★</td>
 		</tr>
 		
-		<!-- 여기서 부터 일반 댓글 -->
-
+		<!-- 여기서부터 일반 댓글 -->
 		<c:forEach var="wc" items="${wc_list}" varStatus="i">
 			<tr>
 			<form>
@@ -163,16 +165,22 @@
 						<td>
 							<input type="button"  id="modify${i.count }" value="수정하기" onclick="modifyView(this.id)">
 							<input type="button"  value="삭제하기" onclick="del_send(this.form)">
+							
+							<!-- 삭제를 위한 plain 숫자가 안붙어 있는 일반 텍스트 -->
+							<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
+							<input name="comments_idx" type="hidden" value="${ wc.comments_idx }" />
+							<input name="id" type="hidden" value="${sessionScope.id}" />
+							<input name="love" type="hidden" value="${ wc.love }"/>
 						</td>
 					</c:if>
 				<td>
-					<input type="button" value="좋아요" onclick="love_send(${i.count})"/>
+					<input type="button" value="좋아요 ${i.index }" onclick="love_send(${i.index})"/>
 					
 					<!-- 좋아요, 수정, 삭제 기능을 위한 히든값 -->
-					<input name="episode_idx" type="hidden" value="${ epi.episode_idx }" />
-					<input name="comments_idx" type="hidden" value="${ wc.comments_idx }" />
-					<input name="id" type="hidden" value="${sessionScope.id}" />
-					<input name="love" type="hidden" value="${ wc.love }"/>
+					<input name="episode_idx2" type="hidden" value="${ epi.episode_idx }" />
+					<input name="comments_idx2" type="hidden" value="${ wc.comments_idx }" />
+					<input name="id2" type="hidden" value="${sessionScope.id}" />
+					<input name="love2" type="hidden" value="${ wc.love }"/>
 				</td>
 				</form>
 			</tr>

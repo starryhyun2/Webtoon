@@ -71,31 +71,56 @@
 			f.submit();
 		}
 	}
-		var modifyViews = document.getElementsByClassName('modifyViews')
+		
+		
+	var modifyViews = document.getElementsByClassName('modifyViews')
 
-		for (var i = 0; i < modifyViews.length; i++) {
+	for (var i = 0; i < modifyViews.length; i++) {
 			modifyViews[i].style.display = 'none'
 		}
 
-		function modifyCancle(idI) {
+	function modifyCancle(idI) {
 			var modifiId = document.getElementById(idI);
 			modifiId.parentElement.parentElement.style.display = '';
 			modifiId.parentElement.parentElement.nextElementSibling.style.display = 'none';
 
 		}
-		function modifyView(idI) {
+	function modifyView(idI) {
 			var modifiId = document.getElementById(idI);
 			modifiId.parentElement.parentElement.style.display = 'none';
 			modifiId.parentElement.parentElement.nextElementSibling.style.display = '';
 
 		}
+		
+	function best_love_send(i){
+			var episode_idx = document.getElementsByName("episode_idxb")[i].value;
+			var id = document.getElementsByName("idb")[i].value;
+			var comments_idx = document.getElementsByName("comments_idxb")[i].value;
+			alert(comments_idx);
+			var love = document.getElementsByName("loveb")[i].value;
+			
+			if (id == null) {
+			alert('로그인 한 후에 좋아요를 누를 수 있습니다.');
+				return;
+			} else if (id == '') {
+				alert('로그인 한 후에 좋아요를 누를 수 있습니다.');
+			return;
+			}
+
+			//Ajax로 ID와 PWD를 전달
+			var url = "giveLove.do";
+			var param = "episode_idx=" + episode_idx +"&comments_idx=" +comments_idx + "&id="+id +"&love=" +love;
+			sendRequest(url, param, resultlove, "POST");
+	
+	
+	}
 
 	function love_send(i){		
-		
-			var episode_idx = document.getElementsByName("episode_idx")[i-1].value;
-			var id = document.getElementsByName("id")[i-1].value;
-			var comments_idx = document.getElementsByName("comments_idx")[i-1].value;
-			var love = document.getElementsByName("love")[i-1].value;
+			var episode_idx = document.getElementsByName("episode_idx2")[i].value;
+			var id = document.getElementsByName("id2")[i].value;
+			var comments_idx = document.getElementsByName("comments_idx2")[i].value;
+			alert(comments_idx);
+			var love = document.getElementsByName("love2")[i].value;
 			
 			if (id == null) {
 			alert('로그인 한 후에 좋아요를 누를 수 있습니다.');

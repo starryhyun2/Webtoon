@@ -126,8 +126,19 @@ public class BoardController {
 	}
 
 	@RequestMapping("/admin_form.do")
-	public String admin_form() {	
-		return Common.ADMIN_PATH + "admin_form.jsp";
+	public String admin_form() {
+		
+		HttpSession login = request.getSession(false);
+		String id = (String)login.getAttribute("id");
+		
+		//관리자가 아닌 다른 유저를 막기 위해 session에 저장된 id를 검사
+		if(id.equals("admin")) {
+			return Common.ADMIN_PATH + "admin_form.jsp";
+		}
+		
+		return "redirect:mainToon.do";
+
+		
 	}
 
 	//새 웹툰 올리기
