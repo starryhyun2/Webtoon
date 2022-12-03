@@ -91,8 +91,8 @@
 					</c:if>
 				</li>
 				<li>정보 : <span>${ vo.info }</span></li>
-				<li><a href='addEpi_form?episode_idx=${ vo.webtoon_idx }'
-					style="background-color:#dedfdd; padding:1%;">회차 추가</a></li>
+				<c:if test="${id eq 'admin'}"><li><a href='addEpi_form?episode_idx=${ vo.webtoon_idx }'
+					style="background-color:#dedfdd; padding:1%;">회차 추가</a></li></c:if>
 			</ul>
 		</div>
 
@@ -120,7 +120,19 @@
 							<td><a href="Epi?episode_idx=${ epi.episode_idx }">${ epi.episodename }</a>
 							</td>
 
-							<td style="text-align: center;">${ epi.score }</td>
+							<td style="text-align: center;" class="scoreBox">
+								<span class="scoreStar">
+									<c:if test="${ epi.score == 5}">★★★★★</c:if>
+									<c:if test="${ epi.score >= 4 and epi.score < 5}">★★★★</c:if>
+									<c:if test="${ epi.score >= 3 and epi.score < 4}">★★★</c:if>
+									<c:if test="${ epi.score >= 2 and epi.score < 3}">★★</c:if>
+									<c:if test="${ epi.score >= 1 and epi.score < 2}">★</c:if>
+									<c:if test="${ epi.score < 1}">0점</c:if>
+								</span>
+								
+								${ epi.score }
+								
+							</td>
 
 							<td>${epi.regdate }</td>
 						</tr>
@@ -188,6 +200,7 @@
 	</div> 
 	
 	<!-- total_wrap -->
+
 
 
 </body>

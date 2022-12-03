@@ -43,7 +43,7 @@
 	}
 
 	function email_check(f) {
-		var email = f.email.value;
+		var email = f.email1.value +"@" + f.email2.value;
 
 		if (email == '') {
 			alert("이메일를 입력하세요.");
@@ -57,7 +57,8 @@
 	}
 
 	function phone_check(f) {
-		var phonenum = f.phonenum.value;
+		var phonenum = f.phonenum1.value + "-" + f.phonenum2.value + "-" + f.phonenum3.value;
+		console.log(phonenum);
 
 		if (phonenum == '') {
 			alert("휴대폰 번호를 입력하세요.");
@@ -93,8 +94,8 @@
 		var name = f.name.value;
 		var id = f.id.value;
 		var pwd = f.pwd.value;
-		var email = f.email.value;
-		var phonenum = f.phonenum.value;
+		var email = f.email1.value +"@" + f.email2.value;
+		var phonenum = f.phonenum1.value + "-" + f.phonenum2.value + "-" + f.phonenum3.value;
 
 		if (check == false){
 			alert('이메일 인증 후 바꾸세요');
@@ -120,8 +121,8 @@
 		var param = "user_idx=" + f.user_idx.value + "&name=" + f.name.value
 				+ "&id=" + f.id.value + "&pwd="
 				+ encodeURIComponent(f.pwd.value) + "&email="
-				+ encodeURIComponent(f.email.value) + "&phonenum="
-				+ f.phonenum.value;
+				+ encodeURIComponent(f.email1.value +"@" + f.email2.value) + "&phonenum="
+				+ f.phonenum1.value + "-" + f.phonenum2.value + "-" + f.phonenum3.value;
 
 		sendRequest(url, param, resultFn, "POST")
 	}
@@ -183,8 +184,8 @@
 				<tr>
 					<td class="menu">Email</td>
 					<td class="menu2">
-					<input name="email" class="modify" id="email_1"
-						  onblur="check()">&nbsp;@&nbsp;<input type="text"  id="email_2">
+					<input name="email1" class="modify" id="email_1"
+						  onblur="check()">&nbsp;@&nbsp;<input name="email2" type="text"  id="email_2">
 					</td>
 
 					<td  style="border:0;"><input type="button" value="수정하기"
@@ -195,9 +196,9 @@
 				<tr>
 					<td class="menu">Phone</td>
 					<td class="menu2" class="modify">
-					<input name="phonenum" id="phoneNum_1" style="width:20%">-
-						<input type="text" id="phoneNum_2" style="width:20%">-
-						<input type="text" id="phoneNum_3" style="width:20%"></td>
+					<input name="phonenum1" id="phoneNum_1" style="width:20%">-
+					<input name="phonenum2" type="text" id="phoneNum_2" style="width:20%">-
+					<input name="phonenum3" type="text" id="phoneNum_3" style="width:20%"></td>
 						
 						
 					<td style="border:0;"><input type="button" value="수정하기"

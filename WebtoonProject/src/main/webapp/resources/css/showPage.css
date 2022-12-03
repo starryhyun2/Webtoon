@@ -1,65 +1,125 @@
 @charset "UTF-8";
 
-
-
-#main_img{	
-	width:50%;
-	margin:auto;
-	display:flex;
-}
-#main_img img{
-	width:100%	
+#main_img {
+	width: 50%;
+	margin: auto;
+	display: flex;
 }
 
-#add_epi{
-	height:50px;
-	border:0;
+#main_img img {
+	width: 100%
 }
 
-#top_section{
-	display:flex;
+#add_epi {
+	height: 50px;
+	border: 0;
 }
 
-#top_section #main_img{
-	padding:5%;
+#top_section {
+	display: flex;
 }
 
-#webtoon_info{
-	width:50%;
-	margin:0 auto;
-	list-style:none;
-	padding-top:5%;
+#top_section #main_img {
+	padding: 5%;
 }
 
-#webtoon_info li{
-	margin-top:10px;
-	font-size:1em;
-	}
-#webtoon_info li span{
-	font-size:1.2em;
+#webtoon_info {
+	width: 50%;
+	margin: 0 auto;
+	list-style: none;
+	padding-top: 5%;
+}
+
+#webtoon_info li {
+	margin-top: 10px;
+	font-size: 1em;
+}
+
+#webtoon_info li span {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#epi_table {
+	width: 90%;
+	margin-top: 50px;
+	margin: 0 auto;
+}
+
+#epi_table th {
+	font-size: 1.5em;
+	text-align: center;
+	border-top: 2px solid black;
+}
+
+#epi_table tr {
+	margin-top: 20px;
+	border-bottom: 0.5px solid black;
+}
+
+#epi_title {
+	margin: 40px 0;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-weight:bold;
 }
 
-#epi_table{
-	width:90%;
-	margin-top:50px;
-	margin:0 auto;
+#score {
+	color: red;
+	width: 100px;
+	height: 30px;
 }
 
-#epi_table th{
-	font-size:1.5em;
-	text-align:center;
-	border-top:2px solid black;
+#score .score_btn {
+	color: red;
 }
 
-#epi_table tr{
-	margin-top:20px;
-	border-bottom:0.5px solid black;
+.scoreBox {
+	font-size: 1.5em;
 }
 
-#epi_title{
-	margin:40px 0;
-	font-family: 'Nanum Gothic', sans-serif;
+.scoreStar {
+	color: red;
 }
 
+#webtoon_reply_write {
+	width: 100%;
+	text-align: center;
+}
 
+#webtoon_reply {
+	width: 90%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+#webtoon_reply th{	
+	background-color:#99d280;
+	text-align: center;
+	padding:10px 0;
+	margin-bottom:5px;
+	border-right:1px solid white;
+}
+
+.normal_reply {
+	border-top: 0.5px solid gray;
+}
+
+.normal_reply td {
+	padding:1% 0;
+	text-align: center;
+}
+
+.normal_reply .reply_btn {
+	border: 0;
+	background-color: transparent;
+}
+
+#up_btn {
+	position: fixed;
+	top: 40%;
+	right: 10%;
+	padding: 10px 4px;
+	background-color: #99d280;
+	border-radius: 10px;
+	font-weight:bold;
+}

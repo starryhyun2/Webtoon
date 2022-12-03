@@ -28,6 +28,7 @@
 		var score = f.score.value;
 		var episode_idx = f.episode_idx.value;
 		var id = f.id.value;
+		console.log(score);
 		
 		if (id == null) {
 			alert('로그인 한 후에 별점을 줄 수 있습니다.');
