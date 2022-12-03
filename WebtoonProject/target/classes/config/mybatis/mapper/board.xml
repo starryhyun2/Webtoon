@@ -78,6 +78,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	 -->
+	 
+	 <!-- 글 수정용 업데이트 -->
+	 <update id="update_board"  parameterType="board">
+		update board set 
+		title = #{title},
+		content = #{content} 
+		WHERE board_idx= #{board_idx}
+	</update>
+	 
+	 
 	<!-- 삭제용 업데이트 -->
 	
 	<update id="del_update">

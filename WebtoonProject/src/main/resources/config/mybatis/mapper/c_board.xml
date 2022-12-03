@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>	
 	
 		
-	<!-- 새 글 작성 -->
+	<!-- 댓글 작성 -->
 	<insert id="c_board_insert" parameterType="c_board">
 	
 		insert into BoardComments values(
@@ -27,11 +27,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	
 	</insert>
-
+	
 <!-- 게시글 삭제를 위한 ref 삭제 -->
 <delete id="deleteByRef">
 delete BoardComments WHERE ref=#{ref}
 </delete>
+
+<!-- 게시판 댓글 삭제 -->
+<delete id="deleteBycomment">
+delete BoardComments WHERE comments_idx=#{comments_idx}
+</delete>
+
+
 </mapper>
 
 

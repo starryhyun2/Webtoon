@@ -54,6 +54,13 @@ public class BoardDAO {
 		int res = sqlSession.update("b.update_readhit", idx);
 		return res;
 	}
+	
+	//글 수정
+	
+		public int update_board(BoardVO vo) {
+			int res = sqlSession.update("b.update_board",vo);
+			return res;
+		}
 
 	// 글 삭제
 

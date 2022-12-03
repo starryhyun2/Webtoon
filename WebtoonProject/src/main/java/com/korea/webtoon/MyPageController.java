@@ -1,5 +1,7 @@
 package com.korea.webtoon;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -72,6 +74,48 @@ public class MyPageController {
 		}
 		
 		return result;											
+	}
+	
+	@RequestMapping("modify_email_phone.do")
+	@ResponseBody
+	public String modify_email_phone(MemberVO vo) {
+		//vo에서 email과 휴대폰번호 받아오기
+		String email = vo.getEmail();
+		String phonenum = vo.getPhonenum();
+		
+		
+		//랜덤한 키 생성
+		StringBuffer key = new StringBuffer();
+		Random rnd = new Random();
+
+		for (int i = 0; i < 6; i++) { 
+			int index = rnd.nextInt(3);
+			switch (index) {
+			case 0:
+				key.append((char) (rnd.nextInt(26) + 97));
+				break;
+			case 1:
+				key.append((char) (rnd.nextInt(26) + 65));
+				break;
+			case 2:
+				key.append((rnd.nextInt(10)));
+				break;
+			}
+		}
+		int res = 0;											//key 체크용 
+		String sKey = key.toString();
+		if(email!= null) {
+			res = service.MailService.sendmail(email, sKey);
+		}else {
+			res = service.MessageService.sendMessage(phonenum, sKey);
+		}
+
+		
+		String result = "no";
+		if(res == 1) {											//key가 잘 보내졌으면 
+			result = "yes";										
+		}
+		return result;
 	}
 	
 }

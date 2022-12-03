@@ -20,11 +20,7 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
 	rel="stylesheet">
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
-	defer></script>
 <!-- 웹툰 js -->
-<script src="/webtoon/resources/js/webtoon.js" defer></script>
 <script src="/webtoon/resources/js/board.js" defer></script>
 
 </head>
@@ -69,11 +65,6 @@
 	</c:choose>
 			</div>
 
-			<!-- 상단 네비게이션 -->
-			<nav class="nav_bar">
-				<span class="nav_list">홈</span> <span class="nav_list">오늘의 웹툰</span>
-				<span class="nav_list">최신 웹툰</span>
-			</nav>
 		</div>
 		<!-- first -->
 		<hr>
@@ -97,7 +88,7 @@
 				</table><div class="board_btn">
 					<input type="button" value="등록하기"
 						onclick="send_check(this.form)"> <input type="button"
-						value="취소" onclick="location.href="list.do"></div>
+						value="취 소" onclick="location.href='list.do'"></div>
 				
 			
 		</form>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" type="text/css" href="/webtoon/resources/css/sign_up_email.css">
 <!-- Ajax사용을 위한 js를 추가 -->
 <script src="/webtoon/resources/js/httpRequest.js"></script>
 <!-- 이메일을 합치기 위해 끌어오는 jquery문 -->
@@ -97,31 +97,27 @@
 </script>
 </head>
 <body>
-	<h1>이곳은 이메일 회원가입 페이지 입니다.</h1>
+<h2 id="sign_up_email_title" style= "font-size:50px; color:#2B2B2B;text-align:center;">이메일 인증</h2>
 
-	<form>
-		<table border="1" align="center" style="width: 25%">
+	<form id="sign_up_email">
+		<table>
 			<tr>
-				<th>ID :</th>
-				<td><input id="idBox" name="id"></td>
+				<td><input id="idBox" name="id"class="text-field" placeholder="아이디"></td>
 				<td><input type="button" value="중복체크"
 					onclick="dupli_check(this.form)"></td>
 			</tr>
 
 			<tr>
-				<th>PWD :</th>
-				<td><input type="password" name="pwd"></td>
+				<td><input type="password" name="pwd"class="text-field" placeholder="비밀번호"></td>
 			</tr>
 
 			<tr>
-				<th>이름 :</th>
-				<td><input name="name"></td>
+				<td><input name="name"class="text-field" placeholder="이름"></td>
 			</tr>
 
 			<tr>
-				<th>EMAIL:</th>
-				<td><input type="text" name="user_email" required><span>@</span>
-					<input type="text" name="email_address" list="user_email_address">
+				<td><input type="text" class="text-field" placeholder="e-mail" name="user_email" required><span>@</span>
+					<input type="text" class="text-field" name="email_address" list="user_email_address">
 					<datalist id="user_email_address">
 						<option value="naver.com"></option>
 						<option value="daum.com"></option>
@@ -133,10 +129,9 @@
 
 			<tr>
 				<td colspan="2" align="center"><input type="button"
-					value="회원가입" onclick="send(this.form);" /></td>
+					value="회원가입"  id=join_btn onclick="send(this.form);" /></td>
 			</tr>
 		</table>
 	</form>
-
 </body>
 </html>

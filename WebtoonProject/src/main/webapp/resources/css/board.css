@@ -18,17 +18,14 @@
 	font-weight:bold;	
 }
 
-#main_board tr td:last-child{
-	
-	margin-left:1%;
-	
+#main_board tr td:last-child{	
+	padding-left:1%;	
 }
 
 #main_board #content_row td:last-child{
 	height:300px;
 	vertical-align:top;
 	padding-top:2%;
-	
 }
 #main_board #content_row pre{
 	white-space:normal;
@@ -40,10 +37,12 @@
 }
 
 .board_btn input{
+	width:80px;
 	background-color: #99d280;
 	border:0.5px solid gray;
 	padding:5px;
 	margin-left:1%;
+	font-weight:bold;
 }
 
 #reply_board{

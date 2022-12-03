@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html>
 
-
 <script>
 	function send(id){
 		if(id==null){
@@ -40,7 +39,7 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
 	rel="stylesheet">
 	
-	<!-- 부트스트랩 JS -->
+		<!-- 부트스트랩 JS -->
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
@@ -92,12 +91,12 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-
 			<!-- 상단 네비게이션 -->
-			<nav class="nav_bar">
+			<!-- <nav class="nav_bar">
 				<span class="nav_list">홈</span> <span class="nav_list">오늘의 웹툰</span>
 				<span class="nav_list">최신 웹툰</span>
-			</nav>
+			</nav> -->
+
 		</div>
 		<!-- first -->
 		<!-- 스와이퍼 슬라이드 -->
@@ -358,7 +357,17 @@
 
 	</div>
 	<!-- total_wrap -->
-	
+	<!-- 부트스트랩 JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+
+	<!-- Swiper JS -->
+	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+	<!-- 웹툰 js -->
+	<script src="/webtoon/resources/js/webtoon.js"></script>
+
 
 </body>
 </html>

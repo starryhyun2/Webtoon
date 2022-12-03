@@ -36,10 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{ref}, 
 			#{episodename}, 
 			#{path}, 
+			5.0,
 			5,  
 			sysdate, 
 			1, 
-			0
+			1,
+			#{filename}
 		)
 	</insert>
 	
@@ -47,6 +49,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateStep" parameterType="int">
 		update Episode set step = step + 1
 		where ref=#{ref}
+	</update>
+	
+	<!-- 별점 업데이트 -->
+	<update id="updateScore" parameterType="episode">
+		update Episode set score = #{score}, totalscore =#{totalscore}, readhit=#{readhit}
+		where episode_idx=#{episode_idx}
 	</update>
 </mapper>
 

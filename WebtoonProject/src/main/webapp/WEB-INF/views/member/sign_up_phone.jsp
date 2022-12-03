@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" type="text/css" href="/webtoon/resources/css/sign_up_phone.css">
 <!-- Ajax사용을 위한 js를 추가 -->
 <script src="/webtoon/resources/js/httpRequest.js"></script>
 
@@ -118,40 +118,33 @@
 	</script>
 </head>
 <body>
-	<h1>이곳은 휴대폰 회원가입 페이지 입니다.</h1>
+<h2 id="sign_up_phone_title" style= "font-size:50px; color:#2B2B2B;">전화번호 인증</h2>
 
-
-	<form>
-		<table border="1" align="center" style="width: 25%">
+		<form id="sign_up_phone">
+			<table>
 			<tr>
-				<th>ID :</th>
-				<td><input id="idBox" name="id"></td>
+				<td><input id="idBox" name="id" class="text-field" placeholder="아이디"></td>
 				<td><input type="button" value="중복체크"
 					onclick="dupli_check(this.form)"></td>
 			</tr>
 
 			<tr>
-				<th>PWD :</th>
-				<td><input type="password" name="pwd"></td>
+				<td><input type="password" name="pwd" class="text-field" placeholder="비밀번호"></td>
 			</tr>
 
 			<tr>
-				<th>이름 :</th>
-				<td><input name="name"></td>
+				<td><input name="name" class="text-field" placeholder="이름"></td>
 			</tr>
 
 			<tr>
-				<th>PHONE_NUM:</th>
-				<td><input type="text" name="phonenum" oninput="hypenTel(this)"
-					maxlength="13"></td>
+				<td><input type="text" name="phonenum" class="text-field" placeholder="전화번호" oninput="hypenTel(this)"
+					 maxlength="13"></td>
 			</tr>
 
 			<tr>
-				<td colspan="2" align="center"><input type="button"
-					value="회원가입" onclick="send(this.form);"></td>
+				<td colspan="2" align="center"><input type="button" value="회원가입" id=join_btn onclick="send(this.form);"></td>
 			</tr>
-		</table>
+			</table>
 	</form>
-
 </body>
 </html>

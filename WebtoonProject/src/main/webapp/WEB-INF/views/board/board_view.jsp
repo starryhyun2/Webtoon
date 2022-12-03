@@ -25,11 +25,7 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
 	rel="stylesheet">
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
-	defer></script>
 <!-- 웹툰 js -->
-<script src="/webtoon/resources/js/webtoon.js" defer></script>
 <script src="/webtoon/resources/js/board.js" defer></script>
 
 </head>
@@ -74,11 +70,6 @@
 				</c:choose>
 			</div>
 
-			<!-- 상단 네비게이션 -->
-			<nav class="nav_bar">
-				<span class="nav_list">홈</span> <span class="nav_list">오늘의 웹툰</span>
-				<span class="nav_list">최신 웹툰</span>
-			</nav>
 		</div>
 		<!-- first -->
 		<hr>
@@ -105,8 +96,11 @@
 
 			</table>
 			<div class="board_btn">
-				<input type="button" value="목록 보기" onclick="location.href='list.do'">
+				<input type="button" value="메인 화면" onclick="location.href='list.do'">
+				<c:if test="${vo.id eq id}">
+				<input type="button" value="수 정" onclick="modify_board_form(this.form);">
 				<input type="button" value="삭 제" onclick="del(this.form);">
+				</c:if>
 				<input name="board_idx" type="hidden" value=${ vo.board_idx } />
 			</div>
 		</form>
@@ -118,40 +112,38 @@
 					<td colspan="4"><input type="text" name="id" placeholder="아이디"
 					value="${sessionScope.id}" readOnly> <input type="text" name="content"
 						placeholder="댓글 쓰기" style="width: 80%;"> <input
-						type="button" value="댓글" onclick="reply_send(this.form);">
+						type="button" value="입력" onclick="reply_send(this.form);">
 						<input name="ref" type="hidden" value=${ vo.board_idx } /></td>
 
 				</tr>
 			</table>
 		</form>
+		<form id="c_comment_form">
 		<table align="center" width="80%" id="reply_board">
-			<!-- 	<tr>
-				<th>번호</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>내용</th>
-			</tr>
-			 -->
+		
 
 			<c:forEach var="cb" items="${cb_list}">
 				<tr>
-					<td width="3%">${cb.comments_idx}</td>
-					<td width="10%">${cb.id}</td>
+					<td width="15%">${cb.id}</td>
 
 					<!-- 댓글 들여쓰기 -->
-					<td><c:if test="${cb.del_info eq 0}">
-					${cb.content}
-				</c:if> <c:if test="${cb.del_info ne 0}">
-
-							<font>${cb.content}</font>
-
-						</c:if></td>
-
+					<td>
+						${cb.content}
+					</td>
 					<td width="20%">${cb.regdate }</td>
+					<td width="10%">
+						<input name="comments_idx" type="hidden" value=${ cb.comments_idx } />
+						<input name="ref" type="hidden" value=${ cb.ref } />
+						<c:if test="${cb.id eq id}">
+						<input type="button" value="삭제" onclick="comments_del(this.form)"/>
+						</c:if>
+					</td>
+					
 				</tr>
 			</c:forEach>
 
 		</table>
+		</form>
 	</div>
 </body>
 </html>

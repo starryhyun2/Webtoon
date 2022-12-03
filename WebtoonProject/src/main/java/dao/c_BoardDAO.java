@@ -40,5 +40,11 @@ public class c_BoardDAO {
 		return res;
 	}
 	
+	public int c_delete(int comments_idx) {
+		int res = sqlSession.delete("cb.deleteBycomment", comments_idx);
+		
+		return res;
+	}
+	
 
 }

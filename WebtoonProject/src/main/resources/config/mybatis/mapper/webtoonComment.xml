@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wc">
+
+	<!-- 댓글 리스트 긁어오기 -->
+	<select id="wc_list" resultType="wc">
+		select * from WebtoonComments
+		where episode_idx= #{episode_idx} ORDER BY step ASC
+	</select>
+	
+	<!-- 베스트 댓글 리스트 긁어오기 -->
+	<select id="wc_list2" resultType="wc">
+		select * from WebtoonComments
+		where episode_idx= #{episode_idx} AND love >=10 ORDER BY love DESC
+	</select>
+
+	<!-- 해당 에피소드 댓글 step 1씩 추가 -->
+	<update id="update_step" parameterType="int">
+		update WebtoonComments
+		set step=step+1
+		where episode_idx=#{episode_idx}
+	</update>
+	<!-- 웹툰 댓글 추가 -->
+	<insert id="wc_insert" parameterType="wc">
+
+		insert into WebtoonComments
+		values(
+		seq_w_comments_idx.nextVal,
+		#{content},
+		1,
+		0,
+		#{episode_idx},
+		#{id}
+		)
+	</insert>
+
+	<!-- 웹툰 수정 -->
+	<update id="wc_update" parameterType="wc">
+		update WebtoonComments set
+		content=#{content}
+		where comments_idx=#{comments_idx}
+	</update>
+
+	<!-- 웹툰 삭제 -->
+	<delete id="deleteByidx" parameterType="wc">
+		DELETE from
+		WebtoonComments
+		WHERE comments_idx= #{comments_idx}
+	</delete>
+
+	<!-- 웹툰 좋아요 업데이트 -->
+	<update id="wc_update_love" parameterType="wc">
+		update WebtoonComments
+		set love=#{love}
+		where comments_idx=#{comments_idx}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

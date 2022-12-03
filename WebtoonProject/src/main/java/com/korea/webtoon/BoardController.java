@@ -126,8 +126,19 @@ public class BoardController {
 	}
 
 	@RequestMapping("/admin_form.do")
-	public String admin_form() {	
-		return Common.ADMIN_PATH + "admin_form.jsp";
+	public String admin_form() {
+		
+		HttpSession login = request.getSession(false);
+		String id = (String)login.getAttribute("id");
+		
+		//관리자가 아닌 다른 유저를 막기 위해 session에 저장된 id를 검사
+		if(id.equals("admin")) {
+			return Common.ADMIN_PATH + "admin_form.jsp";
+		}
+		
+		return "redirect:mainToon.do";
+
+		
 	}
 
 	//새 웹툰 올리기
@@ -250,6 +261,30 @@ public class BoardController {
 		return Common.PATH + "board_view.jsp";
 
 	}
+	
+	//게시판 수정 페이지 이동
+		@RequestMapping("modify_board_form.do")
+		public String modify_board_form(Model model, int board_idx) {
+			
+			BoardVO vo = board_dao.selectOne(board_idx);
+			
+			model.addAttribute("vo",vo);
+			
+			return Common.PATH + "board_modify.jsp";
+			
+		}
+		
+		@RequestMapping("modify_board.do")
+		public String modify_board(Model model, BoardVO vo) {
+			
+			board_dao.update_board(vo);
+			model.addAttribute("board_idx",vo.getBoard_idx());
+			
+			return "redirect:view.do";
+			
+		}
+	
+	
 	//게시판 별 댓글 쓰기
 	@RequestMapping("reply_insert.do")
 	public String reply_insert( c_BoardVO vo) {
@@ -275,6 +310,18 @@ public class BoardController {
 		return "redirect:mainToon.do";
 
 	}
+	
+	//댓글 삭제
+			@RequestMapping("c_del")
+			@ResponseBody
+			public String c_delete(Model model, int comments_idx, int board_idx) {
+				c_board_dao.c_delete(comments_idx);
+				
+				
+				//return "{'result':'clear'}";
+				return String.format("{'result':'clear', 'b_idx':'%d'}", board_idx);
+
+			}
 
 
 }

@@ -22,13 +22,6 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
 	rel="stylesheet">
 
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
-	defer></script>
-<!-- 웹툰 js -->
-<script src="/webtoon/resources/js/webtoon.js" defer></script>
-
 </head>
 <body>
 
@@ -73,11 +66,6 @@
 				</c:choose>
 			</div>
 
-			<!-- 상단 네비게이션 -->
-			<nav class="nav_bar">
-				<span class="nav_list">홈</span> <span class="nav_list">오늘의 웹툰</span>
-				<span class="nav_list">최신 웹툰</span>
-			</nav>
 		</div>
 		<!-- first -->
 

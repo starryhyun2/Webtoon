@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/webtoon/resources/css/loginForm.css">
+<link rel="stylesheet" href="/webtoon/resources/css/login_form.css">
 
 
 	<!-- Ajax사용을 위한 js를 추가 -->
@@ -33,12 +33,11 @@
 			var url = "login_check.do";
 			var param = "id="+id+"&pwd="+pwd;
 			sendRequest(url, param, resultFn, "POST");
-			
-			
-			location.href = prevPage;
+		
 		}
 		
 		function resultFn(){
+			const prevPage = document.getElementById('prevPage');
 			
 			if( xhr.readyState == 4 && xhr.status == 200 ){
 				//"{'result':'clear'}"
@@ -57,6 +56,7 @@
 				}
 				
 				alert("로그인 성공");
+				location.href=prevPage.value;
 			}
 			
 		}
@@ -64,33 +64,30 @@
 	</script>
 </head>
 <body>
-로그인 페이지<br>
+<div class="wrapper">
+<h2 id="login_title" style="font-family: 'Yeon Sung', cursive; font-size:60px; color:#2B2B2B;">코리아 웹툰</h2>
 
-	<form>
-		<table border="1" align="center">
+	<form id="login_form">
+		<table>
 			<tr>
-				<th>ID : </th>
-				<td><input name="id"></td>
+				<td><input name="id" class="text-field"placeholder="아이디"></td>
 			</tr>
 			
 			<tr>
-				<th>PWD : </th>
-				<td><input type="password" name="pwd"></td>
+				<td><input type="password" name="pwd" class="text-field"placeholder="비밀번호"></td>
 			</tr>
 			
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="로그인" onclick="send(this.form);">
+					<input type="button" value="로그인" id=loginbutton onclick="send(this.form);">
 				</td>
 			</tr>
-		</table>
-		<input name="prevPage" type="hidden" value="${sessionScope.prevPage }"/>
+	</table>
+		<input id="prevPage" type="hidden" value="${sessionScope.prevPage }"/>
 	</form>
-
+	</div>
 </body>
 </html>
-
-
 
 
 

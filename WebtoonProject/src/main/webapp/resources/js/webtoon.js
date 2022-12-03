@@ -23,24 +23,7 @@
       });
       
       
-      const nav_list = document.getElementsByClassName('nav_list');
-      
-      for (let i = 0; i< nav_list.length; i++) {
-  
-      	nav_list[i].addEventListener('mouseover', () => {
-      	
-      	nav_list[i].classList.add("line");
-      	
-      	});
-      	
-      	nav_list[i].addEventListener('mouseout', () => {
-      	
-      	nav_list[i].classList.remove("line");
-      	
-      	});
-     
-    
-      }
+ 
       
       
     
