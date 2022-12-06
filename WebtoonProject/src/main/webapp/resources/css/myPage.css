@@ -19,6 +19,10 @@ table tr .menu{
 table tr .menu2{
 	padding-left:20px;
 }
+.menu2 .modify{
+	width:300px;
+	
+}
 	
 .table_btn{
 	text-align:center;

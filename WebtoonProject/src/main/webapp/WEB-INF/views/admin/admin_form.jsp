@@ -16,7 +16,7 @@
 		const genre = f.genre.value;
 		const info = f.info.value;
 		const epipath = f.epipath.value;
-		const author_idx = f.author_idx.value;
+		const author_idx = 0;
 		
 		//유효성 체크
 		if(title == ''){
@@ -77,7 +77,8 @@
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input name="author">&nbsp<input type="number" name="author_idx"></td>
+				<td><input name="author">
+				<!--<input type="number" name="author_idx" >0</td>-->
 			</tr>
 			<tr>
 				<th>파일 이름</th>

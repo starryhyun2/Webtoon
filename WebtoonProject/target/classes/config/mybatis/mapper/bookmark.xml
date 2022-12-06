@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bm">
+
+	<!-- 북마크 테스트용 웹툰 나열 (병합시 필요없음)-->
+	<select id="select_list" resultType="webtoon">
+		select * from webtoon order by WEBTOON_IDX DESC
+	</select>
+	
+	<!-- DB에 같은 북마크 데이터 존재유무 확인  -->
+	<select id="check_bookmark" parameterType="bookmark" resultType="bookmark">
+		select * from BOOKMARK where ref=#{ref} AND user_id = #{user_id}
+	</select>
+	
+	<!-- 북마크 추가 -->
+	<insert id="add_bookmark" parameterType="bookmark">
+		insert into BOOKMARK values(
+		seq_bookmark_idx.nextVal,
+		#{ref},
+		#{user_id},
+		#{genre}
+		)
+	</insert>
+	
+	<!-- 북마크 삭제 -->
+	<delete id="del_bookmark" parameterType="bookmark">
+		delete from BOOKMARK where ref=#{ref} AND user_id=#{user_id}
+	</delete>
+	
+	<!-- 북마크 리스트 -->
+	<select id="list_bookmark"  parameterType="String" resultType="bookmark">
+		select ref from BOOKMARK where user_id=#{id} order by bookmark_idx DESC
+	</select>
+	
+	<!-- 북마크 해놓은 웹툰들 정보 가져오기 -->
+	<select id="select_bookmark" parameterType="int" resultType="webtoon">
+		select * from WEBTOON where webtoon_idx=#{ref}
+	</select>
+	
+	<select id="count_bookmark" parameterType="String" resultType="String">
+		select genre
+		from bookmark
+		where user_id=#{id}
+		group by genre
+		having count(*) = (select max(cnt)
+							from( select count(*) as cnt
+									from bookmark
+									group by genre))
+	</select>
+	
+	<select id="select_genre" parameterType="String" resultType="vo.WebtoonVO">
+		select * from WEBTOON where genre=#{genre} order by webtoon_idx DESC
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -22,6 +22,43 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
 	rel="stylesheet">
 
+<script src="/webtoon/resources/js/httpRequest.js"></script>
+<script>
+
+// 병합시 웹툰 상세보기 페이지에 function send() 기능만 추가하고 필요없는 페이지
+
+	function send(f){
+		
+		var ref = f.webtoon_idx.value;
+		var user_id = f.user_id.value;
+		var genre = f.genre.value;
+		
+		var url = "addBookmark.do";
+		var param = "ref="+ref+
+					"&user_id="+user_id+
+					"&genre="+genre;
+
+		sendRequest( url, param, resultFn, "GET");
+
+	}
+	
+	function resultFn(){
+			
+			if( xhr.readyState == 4 && xhr.status == 200 ){
+				
+				var bookmark = xhr.responseText;
+
+				if( bookmark == 'no'){
+					alert("북마크 삭제되었습니다.");
+					return;
+				}
+				
+				alert("북마크 추가되었습니다.");
+				
+			}
+	}
+</script>
+
 </head>
 <body>
 
@@ -55,6 +92,8 @@
 							onclick="location.href='logout.do'">
 						<input id="Mypage_btn" type="button" value="My 페이지"
 							onclick="location.href='Mypage'">
+						<input id="bm_up_btn" type="button" value="북마크"
+							onclick="location.href='bookmark.do'">
 					</c:when>
 
 					<c:otherwise>
@@ -90,9 +129,20 @@
 						<span>판타지</span>
 					</c:if>
 				</li>
-				<li>정보 : <span>${ vo.info }</span></li>
-				<c:if test="${id eq 'admin'}"><li><a href='addEpi_form?episode_idx=${ vo.webtoon_idx }'
-					style="background-color:#dedfdd; padding:1%;">회차 추가</a></li></c:if>
+				<li style="width:500px;">정보 : <span>${ vo.info }</span></li>
+				<c:if test="${id eq 'admin'}"><li style=" margin-top:50px;"><a href='addEpi_form?episode_idx=${ vo.webtoon_idx }'
+					style="background-color:#99d280; padding:2%;">회차 추가</a></li></c:if>
+					
+					<li style=" margin-top:50px;">
+					<form>
+						<c:if test="${user ne null}">
+							<input type="hidden" name="user_id" value="${user}">	<!-- 임의의 id값을 받아왔지만 session 설정시 session값 받기 -->
+							<input type="hidden" name="webtoon_idx" value="${vo.webtoon_idx}">
+							<input type="hidden" name="genre" value="${vo.genre}">
+							<input type="button" id="btn" value="북마크" onclick="send(this.form);">
+						</c:if>
+					</form>
+					</li>
 			</ul>
 		</div>
 
@@ -106,10 +156,10 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col">이미지</th>
-						<th scope="col">제목</th>
-						<th scope="col">별점</th>
-						<th scope="col">등록일</th>
+						<th scope="col" style="background-color:#99d280;">이미지</th>
+						<th scope="col" style="background-color:#99d280;">제목</th>
+						<th scope="col" style="background-color:#99d280;">별점</th>
+						<th scope="col" style="background-color:#99d280;">등록일</th>
 					</tr>
 				</thead>
 				<tbody>

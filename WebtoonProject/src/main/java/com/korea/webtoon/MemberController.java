@@ -58,6 +58,8 @@ public class MemberController {
 		String id = vo.getId();
 		String pwd = vo.getPwd();
 		
+		System.out.println(id);
+		System.out.println(pwd);
 		//DAO에게 id를 요청
 		vo = member_dao.loginCheck( id );
 		

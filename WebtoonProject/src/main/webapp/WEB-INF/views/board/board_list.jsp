@@ -68,6 +68,8 @@
 
 				<c:choose>
 					<c:when test="${id eq 'admin' }">
+						<input id="bookmark_btn" type="button" value="북마크"
+							onclick="location.href='bookmark.do'">
 						<input id="logout_btn" type="button" value="로그아웃"
 							onclick="location.href='logout.do'">
 						<input id="admin_btn" type="button" value="관리자 페이지"
@@ -77,6 +79,8 @@
 					</c:when>
 
 					<c:when test="${id ne null }">
+						<input id="bookmark_btn" type="button" value="북마크"
+							onclick="location.href='bookmark.do'">
 						<input id="logout_btn" type="button" value="로그아웃"
 							onclick="location.href='logout.do'">
 						<input id="Mypage_btn" type="button" value="My 페이지"

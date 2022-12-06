@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import vo.EpisodeVO;
 import vo.WebtoonVO;
+import vo.WebtoonVO2;
 
 public class WebtoonDAO {
 	SqlSession sqlSession;
@@ -13,6 +14,19 @@ public class WebtoonDAO {
 	public WebtoonDAO(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
+	
+	//북마크(병합시 필요없음)
+	public List<WebtoonVO> selectList(){
+		List<WebtoonVO> list = sqlSession.selectList("bm.select_list");
+		return list;
+	}
+	
+	public WebtoonVO select(int ref){
+		WebtoonVO list = sqlSession.selectOne("bm.select_bookmark", ref);
+		return list;
+	}
+	
 	
 	//웹툰 선택
 	public WebtoonVO selectOne(int idx){

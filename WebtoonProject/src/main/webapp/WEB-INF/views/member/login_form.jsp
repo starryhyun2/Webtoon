@@ -79,7 +79,7 @@
 			
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="로그인" id=loginbutton onclick="send(this.form);">
+					<input type="button" value="로그인" id="loginbutton" onclick="send(this.form);">
 				</td>
 			</tr>
 	</table>

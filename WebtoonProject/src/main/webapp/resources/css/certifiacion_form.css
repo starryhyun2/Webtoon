@@ -1,0 +1,33 @@
+@charset "UTF-8";
+body{
+	margin: 0;
+	padding:0;
+}
+
+div#wrap{
+	position: absolute;
+	text-align: center;
+	border: solid 1px gray;
+	width:300px;height:160px;
+	top: 50%;
+	left:50%;
+	margin-left:-150px;
+	margin-top:-90px;
+
+
+}
+.form> div{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+#text-field{
+	display:flex;
+	width:200px;
+	height:20px;
+	display: block;
+	justify-content: center;
+	ailgn-items: center;
+}
+

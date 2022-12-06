@@ -38,5 +38,9 @@
 	<bean id="love_daoBean" class="dao.LoveDAO">
 		<property name="sqlSession" ref="sqlSessionBean" />
 	</bean>
+	
+	<bean id="bookmark_daoBean" class="dao.BookmarkDAO">
+		<property name="sqlSession" ref="sqlSessionBean"/>
+	</bean>
 
 </beans>

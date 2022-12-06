@@ -65,6 +65,13 @@
 	<beans:bean class="com.korea.webtoon.LoveController">
 		<beans:property name="love_dao" ref="love_daoBean"/>
 	</beans:bean>
+	
+	<!-- BookmarkController 수동생성 setter인젝션-->
+	<beans:bean class="com.korea.webtoon.BookmarkController">
+		<beans:property name="webtoon_DAO" ref="webtoon_daoBean" />
+		<beans:property name="bookmark_dao" ref="bookmark_daoBean" />
+	</beans:bean>
+	
 </beans:beans>
 
 

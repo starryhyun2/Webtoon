@@ -52,6 +52,9 @@ public class WebtoonController {
 	public String showEpi(Model model, int idx) {
 		model.addAttribute("vo", webtoon_DAO.selectOne(idx));
 		model.addAttribute("epi",webtoon_DAO.selectEpi(idx));
+		String id = (String)login.getAttribute("id");
+		model.addAttribute("user", id);
+		
 		return Common.SHOW_PATH+"show_page.jsp";
 	}
 

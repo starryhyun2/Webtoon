@@ -22,7 +22,8 @@ public class MyPageController {
 	@Autowired
 	HttpServletRequest request;
 	
-	HttpSession session;
+	@Autowired
+	HttpSession login;
 	
 	MemberDAO member_dao;					
 	//Webtoon_UserDAO의 setter 인젝션 생성
@@ -36,14 +37,15 @@ public class MyPageController {
 	public String loginTest(Model model) {						// 로그인 페이지에서 입력한 값을 vo에 넣어 저장(지금은 로그인이 없기 때문에 넘겨받는 값이 없다.)
 		
 		String id ="false";
-		HttpSession login = request.getSession(false);
+		HttpSession login = request.getSession();
 		//id_now가 null값이 아니라면, 모델에 바인딩 해서 전송
+		
 		if(login != null) {
 			String binding_tmp = (String)login.getAttribute("id");
 			id=binding_tmp;
 		}
 		
-		MemberVO user = member_dao.selectOne(id);			// 저장된 id값으로 db에 저장되어있는 user정보 한개 반환
+		MemberVO user = member_dao.selectOne(id);				// 저장된 id값으로 db에 저장되어있는 user정보 한개 반환
 			
 		model.addAttribute("vo", user);							// 반환 받은값을 "vo"에 바인딩
 		
@@ -115,7 +117,22 @@ public class MyPageController {
 		if(res == 1) {											//key가 잘 보내졌으면 
 			result = "yes";										
 		}
+		
+		login.setAttribute("sKey", sKey);
 		return result;
+	}
+	
+	//인증 화면에서 클라이언트 입력메시지와 서버가 송신한 메시지가 일치한지 확인
+	@RequestMapping("myKey_check.do")
+	@ResponseBody
+	public String sKey_check(String Key) {
+		String sKey = (String) login.getAttribute("sKey");
+		if(sKey.equals(Key)) {
+			login.removeAttribute("sKey");
+			return "{'result':'clear'}";
+		}
+		return "{'result':'false'}";
+
 	}
 	
 }

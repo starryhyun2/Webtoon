@@ -112,23 +112,23 @@
 			</tr>
 			<!-- 베스트 댓글 좋아요가 10개 이상인 댓글들-->
 			<tr>
-				<td colspan="5" style="text-align: center;">★베스트 댓글★</td>
+				<td colspan="6" style="text-align: center; color:red; font-size:1.2em; font-weight:bold; ">★베스트 댓글★</td>
 			</tr>
 
-			<c:forEach var="wc" items="${bese_wc_list}" varStatus="i">
-				<tr>
+			<c:forEach var="wc" items="${best_wc_list}" varStatus="i">
+				<tr class="normal_reply">
 					<form>
 						<td>${wc.step}</td>
 						<td>${wc.id}</td>
 
 						<!-- 댓글 들여쓰기 -->
-						<td colspan="3"><font>${wc.content}</font></td>
+						<td  style="width: 60%; text-align:left;"><font>${wc.content}</font></td>
 
-						<td>${ wc.love }</td>
+						<td><img src="/webtoon/resources/thumbnail/goodIcon.png" style="width:30px;"/>${ wc.love }</td>
 
 						<c:set var="now_id" value="${sessionScope.id }" />
 						<c:set var="comment_id" value="${wc.id }" />
-						<td><c:if test="${now_id eq comment_id}">
+						<td  style="width: 10%;"><c:if test="${now_id eq comment_id}">
 								<input type="button" id="modify${i.count }" value="수정"   class="reply_btn"
 									onclick="modifyView(this.id)">
 								<input type="button" value="삭제" onclick="del_send(this.form)"   class="reply_btn"> 
@@ -171,7 +171,7 @@
 			</c:forEach>
 
 			<tr>
-				<td colspan="5" style="text-align: center;">★베스트 댓글★</td>
+				<td colspan="6" style="text-align: center; color:red; font-size:1.2em; font-weight:bold;">★베스트 댓글★</td>
 			</tr>
 
 			<!-- 여기서부터 일반 댓글 -->
@@ -184,7 +184,7 @@
 						<!-- 댓글 들여쓰기 -->
 						<td style="width: 60%; text-align:left;"><font>${wc.content}</font></td>
 
-						<td>${ wc.love }</td>
+						<td><img src="/webtoon/resources/thumbnail/goodIcon.png" style="width:30px;"/>${ wc.love }</td>
 
 						<c:set var="now_id" value="${sessionScope.id }" />
 						<c:set var="comment_id" value="${wc.id }" />
@@ -198,6 +198,7 @@
 								<input name="comments_idx" type="hidden"
 									value="${ wc.comments_idx }" />
 								<input name="id" type="hidden" value="${sessionScope.id}" />
+								
 								<input name="love" type="hidden" value="${ wc.love }" />
 							</c:if></td>
 					<td><input type="button" value="좋아요 ${i.index }"  class="reply_btn"
@@ -219,7 +220,7 @@
 						<td colspan="3"><input type="hidden" name="comments_idx"
 							value="${wc.comments_idx }"> <input type="hidden"
 							name="episode_idx" value="${epi.episode_idx }"> <textarea
-								rows="3" cols="55" placeholder="내용을 작성하세요" name="content"
+								rows="3" cols="90" placeholder="내용을 작성하세요" name="content"
 								required="required">
 							${wc.content }
 					</textarea></td>
